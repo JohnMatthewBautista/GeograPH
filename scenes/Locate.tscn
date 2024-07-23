@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://yjxlidqimdg"]
+
+[ext_resource type="Texture2D" uid="uid://cj5xo5iapp8m" path="res://resources/Luzon_regions.png" id="1_sbfwv"]
+[ext_resource type="Script" path="res://scripts/Touch_areas.gd" id="2_xx7ay"]
+[ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="3_6yh4s"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jw218"]
+points = PackedVector2Array(-138, 48, -88, 47, -73, 36, -16, 88, 59, 33, 129, 46, 144, 0, 133, -19, -137, -86)
+
+[node name="Locate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Image" type="TextureRect" parent="Map"]
+offset_top = 1.0
+offset_right = 1216.0
+offset_bottom = 1975.0
+texture = ExtResource("1_sbfwv")
+
+[node name="TouchAreas" type="Node2D" parent="."]
+script = ExtResource("2_xx7ay")
+
+[node name="MapTest" type="TouchScreenButton" parent="TouchAreas"]
+position = Vector2(94, 985)
+texture_normal = ExtResource("3_6yh4s")
+shape = SubResource("ConvexPolygonShape2D_jw218")
+
+[connection signal="pressed" from="TouchAreas/MapTest" to="TouchAreas" method="_on_map_test_pressed"]

@@ -1,0 +1,257 @@
+[gd_scene load_steps=12 format=3 uid="uid://bb2iv7cniq80q"]
+
+[ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_cuqan"]
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/green_texture_2d.tres" id="3_3a6ax"]
+
+[sub_resource type="Gradient" id="Gradient_ep7bs"]
+resource_local_to_scene = true
+colors = PackedColorArray(0.237642, 0.460887, 1, 1, 1.51612e-06, 0.396839, 0.397018, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_063fb"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_ep7bs")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwcv"]
+size = Vector2(280, 120)
+
+[sub_resource type="Gradient" id="Gradient_qvq0c"]
+colors = PackedColorArray(0, 0, 0, 1, 0.188371, 0.188371, 0.188371, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_krsq1"]
+gradient = SubResource("Gradient_qvq0c")
+
+[sub_resource type="Gradient" id="Gradient_8173q"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_631md"]
+gradient = SubResource("Gradient_8173q")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lkdh"]
+size = Vector2(60, 60)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 725.0
+offset_bottom = 1290.0
+script = ExtResource("1_ednag")
+
+[node name="StartScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 722.0
+offset_bottom = 1275.0
+
+[node name="TitleBg" type="TextureRect" parent="StartScreen"]
+offset_left = 105.0
+offset_top = 195.0
+offset_right = 609.0
+offset_bottom = 491.0
+texture = SubResource("GradientTexture2D_063fb")
+
+[node name="Title" type="RichTextLabel" parent="StartScreen"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 297.0
+offset_right = 558.0
+offset_bottom = 382.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] [b] GeograPH  [b]"
+
+[node name="NewGame" type="TouchScreenButton" parent="StartScreen"]
+position = Vector2(200, 600)
+scale = Vector2(1.26538, 1.17708)
+texture_normal = ExtResource("3_3a6ax")
+shape = SubResource("RectangleShape2D_kjwcv")
+
+[node name="Title" type="RichTextLabel" parent="StartScreen/NewGame"]
+offset_left = 33.1916
+offset_top = 48.4249
+offset_right = 246.192
+offset_bottom = 85.4249
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] New Game "
+
+[node name="Settings" type="TouchScreenButton" parent="StartScreen"]
+position = Vector2(200, 770)
+scale = Vector2(1.26538, 1.17708)
+texture_normal = ExtResource("3_3a6ax")
+shape = SubResource("RectangleShape2D_kjwcv")
+
+[node name="Title" type="RichTextLabel" parent="StartScreen/Settings"]
+offset_left = 33.1916
+offset_top = 48.4249
+offset_right = 246.192
+offset_bottom = 85.4249
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Settings"
+
+[node name="About" type="TouchScreenButton" parent="StartScreen"]
+position = Vector2(200, 940)
+scale = Vector2(1.26538, 1.17708)
+texture_normal = ExtResource("3_3a6ax")
+shape = SubResource("RectangleShape2D_kjwcv")
+
+[node name="Title" type="RichTextLabel" parent="StartScreen/About"]
+offset_left = 32.4013
+offset_top = 41.6285
+offset_right = 245.402
+offset_bottom = 78.6284
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] About "
+
+[node name="NewGameSection" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 725.0
+offset_bottom = 1290.0
+
+[node name="Title" type="RichTextLabel" parent="NewGameSection"]
+offset_left = 183.0
+offset_top = 174.0
+offset_right = 557.0
+offset_bottom = 259.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] [b] Game Modes  [b]
+[i] Temporary [i]"
+
+[node name="Locate" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(274, 561)
+scale = Vector2(1.26538, 1.17708)
+texture_normal = ExtResource("3_3a6ax")
+shape = SubResource("RectangleShape2D_kjwcv")
+
+[node name="Title" type="RichTextLabel" parent="NewGameSection/Locate"]
+offset_left = 33.1916
+offset_top = 48.4249
+offset_right = 246.192
+offset_bottom = 85.4249
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] tap 2 Locate"
+
+[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(80, 774)
+scale = Vector2(1.26538, 1.17708)
+texture_normal = ExtResource("3_3a6ax")
+shape = SubResource("RectangleShape2D_kjwcv")
+
+[node name="Title" type="RichTextLabel" parent="NewGameSection/Flashcards"]
+offset_left = 33.1916
+offset_top = 48.4249
+offset_right = 246.192
+offset_bottom = 85.4249
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Flashcards"
+
+[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(309, 989)
+scale = Vector2(1.26538, 1.17708)
+texture_normal = ExtResource("3_3a6ax")
+shape = SubResource("RectangleShape2D_kjwcv")
+
+[node name="Title" type="RichTextLabel" parent="NewGameSection/Enumeration"]
+offset_left = 33.1916
+offset_top = 48.4249
+offset_right = 246.192
+offset_bottom = 85.4249
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Enumeration"
+
+[node name="BackBtn" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(32, 38)
+texture_normal = SubResource("GradientTexture2D_krsq1")
+texture_pressed = SubResource("GradientTexture2D_631md")
+shape = SubResource("RectangleShape2D_7lkdh")
+
+[node name="SettingsSection" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 725.0
+offset_bottom = 1290.0
+
+[node name="BackBtn2" type="TouchScreenButton" parent="SettingsSection"]
+position = Vector2(32, 38)
+texture_normal = SubResource("GradientTexture2D_krsq1")
+texture_pressed = SubResource("GradientTexture2D_631md")
+shape = SubResource("RectangleShape2D_7lkdh")
+
+[node name="Title" type="RichTextLabel" parent="SettingsSection"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 175.0
+offset_right = 550.0
+offset_bottom = 260.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] [b] SETTINGS  [b]"
+
+[node name="AboutSection" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 725.0
+offset_bottom = 1290.0
+
+[node name="BackBtn3" type="TouchScreenButton" parent="AboutSection"]
+position = Vector2(32, 38)
+texture_normal = SubResource("GradientTexture2D_krsq1")
+texture_pressed = SubResource("GradientTexture2D_631md")
+shape = SubResource("RectangleShape2D_7lkdh")
+
+[node name="Title" type="RichTextLabel" parent="AboutSection"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 175.0
+offset_right = 550.0
+offset_bottom = 260.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cuqan")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] [b] ABOUT  [b]"
+
+[connection signal="pressed" from="StartScreen/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="StartScreen/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="StartScreen/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="NewGameSection/Flashcards" to="." method="_on_flashcards_pressed"]
+[connection signal="pressed" from="NewGameSection/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="SettingsSection/BackBtn2" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="AboutSection/BackBtn3" to="." method="_on_back_btn_pressed"]

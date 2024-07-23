@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://clsukwk5l3fpr"]
+
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/green_texture_2d.tres" id="1_16yjq"]
+[ext_resource type="PackedScene" uid="uid://c5rhtwr2u6or7" path="res://scenes/Text.tscn" id="2_6xex4"]
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(280, 120)
+
+[sub_resource type="RectangleShape2D" id="13"]
+size = Vector2(280, 120)
+
+[node name="TouchScreenChoices" type="TouchScreenButton"]
+position = Vector2(368, 254)
+shape = SubResource("6")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(-137, -59)
+texture_normal = ExtResource("1_16yjq")
+shape = SubResource("13")
+
+[node name="ButtonText" parent="." instance=ExtResource("2_6xex4")]
+offset_left = -75.0
+offset_top = -9.0
+offset_right = 84.0
+offset_bottom = 19.0
+text = "Sample Text"
+fit_content = true
