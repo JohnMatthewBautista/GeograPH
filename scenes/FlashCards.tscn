@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://nv0nqtftxy5"]
+
+[ext_resource type="Script" path="res://scripts/Quiz_options.gd" id="1_7kyy5"]
+[ext_resource type="PackedScene" uid="uid://clsukwk5l3fpr" path="res://scenes/TouchScreenChoices.tscn" id="2_e47ir"]
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/green_texture_2d.tres" id="3_23gdk"]
+[ext_resource type="PackedScene" uid="uid://c5rhtwr2u6or7" path="res://scenes/Text.tscn" id="4_u5gbw"]
+
+[node name="QuizOptions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7kyy5")
+
+[node name="OptionsButtons" type="Node2D" parent="."]
+position = Vector2(239, -217)
+scale = Vector2(1.1, 1.1)
+
+[node name="OptionA" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
+position = Vector2(-42.7273, 861.818)
+
+[node name="OptionB" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
+position = Vector2(255.455, 860.909)
+
+[node name="OptionC" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
+position = Vector2(-45.4545, 1000)
+
+[node name="OptionD" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
+position = Vector2(256.364, 1000.91)
+
+[node name="Question_box" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.745098)
+layout_mode = 0
+offset_left = 54.0
+offset_top = 276.0
+offset_right = 659.0
+offset_bottom = 550.0
+texture = ExtResource("3_23gdk")
+
+[node name="Main_Question" parent="." instance=ExtResource("4_u5gbw")]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 303.0
+offset_right = 635.0
+offset_bottom = 525.0
+theme_override_font_sizes/normal_font_size = 48
+text = "[center] GeograPH "
+
+[connection signal="pressed" from="OptionsButtons/OptionA" to="." method="_on_OptionA_pressed"]
+[connection signal="pressed" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
+[connection signal="pressed" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
+[connection signal="pressed" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
