@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb2iv7cniq80q"]
+[gd_scene load_steps=12 format=3 uid="uid://dnfxdwny35ci"]
 
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_cuqan"]
@@ -43,6 +43,7 @@ offset_right = 722.0
 offset_bottom = 1275.0
 
 [node name="TitleBg" type="TextureRect" parent="StartScreen"]
+layout_mode = 0
 offset_left = 105.0
 offset_top = 195.0
 offset_right = 609.0
@@ -124,6 +125,7 @@ offset_right = 725.0
 offset_bottom = 1290.0
 
 [node name="Title" type="RichTextLabel" parent="NewGameSection"]
+layout_mode = 0
 offset_left = 183.0
 offset_top = 174.0
 offset_right = 557.0

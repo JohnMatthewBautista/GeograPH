@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://djbl7scketuuv"]
 
-[ext_resource type="PackedScene" uid="uid://bb2iv7cniq80q" path="res://scenes/MainMenu.tscn" id="1_1p7ta"]
+[ext_resource type="PackedScene" uid="uid://dnfxdwny35ci" path="res://scenes/MainMenu.tscn" id="1_1p7ta"]
 
 [sub_resource type="Gradient" id="Gradient_r6pvo"]
 resource_local_to_scene = true

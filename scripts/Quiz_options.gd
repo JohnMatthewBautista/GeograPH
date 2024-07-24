@@ -21,6 +21,7 @@ func _ready():
 	#Random number generator
 	arr_size = global_variables["questions_array"].size() - 1
 	qnum = randi_range(0, arr_size)
+	print(Main.regions["NCR"][1])
 	set_question(qnum)
 
 #Function that changes the label to start the question
