@@ -7,9 +7,12 @@ var center: String
 var number : int
 var lgus: PackedStringArray
 
-func _init(name: String, island_group: String, region_center: String, number: int, lgu_list : PackedStringArray):
-	self.fullname = name
+func _init(input_name: String, island_group: String, region_center: String, input_number: int, lgu_list : PackedStringArray):
+	self.fullname = input_name
 	self.group = island_group
 	self.center = region_center
-	self.number = number
+	self.number = input_number
 	self.lgus = lgu_list
+
+func rand_lgu():
+	return lgus[randi_range(0, lgus.size() - 1)]

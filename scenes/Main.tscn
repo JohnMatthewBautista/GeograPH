@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djbl7scketuuv"]
 
-[ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_quja7"]
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_u3eif"]
+[ext_resource type="PackedScene" uid="uid://dnfxdwny35ci" path="res://scenes/MainMenu.tscn" id="2_4ko2e"]
 
 [sub_resource type="Gradient" id="Gradient_r6pvo"]
 resource_local_to_scene = true
@@ -14,12 +14,7 @@ gradient = SubResource("Gradient_r6pvo")
 [node name="Main" type="Node"]
 script = ExtResource("1_u3eif")
 
-[node name="MainMenu" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 725.0
-offset_bottom = 1290.0
-script = ExtResource("1_quja7")
+[node name="Menu" parent="." instance=ExtResource("2_4ko2e")]
 
 [node name="Background" type="ParallaxBackground" parent="."]
 

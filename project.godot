@@ -23,7 +23,6 @@ Main="*res://scripts/Main.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
-window/size/mode=2
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
