@@ -4,24 +4,24 @@
 [ext_resource type="PackedScene" uid="uid://c5rhtwr2u6or7" path="res://scenes/Text.tscn" id="2_6xex4"]
 
 [sub_resource type="RectangleShape2D" id="6"]
-size = Vector2(280, 120)
+size = Vector2(300, 150)
 
 [sub_resource type="RectangleShape2D" id="13"]
-size = Vector2(280, 120)
+size = Vector2(300, 150)
 
 [node name="TouchScreenChoices" type="TouchScreenButton"]
 position = Vector2(368, 254)
 shape = SubResource("6")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(-137, -59)
+position = Vector2(-150, -75)
 texture_normal = ExtResource("1_16yjq")
 shape = SubResource("13")
 
 [node name="ButtonText" parent="." instance=ExtResource("2_6xex4")]
-offset_left = -75.0
-offset_top = -9.0
-offset_right = 84.0
-offset_bottom = 19.0
-text = "Sample Text"
+offset_left = -111.0
+offset_top = -38.0
+offset_right = 116.0
+offset_bottom = 39.0
+text = "[center] Sample Text"
 fit_content = true
