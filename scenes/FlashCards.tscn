@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://nv0nqtftxy5"]
+[gd_scene load_steps=20 format=3 uid="uid://nv0nqtftxy5"]
 
 [ext_resource type="Script" path="res://scripts/Quiz_options.gd" id="1_7kyy5"]
+[ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_cnisw"]
 [ext_resource type="PackedScene" uid="uid://clsukwk5l3fpr" path="res://scenes/TouchScreenChoices.tscn" id="2_e47ir"]
-[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/green_texture_2d.tres" id="3_23gdk"]
-[ext_resource type="PackedScene" uid="uid://c5rhtwr2u6or7" path="res://scenes/Text.tscn" id="4_u5gbw"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="4_4pvth"]
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="5_rh5wl"]
+[ext_resource type="Texture2D" uid="uid://daovbi7iwvdtw" path="res://resources/blue_gradient.tres" id="6_j6cyp"]
+[ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="7_ii0ws"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8fduu"]
+texture = ExtResource("5_rh5wl")
+texture_margin_top = 100.0
 
 [sub_resource type="Gradient" id="Gradient_wudt5"]
 colors = PackedColorArray(0, 0.427451, 0, 1, 0, 0.427451, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xtf6v"]
 gradient = SubResource("Gradient_wudt5")
-width = 600
+width = 620
 height = 50
 
 [sub_resource type="Gradient" id="Gradient_hwj4r"]
@@ -19,7 +26,37 @@ colors = PackedColorArray(0.866667, 0.329412, 0, 1, 0.478431, 0.372549, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3joht"]
 gradient = SubResource("Gradient_hwj4r")
 width = 600
-height = 40
+height = 30
+
+[sub_resource type="Gradient" id="Gradient_i011t"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.478431, 0.878431, 0.333333, 1, 0.113533, 0.631836, 0.230961, 1, 0.478431, 0.878431, 0.333333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7dcy5"]
+gradient = SubResource("Gradient_i011t")
+width = 75
+height = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
+size = Vector2(75, 50)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r2611"]
+texture = ExtResource("5_rh5wl")
+texture_margin_top = 100.0
+
+[sub_resource type="Gradient" id="Gradient_qbv1s"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.478431, 0.878431, 0.333333, 1, 0.113533, 0.631836, 0.230961, 1, 0.478431, 0.878431, 0.333333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fs0hm"]
+gradient = SubResource("Gradient_qbv1s")
+width = 300
+height = 150
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
+size = Vector2(300, 150)
 
 [node name="QuizOptions" type="Control"]
 layout_mode = 3
@@ -28,79 +65,321 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_cnisw")
 script = ExtResource("1_7kyy5")
 
-[node name="OptionsButtons" type="Node2D" parent="."]
-position = Vector2(360, -93)
+[node name="OptionsButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 54.0
+offset_top = 764.0
+offset_right = 674.0
+offset_bottom = 1084.0
 
 [node name="OptionA" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(-150, 850)
 
 [node name="OptionB" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(150, 850)
+position = Vector2(320, 0)
 
 [node name="OptionC" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(-150, 1000)
+position = Vector2(0, 170)
 
 [node name="OptionD" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(150, 1000)
+position = Vector2(320, 170)
 
 [node name="TextContainer" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 720.0
+offset_bottom = 1280.0
 
-[node name="Question_box" type="TextureRect" parent="TextContainer"]
-modulate = Color(1, 1, 1, 0.745098)
+[node name="Main_Question" type="RichTextLabel" parent="TextContainer"]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 276.0
-offset_right = 659.0
-offset_bottom = 550.0
-texture = ExtResource("3_23gdk")
-
-[node name="Main_Question" parent="TextContainer" instance=ExtResource("4_u5gbw")]
-layout_mode = 0
-offset_left = 78.0
-offset_top = 375.0
-offset_right = 636.0
-offset_bottom = 471.0
+offset_left = 83.0
+offset_top = 281.0
+offset_right = 647.0
+offset_bottom = 519.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
 theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_8fduu")
+bbcode_enabled = true
 text = "[center]  Geograph"
 
-[node name="Points" parent="TextContainer" instance=ExtResource("4_u5gbw")]
+[node name="Score" type="RichTextLabel" parent="TextContainer"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 31.0
-offset_right = 398.0
-offset_bottom = 116.0
-text = "Points"
+offset_left = 212.0
+offset_top = 491.0
+offset_right = 541.0
+offset_bottom = 514.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
 
-[node name="Instructions" parent="TextContainer" instance=ExtResource("4_u5gbw")]
+[node name="Instructions" type="RichTextLabel" parent="TextContainer"]
 layout_mode = 0
-offset_left = 131.0
-offset_top = 219.0
-offset_right = 607.0
-offset_bottom = 304.0
+offset_left = 127.0
+offset_top = 304.0
+offset_right = 603.0
+offset_bottom = 389.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
 text = "[center] Find what region the city or province belongs to "
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="TimerContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 198.0
+offset_right = 670.0
+offset_bottom = 640.0
+
+[node name="TimerBar" type="TextureProgressBar" parent="TimerContainer"]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 565.0
-offset_right = 657.0
-offset_bottom = 615.0
-value = 30.0
+offset_left = 3.0
+offset_top = 347.0
+offset_right = 623.0
+offset_bottom = 397.0
+value = 100.0
 texture_under = SubResource("GradientTexture2D_xtf6v")
 texture_progress = SubResource("GradientTexture2D_3joht")
-texture_progress_offset = Vector2(5, 5)
+texture_progress_offset = Vector2(10, 10)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="TimerContainer"]
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="PauseBtn" type="TouchScreenButton" parent="TimerContainer"]
+position = Vector2(540, 19)
+texture_normal = SubResource("GradientTexture2D_7dcy5")
+shape = SubResource("RectangleShape2D_r4nso")
+
+[node name="GameOverScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Background" type="TextureRect" parent="GameOverScreen"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+texture = ExtResource("6_j6cyp")
+
+[node name="GameOverTxt" type="RichTextLabel" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 193.0
+offset_right = 625.0
+offset_bottom = 421.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_r2611")
+bbcode_enabled = true
+text = "[center] Game over"
+
+[node name="Score" type="RichTextLabel" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 370.0
+offset_right = 623.0
+offset_bottom = 421.0
+bbcode_enabled = true
+text = "[center] Score"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen"]
+layout_mode = 1
+offset_left = 79.0
+offset_top = 566.0
+offset_right = 633.0
+offset_bottom = 1015.0
+
+[node name="MainMenu" type="Control" parent="GameOverScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="TouchScreenButton" parent="GameOverScreen/VBoxContainer/MainMenu"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Main Menu"
+fit_content = true
+
+[node name="Retry" type="Control" parent="GameOverScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryBtn" type="TouchScreenButton" parent="GameOverScreen/VBoxContainer/Retry"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="GameOverScreen/VBoxContainer/Retry/RetryBtn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Retry"
+fit_content = true
+
+[node name="PauseScreen" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Background" type="TextureRect" parent="PauseScreen"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 140.0
+offset_right = 708.0
+offset_bottom = 860.0
+texture = ExtResource("6_j6cyp")
+
+[node name="GameOverTxt" type="RichTextLabel" parent="PauseScreen"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 193.0
+offset_right = 625.0
+offset_bottom = 421.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_r2611")
+bbcode_enabled = true
+text = "[center] Game over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen"]
+layout_mode = 1
+offset_left = 85.0
+offset_top = 428.0
+offset_right = 639.0
+offset_bottom = 877.0
+
+[node name="Continue" type="Control" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="TouchScreenButton" parent="PauseScreen/VBoxContainer/Continue"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="PauseScreen/VBoxContainer/Continue/ContinueButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Continue"
+fit_content = true
+
+[node name="MainMenu" type="Control" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="TouchScreenButton" parent="PauseScreen/VBoxContainer/MainMenu"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="PauseScreen/VBoxContainer/MainMenu/MainMenuButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Main Menu"
+fit_content = true
+
+[node name="Retry" type="Control" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryBtn" type="TouchScreenButton" parent="PauseScreen/VBoxContainer/Retry"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="PauseScreen/VBoxContainer/Retry/RetryBtn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_4pvth")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Restart"
+fit_content = true
+
+[node name="Background" parent="." instance=ExtResource("7_ii0ws")]
 
 [connection signal="pressed" from="OptionsButtons/OptionA" to="." method="_on_OptionA_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
+[connection signal="pressed" from="TimerContainer/PauseBtn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]

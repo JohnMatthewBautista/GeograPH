@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnfxdwny35ci"]
+[gd_scene load_steps=13 format=3 uid="uid://dnfxdwny35ci"]
 
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_cuqan"]
-[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/green_texture_2d.tres" id="3_3a6ax"]
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="3_3a6ax"]
+[ext_resource type="Texture2D" uid="uid://daovbi7iwvdtw" path="res://resources/blue_gradient.tres" id="3_jdeyl"]
+[ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="5_fft66"]
 
-[sub_resource type="Gradient" id="Gradient_ep7bs"]
-resource_local_to_scene = true
-colors = PackedColorArray(0.237642, 0.460887, 1, 1, 1.51612e-06, 0.396839, 0.397018, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_063fb"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_ep7bs")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icers"]
+texture = ExtResource("3_jdeyl")
+texture_margin_top = 100.0
+texture_margin_bottom = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwcv"]
 size = Vector2(280, 120)
@@ -42,24 +41,17 @@ anchors_preset = 0
 offset_right = 722.0
 offset_bottom = 1275.0
 
-[node name="TitleBg" type="TextureRect" parent="StartScreen"]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 195.0
-offset_right = 609.0
-offset_bottom = 491.0
-texture = SubResource("GradientTexture2D_063fb")
-
 [node name="Title" type="RichTextLabel" parent="StartScreen"]
 layout_mode = 0
-offset_left = 184.0
-offset_top = 297.0
-offset_right = 558.0
-offset_bottom = 382.0
+offset_left = 131.0
+offset_top = 237.0
+offset_right = 634.0
+offset_bottom = 495.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_icers")
 bbcode_enabled = true
 text = "[center] [b] GeograPH  [b]"
 
@@ -249,6 +241,8 @@ theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] [b] ABOUT  [b]"
+
+[node name="Background" parent="." instance=ExtResource("5_fft66")]
 
 [connection signal="pressed" from="StartScreen/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="StartScreen/Settings" to="." method="_on_settings_pressed"]

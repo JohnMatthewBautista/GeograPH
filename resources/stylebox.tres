@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cun6ygo6y4enn"]
+
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="1_sntwr"]
+
+[resource]
+texture = ExtResource("1_sntwr")
+texture_margin_top = 100.0

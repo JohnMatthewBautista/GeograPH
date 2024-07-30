@@ -4,7 +4,8 @@ var qnum = 0
 var arr_size = 0
 var questions_array = []
 var counters = {
-	"score" : 0
+	"score" : 0,
+	"timer_max" : 60,
 }
 # Paths used to iterate over the options much easier
 var options_paths = ["OptionsButtons/OptionA/ButtonText","OptionsButtons/OptionB/ButtonText","OptionsButtons/OptionC/ButtonText","OptionsButtons/OptionD/ButtonText"]
@@ -19,32 +20,48 @@ func create_question():
 		while((curr == main_region.fullname) or (results.has(curr))):
 			curr = Region.rand_region_name(Main.regions)
 		results.append(curr)
-	# Randomise the options
-	results.shuffle()
-	# Set the question
-	var main_lgu = main_region.rand_lgu()
-	results.push_front(main_lgu)
-	# Set the answer
+# Randomise the options
 	results.append(main_region.fullname)
-	results.append(results.find(main_region.fullname, 1))
+	results.shuffle()
+# Set the answer
+	results.append(results.find(main_region.fullname) + 1)
+# Set the question
+	var gamemode = 0
+	if (Main.settings.question_mode == "regions") : 
+		gamemode = 0
+		results.push_front(main_region.rand_lgu())
+	elif (Main.settings.question_mode == "random"):
+		gamemode = randi_range(0,2)
+		if (gamemode == 0):
+			results.push_front(main_region.rand_lgu())
+		elif (gamemode == 1):
+			results.push_front(main_region.center)
+		else:
+			results.push_front(main_region.number)
+	results.push_front(gamemode)
 	questions_array.append(results)
 
 func _ready():
+# Setup the timer 
 	counters["score"] = 0
-	# Creates the question at startup 
+	counters["timer_max"] = Main.settings.timer_max
+	$TimerContainer/Timer.wait_time = counters.timer_max
+	$TimerContainer/Timer.start()
+# Creates the question at startup 
 	for i in range(10):
 		create_question()
 	arr_size = questions_array.size() - 1
-	#Random number generator
+#Random number generator
 	qnum = randi_range(0, arr_size)
 	set_question(qnum)
 
 func _process(_delta):
-	if ($Timer.time_left <= 0):
-		print("Times up")
-		$OptionsButtons.visible = false
+	if ($TimerContainer/Timer.time_left <= 0):
+		$GameOverScreen/Score.parse_bbcode("[center] Final Score: " + str(counters.score))
+		$GameOverScreen.visible = true
 	else:
-		print($Timer.time_left)
+		var percent = ($TimerContainer/Timer.time_left / counters["timer_max"])
+		$TimerContainer/TimerBar.set_value_no_signal(100 * percent)
 
 #Function that changes the label to start the question
 func set_question(question_number):
@@ -55,39 +72,43 @@ func set_question(question_number):
 		arr_size = questions_array.size() - 1
 	var chosen = questions_array[question_number]
 	var question = $TextContainer/Main_Question
+	var instructions = $TextContainer/Instructions
 #Sets the main question
-	question.parse_bbcode("[center]" + chosen[0])
+	if (chosen[0] == 0):
+		instructions.parse_bbcode("[center] Where does this city or province belong to: ")
+	elif (chosen[0] == 1):
+		instructions.parse_bbcode("[center] Choose the region that has the regional center: ")
+	elif (chosen[0] == 2):
+		instructions.parse_bbcode("[center] Which region is also known as : ")
+	question.parse_bbcode("[center]" + chosen[1])
 #Iterates over the array and sets the options 
-	var iter1 = 1
+	var iter1 = 2
 	for i in options_paths:
 		var option = get_node(i)
 		option.parse_bbcode("[center]" + chosen[iter1])
 		if iter1 < 6: iter1 += 1
 
 #Checks the last letter on the questions_array (which is the correct answer) and changes the question text to "Correct" or "Wrong"
-func check_answer(answer_number,question_number):
+func check_answer(answer_number, question_number):
 # Prevent wrong index
 	if question_number >= questions_array.size():
 		print("Error Exceed Array Index")
 #Variables used inside this function
 	var question = $TextContainer/Main_Question
-	question.clear()
-	var options_buttons = get_node("OptionsButtons")
-	#This is for easier access of the variable
-	var correct_answer = questions_array[question_number][5]
+	var correct_answer = questions_array[question_number][6]
 #This is when the answer is correct
-	if  correct_answer == answer_number:
-		question.clear()
-		question.append_text("[center] Correct")
-		counters["score"]  += 100
+	if correct_answer == answer_number:
+		question.parse_bbcode("[center] Correct")
+		counters["score"] += 100
+		$TextContainer/Score.parse_bbcode("[center] Score: " + str(counters["score"]))
 #This section is when it is wrong
 	elif correct_answer != answer_number:
-		question.clear()
-		question.append_text("[center] Wrong")
-		counters["score"]  -= 50
+		question.parse_bbcode("[center] Wrong")
+		question.append_text("\n[center] Answer: " + questions_array[question_number][correct_answer + 1])
 	else:
 		print("Error input was not string")
 	# Hide the buttons
+	var options_buttons = get_node("OptionsButtons")
 	options_buttons.visible = not options_buttons.visible
 	# Pause for 1 second before executing the next line of code
 	await get_tree().create_timer(1.0).timeout
@@ -110,3 +131,21 @@ func _on_OptionC_pressed():
 
 func _on_OptionD_pressed():
 	check_answer(4,qnum)
+
+# Functions for gameover
+func _on_retry_pressed():
+	print("Retry")
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
+
+func _on_main_menu_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+func _on_continue_button_pressed():
+	if ($GameOverScreen.visible == true): $GameOverScreen.visible = false
+	elif ($PauseScreen.visible == true): $PauseScreen.visible = false
+	$TimerContainer/Timer.start($TimerContainer/Timer.time_left)
+
+func _on_pause_btn_pressed():
+	$TimerContainer/Timer.start($TimerContainer/Timer.time_left)
+	$PauseScreen.visible = true

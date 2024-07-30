@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GeograPH"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ Main="*res://scripts/Main.gd"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 

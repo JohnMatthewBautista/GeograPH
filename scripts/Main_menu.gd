@@ -23,9 +23,7 @@ func _on_back_btn_pressed():
 	for i in get_children():
 		i.visible = false
 	$"StartScreen".visible = true
+	$Background.visible = true
 
 func _on_flashcards_pressed():
-	# This method allows the main control node and other children to remain while switching to a new scene
-	var scene = preload("res://scenes/FlashCards.tscn").instantiate()
-	get_parent().add_child(scene)
-	get_parent().remove_child(self)
+	get_tree().change_scene_to_file("res://scenes/FlashCards.tscn")

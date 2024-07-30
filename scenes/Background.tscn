@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0pmxipl3eto"]
+
+[sub_resource type="Gradient" id="Gradient_r6pvo"]
+resource_local_to_scene = true
+colors = PackedColorArray(0.237642, 0.460887, 1, 1, 0, 0.853012, 0.853373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7i0aj"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_r6pvo")
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 722.0
+offset_bottom = 1286.0
+texture = SubResource("GradientTexture2D_7i0aj")

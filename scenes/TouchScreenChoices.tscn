@@ -1,27 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://clsukwk5l3fpr"]
+[gd_scene load_steps=4 format=3 uid="uid://clsukwk5l3fpr"]
 
-[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/green_texture_2d.tres" id="1_16yjq"]
-[ext_resource type="PackedScene" uid="uid://c5rhtwr2u6or7" path="res://scenes/Text.tscn" id="2_6xex4"]
+[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="1_16yjq"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_52x1r"]
 
-[sub_resource type="RectangleShape2D" id="6"]
-size = Vector2(300, 150)
-
-[sub_resource type="RectangleShape2D" id="13"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
 size = Vector2(300, 150)
 
 [node name="TouchScreenChoices" type="TouchScreenButton"]
-position = Vector2(368, 254)
-shape = SubResource("6")
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(-150, -75)
 texture_normal = ExtResource("1_16yjq")
-shape = SubResource("13")
+shape = SubResource("RectangleShape2D_v8a4m")
 
-[node name="ButtonText" parent="." instance=ExtResource("2_6xex4")]
+[node name="ButtonText" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -111.0
-offset_top = -38.0
+offset_top = -36.0
 offset_right = 116.0
-offset_bottom = 39.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_52x1r")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
 text = "[center] Sample Text"
 fit_content = true
