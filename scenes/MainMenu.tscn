@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnfxdwny35ci"]
+[gd_scene load_steps=15 format=3 uid="uid://dnfxdwny35ci"]
 
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
+[ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_lnwq1"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_cuqan"]
-[ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="3_3a6ax"]
-[ext_resource type="Texture2D" uid="uid://daovbi7iwvdtw" path="res://resources/blue_gradient.tres" id="3_jdeyl"]
+[ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="4_ufj13"]
 [ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="5_fft66"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icers"]
-texture = ExtResource("3_jdeyl")
-texture_margin_top = 100.0
-texture_margin_bottom = 100.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_equ3k"]
+texture = ExtResource("4_ufj13")
+texture_margin_top = 75.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwcv"]
 size = Vector2(280, 120)
@@ -29,39 +28,71 @@ gradient = SubResource("Gradient_8173q")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lkdh"]
 size = Vector2(60, 60)
 
+[sub_resource type="Gradient" id="Gradient_ug5dd"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.0666667, 0.392157, 0.705882, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1172y"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_ug5dd")
+fill_from = Vector2(0, 0.117886)
+fill_to = Vector2(0.837398, 0.760163)
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 725.0
 offset_bottom = 1290.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lnwq1")
 script = ExtResource("1_ednag")
 
 [node name="StartScreen" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 722.0
 offset_bottom = 1275.0
 
 [node name="Title" type="RichTextLabel" parent="StartScreen"]
 layout_mode = 0
-offset_left = 131.0
+offset_left = 115.0
 offset_top = 237.0
-offset_right = 634.0
+offset_right = 618.0
 offset_bottom = 495.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxTexture_icers")
+theme_override_styles/normal = SubResource("StyleBoxTexture_equ3k")
 bbcode_enabled = true
 text = "[center] [b] GeograPH  [b]"
 
-[node name="NewGame" type="TouchScreenButton" parent="StartScreen"]
-position = Vector2(200, 600)
+[node name="VBoxContainer" type="VBoxContainer" parent="StartScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -150.0
+offset_right = 360.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Control" type="Control" parent="StartScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="TouchScreenButton" parent="StartScreen/VBoxContainer/Control"]
+position = Vector2(170, 0)
 scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("3_3a6ax")
+texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="StartScreen/NewGame"]
+[node name="Title" type="RichTextLabel" parent="StartScreen/VBoxContainer/Control/NewGame"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -73,13 +104,16 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] New Game "
 
-[node name="Settings" type="TouchScreenButton" parent="StartScreen"]
-position = Vector2(200, 770)
+[node name="Control2" type="Control" parent="StartScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="TouchScreenButton" parent="StartScreen/VBoxContainer/Control2"]
+position = Vector2(170, 0)
 scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("3_3a6ax")
+texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="StartScreen/Settings"]
+[node name="Title" type="RichTextLabel" parent="StartScreen/VBoxContainer/Control2/Settings"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -91,13 +125,16 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Settings"
 
-[node name="About" type="TouchScreenButton" parent="StartScreen"]
-position = Vector2(200, 940)
+[node name="Control3" type="Control" parent="StartScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="About" type="TouchScreenButton" parent="StartScreen/VBoxContainer/Control3"]
+position = Vector2(170, 0)
 scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("3_3a6ax")
+texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="StartScreen/About"]
+[node name="Title" type="RichTextLabel" parent="StartScreen/VBoxContainer/Control3/About"]
 offset_left = 32.4013
 offset_top = 41.6285
 offset_right = 245.402
@@ -110,7 +147,6 @@ bbcode_enabled = true
 text = "[center] About "
 
 [node name="NewGameSection" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 725.0
@@ -118,25 +154,38 @@ offset_bottom = 1290.0
 
 [node name="Title" type="RichTextLabel" parent="NewGameSection"]
 layout_mode = 0
-offset_left = 183.0
+offset_left = 3.0
 offset_top = 174.0
-offset_right = 557.0
+offset_right = 723.0
 offset_bottom = 259.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_cuqan")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center] [b] Game Modes  [b]
-[i] Temporary [i]"
+text = "[center] Game Modes "
 
-[node name="Locate" type="TouchScreenButton" parent="NewGameSection"]
-position = Vector2(274, 561)
+[node name="BackBtn" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(32, 38)
+texture_normal = SubResource("GradientTexture2D_krsq1")
+texture_pressed = SubResource("GradientTexture2D_631md")
+shape = SubResource("RectangleShape2D_7lkdh")
+
+[node name="TabBar" type="TabContainer" parent="NewGameSection"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 585.0
+offset_right = 647.0
+offset_bottom = 882.0
+tab_alignment = 1
+current_tab = 1
+
+[node name="Locate" type="Control" parent="NewGameSection/TabBar"]
+visible = false
+layout_mode = 2
+
+[node name="Locate" type="TouchScreenButton" parent="NewGameSection/TabBar/Locate"]
 scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("3_3a6ax")
+texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/Locate"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/TabBar/Locate/Locate"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -148,13 +197,15 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] tap 2 Locate"
 
-[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection"]
-position = Vector2(80, 774)
+[node name="Flashcards" type="Control" parent="NewGameSection/TabBar"]
+layout_mode = 2
+
+[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection/TabBar/Flashcards"]
 scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("3_3a6ax")
+texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/Flashcards"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/TabBar/Flashcards/Flashcards"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -166,13 +217,16 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Flashcards"
 
-[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection"]
-position = Vector2(309, 989)
+[node name="Enumeration" type="Control" parent="NewGameSection/TabBar"]
+visible = false
+layout_mode = 2
+
+[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection/TabBar/Enumeration"]
 scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("3_3a6ax")
+texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/Enumeration"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/TabBar/Enumeration/Enumeration"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -183,12 +237,6 @@ theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Enumeration"
-
-[node name="BackBtn" type="TouchScreenButton" parent="NewGameSection"]
-position = Vector2(32, 38)
-texture_normal = SubResource("GradientTexture2D_krsq1")
-texture_pressed = SubResource("GradientTexture2D_631md")
-shape = SubResource("RectangleShape2D_7lkdh")
 
 [node name="SettingsSection" type="Control" parent="."]
 visible = false
@@ -243,11 +291,18 @@ bbcode_enabled = true
 text = "[center] [b] ABOUT  [b]"
 
 [node name="Background" parent="." instance=ExtResource("5_fft66")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 723.0
+offset_bottom = 1283.0
+texture = SubResource("GradientTexture2D_1172y")
 
-[connection signal="pressed" from="StartScreen/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="StartScreen/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="StartScreen/About" to="." method="_on_about_pressed"]
-[connection signal="pressed" from="NewGameSection/Flashcards" to="." method="_on_flashcards_pressed"]
+[connection signal="pressed" from="StartScreen/VBoxContainer/Control/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="StartScreen/VBoxContainer/Control2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="StartScreen/VBoxContainer/Control3/About" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="NewGameSection/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="NewGameSection/TabBar/Flashcards/Flashcards" to="." method="_on_flashcards_pressed"]
+[connection signal="pressed" from="NewGameSection/TabBar/Enumeration/Enumeration" to="." method="_on_enumeration_pressed"]
 [connection signal="pressed" from="SettingsSection/BackBtn2" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="AboutSection/BackBtn3" to="." method="_on_back_btn_pressed"]

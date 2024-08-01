@@ -22,8 +22,11 @@ func _on_about_pressed():
 func _on_back_btn_pressed():
 	for i in get_children():
 		i.visible = false
-	$"StartScreen".visible = true
+	$StartScreen.visible = true
 	$Background.visible = true
 
 func _on_flashcards_pressed():
 	get_tree().change_scene_to_file("res://scenes/FlashCards.tscn")
+
+func _on_enumeration_pressed():
+	pass # Replace with function body.

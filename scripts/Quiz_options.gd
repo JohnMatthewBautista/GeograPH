@@ -56,8 +56,8 @@ func _ready():
 	set_question(qnum)
 
 func _process(_delta):
-	if ($TimerContainer/Timer.time_left <= 0):
-		$GameOverScreen/Score.parse_bbcode("[center] Final Score: " + str(counters.score))
+	if ($TimerContainer/Timer.is_stopped()):
+		$GameOverScreen/GameOverTxt.parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
 		$GameOverScreen.visible = true
 	else:
 		var percent = ($TimerContainer/Timer.time_left / counters["timer_max"])
@@ -134,18 +134,17 @@ func _on_OptionD_pressed():
 
 # Functions for gameover
 func _on_retry_pressed():
-	print("Retry")
 	get_tree().reload_current_scene()
-	pass # Replace with function body.
 
 func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_continue_button_pressed():
-	if ($GameOverScreen.visible == true): $GameOverScreen.visible = false
-	elif ($PauseScreen.visible == true): $PauseScreen.visible = false
-	$TimerContainer/Timer.start($TimerContainer/Timer.time_left)
+	if ($GameOverScreen.visible == true): 
+		$GameOverScreen.visible = false
+	elif ($PauseScreen/PauseElements.visible == true): 
+		$PauseScreen/PauseElements.visible = false
+		$PauseScreen/PauseBtn.visible = true
+	$TimerContainer/Timer.set_paused(0)
+	#$TimerContainer/Timer.start($TimerContainer/Timer.time_left)
 
-func _on_pause_btn_pressed():
-	$TimerContainer/Timer.start($TimerContainer/Timer.time_left)
-	$PauseScreen.visible = true

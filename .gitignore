@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 TODO.txt
+export_presets.cfg
+unused/
+android/
+release/

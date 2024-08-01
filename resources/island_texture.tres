@@ -1,0 +1,11 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://bcu0lde65d12p"]
+
+[ext_resource type="Gradient" uid="uid://v51m3f6csff6" path="res://resources/island_gradient.tres" id="1_laxni"]
+
+[resource]
+gradient = ExtResource("1_laxni")
+width = 300
+height = 150
+fill = 1
+fill_from = Vector2(0.373737, 0.151515)
+fill_to = Vector2(0, 0.984496)
