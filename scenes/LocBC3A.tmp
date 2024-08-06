@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://yjxlidqimdg"]
+
+[ext_resource type="Texture2D" uid="uid://cj5xo5iapp8m" path="res://resources/Luzon_regions.png" id="1_sbfwv"]
+[ext_resource type="Script" path="res://scripts/Touch_areas.gd" id="2_xx7ay"]
+[ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="3_6yh4s"]
+[ext_resource type="Script" path="res://scripts/Collision.gd" id="4_g0i0s"]
+[ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="4_idix7"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jw218"]
+points = PackedVector2Array(-161, 48, -104, 47, -77, 36, -16, 88, 59, 33, 158, 46, 171, 0, 151, -19, -137, -86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_si2sp"]
+size = Vector2(700, 1200)
+
+[node name="Locate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Image" type="TextureRect" parent="Map"]
+offset_left = -346.0
+offset_top = 9.0
+offset_right = 1079.0
+offset_bottom = 1975.0
+texture = ExtResource("1_sbfwv")
+
+[node name="TouchAreas" type="Node2D" parent="."]
+script = ExtResource("2_xx7ay")
+
+[node name="MapTest" type="TouchScreenButton" parent="TouchAreas"]
+position = Vector2(-230, 987)
+texture_normal = ExtResource("3_6yh4s")
+shape = SubResource("ConvexPolygonShape2D_jw218")
+
+[node name="Collision" type="Node2D" parent="."]
+script = ExtResource("4_g0i0s")
+
+[node name="Border" type="StaticBody2D" parent="Collision"]
+position = Vector2(-454, -348)
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="Collision/Border"]
+position = Vector2(-23.9999, 297.186)
+scale = Vector2(2.30458, 1.65788)
+build_mode = 1
+polygon = PackedVector2Array(752, -23, 769, 668, 700, 1282, 700, 11, 22, 6, 22, 1286.91, 729.416, 1297.99, -35, 1352, -52, 690, -29, -28)
+
+[node name="CharacterBody2D" type="Area2D" parent="Collision"]
+position = Vector2(203, 831)
+script = ExtResource("4_idix7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_si2sp")
+
+[node name="Camera2D" type="Camera2D" parent="Collision/CharacterBody2D"]
+position = Vector2(-9, 42)
+
+[connection signal="pressed" from="TouchAreas/MapTest" to="TouchAreas" method="_on_map_test_pressed"]

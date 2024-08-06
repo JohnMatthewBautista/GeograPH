@@ -1,16 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://nv0nqtftxy5"]
+[gd_scene load_steps=20 format=3 uid="uid://nv0nqtftxy5"]
 
 [ext_resource type="Script" path="res://scripts/Quiz_options.gd" id="1_7kyy5"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_cnisw"]
 [ext_resource type="PackedScene" uid="uid://clsukwk5l3fpr" path="res://scenes/TouchScreenChoices.tscn" id="2_e47ir"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="4_4pvth"]
-[ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="4_stdm2"]
 [ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="7_bnpht"]
 [ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="7_ii0ws"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8fduu"]
-texture = ExtResource("4_stdm2")
-texture_margin_top = 100.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8sal"]
+content_margin_top = 90.0
+bg_color = Color(0.113725, 0.721569, 0.321569, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.113725, 0.905882, 0.231373, 1)
 
 [sub_resource type="Gradient" id="Gradient_wudt5"]
 colors = PackedColorArray(0.47451, 0.87451, 0.329412, 1, 0.0784314, 0.654902, 0.270588, 1)
@@ -107,9 +111,9 @@ offset_left = 83.0
 offset_top = 281.0
 offset_right = 647.0
 offset_bottom = 519.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_8fduu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k8sal")
 bbcode_enabled = true
-text = "[center]  Geograph"
+text = "[center] Geograph"
 
 [node name="Score" type="RichTextLabel" parent="TextContainer"]
 layout_mode = 0
@@ -167,6 +171,7 @@ script = ExtResource("7_bnpht")
 
 [node name="PauseElements" type="PopupPanel" parent="PauseScreen"]
 disable_3d = true
+own_world_3d = true
 mode = 3
 title = "PauseElements"
 initial_position = 2

@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnfxdwny35ci"]
+[gd_scene load_steps=16 format=3 uid="uid://dnfxdwny35ci"]
 
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_lnwq1"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_cuqan"]
 [ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="4_ufj13"]
 [ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="5_fft66"]
+[ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="6_sgbe2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_equ3k"]
 texture = ExtResource("4_ufj13")
@@ -65,7 +66,8 @@ theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxTexture_equ3k")
 bbcode_enabled = true
-text = "[center] [b] GeograPH  [b]"
+text = "[center][b] GeograPH  [/b]
+ [i] Heograpinas [/i]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StartScreen"]
 layout_mode = 1
@@ -167,25 +169,26 @@ texture_normal = SubResource("GradientTexture2D_krsq1")
 texture_pressed = SubResource("GradientTexture2D_631md")
 shape = SubResource("RectangleShape2D_7lkdh")
 
-[node name="TabBar" type="TabContainer" parent="NewGameSection"]
+[node name="LevelSelection" type="TabContainer" parent="NewGameSection"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 585.0
-offset_right = 647.0
-offset_bottom = 882.0
+offset_left = 22.0
+offset_top = 288.0
+offset_right = 705.0
+offset_bottom = 869.0
 tab_alignment = 1
 current_tab = 1
+tab_focus_mode = 0
 
-[node name="Locate" type="Control" parent="NewGameSection/TabBar"]
+[node name="Locate" type="Control" parent="NewGameSection/LevelSelection"]
 visible = false
 layout_mode = 2
 
-[node name="Locate" type="TouchScreenButton" parent="NewGameSection/TabBar/Locate"]
+[node name="Locate" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Locate"]
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/TabBar/Locate/Locate"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Locate/Locate"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -197,15 +200,15 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] tap 2 Locate"
 
-[node name="Flashcards" type="Control" parent="NewGameSection/TabBar"]
+[node name="Flashcards" type="Control" parent="NewGameSection/LevelSelection"]
 layout_mode = 2
 
-[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection/TabBar/Flashcards"]
+[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Flashcards"]
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/TabBar/Flashcards/Flashcards"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Flashcards/Flashcards"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -217,16 +220,16 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Flashcards"
 
-[node name="Enumeration" type="Control" parent="NewGameSection/TabBar"]
+[node name="Enumeration" type="Control" parent="NewGameSection/LevelSelection"]
 visible = false
 layout_mode = 2
 
-[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection/TabBar/Enumeration"]
+[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Enumeration"]
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/TabBar/Enumeration/Enumeration"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Enumeration/Enumeration"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -237,6 +240,16 @@ theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Enumeration"
+
+[node name="Prev" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(33, 285)
+scale = Vector2(0.46875, 0.367188)
+texture_normal = ExtResource("6_sgbe2")
+
+[node name="Next" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(628, 283)
+scale = Vector2(0.46875, 0.367188)
+texture_normal = ExtResource("6_sgbe2")
 
 [node name="SettingsSection" type="Control" parent="."]
 visible = false
@@ -302,7 +315,9 @@ texture = SubResource("GradientTexture2D_1172y")
 [connection signal="pressed" from="StartScreen/VBoxContainer/Control2/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="StartScreen/VBoxContainer/Control3/About" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="NewGameSection/BackBtn" to="." method="_on_back_btn_pressed"]
-[connection signal="pressed" from="NewGameSection/TabBar/Flashcards/Flashcards" to="." method="_on_flashcards_pressed"]
-[connection signal="pressed" from="NewGameSection/TabBar/Enumeration/Enumeration" to="." method="_on_enumeration_pressed"]
+[connection signal="pressed" from="NewGameSection/LevelSelection/Flashcards/Flashcards" to="." method="_on_flashcards_pressed"]
+[connection signal="pressed" from="NewGameSection/LevelSelection/Enumeration/Enumeration" to="." method="_on_enumeration_pressed"]
+[connection signal="pressed" from="NewGameSection/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="NewGameSection/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="SettingsSection/BackBtn2" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="AboutSection/BackBtn3" to="." method="_on_back_btn_pressed"]

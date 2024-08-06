@@ -1,10 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://yjxlidqimdg"]
 
-[ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_jeqhv"]
 [ext_resource type="Texture2D" uid="uid://dj4mxmpy0nvtc" path="res://resources/Ph_regions_and_provinces-svg (Random green tiles).svg" id="1_o5xyv"]
+[ext_resource type="Script" path="res://scripts/Touch_areas.gd" id="2_xx7ay"]
 [ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="3_6yh4s"]
 [ext_resource type="Texture2D" uid="uid://dkg5b8binwhei" path="res://resources/regions/IlocosRegion.svg" id="3_kqjf7"]
-[ext_resource type="Texture2D" uid="uid://d214sn7c7pglh" path="res://resources/regions/CAR.svg" id="4_gndwr"]
 [ext_resource type="Script" path="res://scripts/Movement.gd" id="4_idix7"]
 
 [sub_resource type="Gradient" id="Gradient_mjqry"]
@@ -14,6 +13,9 @@ colors = PackedColorArray(0.792157, 0.858824, 0.94902, 1, 0.792157, 0.858824, 0.
 gradient = SubResource("Gradient_mjqry")
 width = 4000
 height = 7000
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l8r42"]
+points = PackedVector2Array(127, 7, 0, 0, 57, 213, 85, 230, 118, 216, 116, 195, 101, 195, 97, 169, 114, 130, 97, 97, 101, 80, 124, 62)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vnit"]
 radius = 50.0
@@ -25,7 +27,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_jeqhv")
 metadata/_edit_vertical_guides_ = [360.0]
 
 [node name="Map" type="Node2D" parent="."]
@@ -46,31 +47,13 @@ pivot_offset = Vector2(2071, 3914)
 texture = ExtResource("1_o5xyv")
 
 [node name="TouchAreas" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_xx7ay")
 
-[node name="IlocosRegion" type="Area2D" parent="TouchAreas"]
-position = Vector2(-30, 908)
-
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/IlocosRegion"]
-texture = ExtResource("3_kqjf7")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/IlocosRegion"]
-position = Vector2(-593, -598)
-scale = Vector2(6.0288, 4.76571)
-build_mode = 1
-polygon = PackedVector2Array(127.057, 7.76379, 90.7311, 10.4916, 52.2492, 207.734, 85.755, 230.606, 118.1, 216.967, 116.441, 195.564, 101.015, 195.564, 97.0342, 169.964, 114.451, 130.516, 98.3612, 94.6344, 104.498, 73.2315, 124.237, 62.53)
-
-[node name="CAR" type="Area2D" parent="TouchAreas"]
-position = Vector2(244, 465)
-
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/CAR"]
-position = Vector2(-53, 365)
-texture = ExtResource("4_gndwr")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/CAR"]
-position = Vector2(-175, 661)
-scale = Vector2(6.0288, 4.76571)
-build_mode = 1
-polygon = PackedVector2Array(12.1085, -149.401, 41.1359, -133.034, 31.8471, -102.188, 51.4198, -70.5036, 43.4581, -47.6319, 39.4772, -24.5504, 6.30308, -6.50481, -2.32219, 22.4521, -13.4355, 22.8717, -17.7481, 1.04916, 0.663482, -41.337, -15.2601, -76.5888, -9.62049, -97.1524, 9.95223, -108.064)
+[node name="MapTest" type="TouchScreenButton" parent="TouchAreas"]
+position = Vector2(-629, 299)
+texture_normal = ExtResource("3_kqjf7")
+shape = SubResource("ConvexPolygonShape2D_l8r42")
 
 [node name="PlayerPerspective" type="Node2D" parent="."]
 position = Vector2(364, 609)
@@ -78,6 +61,15 @@ script = ExtResource("4_idix7")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPerspective"]
 position = Vector2(-9, 42)
+
+[node name="HUD" type="Node2D" parent="PlayerPerspective/Camera2D"]
+position = Vector2(9, -42)
+
+[node name="Question" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Question
+g"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerPerspective/Camera2D"]
 position = Vector2(11, -38)
@@ -89,16 +81,14 @@ texture = ExtResource("3_6yh4s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPerspective/Camera2D/CharacterBody2D"]
 shape = SubResource("CircleShape2D_4vnit")
 
-[node name="HUD" type="Node2D" parent="PlayerPerspective/Camera2D"]
-position = Vector2(9, -42)
+[node name="Border" type="Area2D" parent="PlayerPerspective"]
+position = Vector2(-818, -957)
 
-[node name="Question" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD"]
-offset_left = -52.0
-offset_top = -48.0
-offset_right = 58.0
-offset_bottom = 58.0
-bbcode_enabled = true
-text = "Question"
+[node name="IlocosRegion" type="CollisionPolygon2D" parent="PlayerPerspective/Border"]
+position = Vector2(-175, 661)
+scale = Vector2(6.0288, 4.76571)
+build_mode = 1
+polygon = PackedVector2Array(127.057, 7.76379, 90.7311, 10.4916, 52.2492, 207.734, 85.755, 230.606, 118.1, 216.967, 116.441, 195.564, 101.015, 195.564, 97.0342, 169.964, 114.451, 130.516, 98.3612, 94.6344, 104.498, 73.2315, 124.237, 62.53)
 
-[connection signal="body_entered" from="TouchAreas/IlocosRegion" to="PlayerPerspective" method="_on_ilocos_region_body_entered"]
-[connection signal="body_entered" from="TouchAreas/CAR" to="PlayerPerspective" method="_on_car_body_entered"]
+[connection signal="pressed" from="TouchAreas/MapTest" to="TouchAreas" method="_on_map_test_pressed"]
+[connection signal="body_entered" from="PlayerPerspective/Border" to="PlayerPerspective" method="_on_border_body_entered"]
