@@ -22,9 +22,7 @@ var regions : Array[Region] = [
 ]
 
 var settings = {
-	"timer_max" : 10,
+	"timer_max" : 60,
 	"question_mode" : "random"
 }
 
-func _ready():
-	pass

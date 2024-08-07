@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://nv0nqtftxy5"]
+[gd_scene load_steps=19 format=3 uid="uid://nv0nqtftxy5"]
 
 [ext_resource type="Script" path="res://scripts/Quiz_options.gd" id="1_7kyy5"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_cnisw"]
 [ext_resource type="PackedScene" uid="uid://clsukwk5l3fpr" path="res://scenes/TouchScreenChoices.tscn" id="2_e47ir"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="4_4pvth"]
+[ext_resource type="Texture2D" uid="uid://bnx2q5cnbb3w2" path="res://resources/icons/pause-button.svg" id="6_5c1y3"]
 [ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="7_bnpht"]
 [ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="7_ii0ws"]
 
@@ -16,50 +17,44 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.113725, 0.905882, 0.231373, 1)
 
-[sub_resource type="Gradient" id="Gradient_wudt5"]
+[sub_resource type="Gradient" id="Gradient_r8nt4"]
 colors = PackedColorArray(0.47451, 0.87451, 0.329412, 1, 0.0784314, 0.654902, 0.270588, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xtf6v"]
-gradient = SubResource("Gradient_wudt5")
+gradient = SubResource("Gradient_r8nt4")
 width = 620
 height = 50
 fill_to = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_tgjeh"]
+[sub_resource type="Gradient" id="Gradient_b0w50"]
 offsets = PackedFloat32Array(0.0151515, 0.484848, 0.954545)
 colors = PackedColorArray(0.372549, 0.556863, 0.580392, 1, 0.141176, 0.513726, 0.529412, 1, 0.0666667, 0.392157, 0.705882, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3joht"]
-gradient = SubResource("Gradient_tgjeh")
+gradient = SubResource("Gradient_b0w50")
 width = 600
 height = 30
 fill_to = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_qbv1s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
+size = Vector2(75, 75)
+
+[sub_resource type="Gradient" id="Gradient_x6s76"]
 resource_local_to_scene = true
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.478431, 0.878431, 0.333333, 1, 0.113533, 0.631836, 0.230961, 1, 0.478431, 0.878431, 0.333333, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.216495, 0.891753)
+colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fs0hm"]
-gradient = SubResource("Gradient_qbv1s")
+gradient = SubResource("Gradient_x6s76")
 width = 300
 height = 150
+fill = 2
+fill_from = Vector2(0.421488, 0.384298)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
 size = Vector2(300, 150)
-
-[sub_resource type="Gradient" id="Gradient_i011t"]
-resource_local_to_scene = true
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.478431, 0.878431, 0.333333, 1, 0.113533, 0.631836, 0.230961, 1, 0.478431, 0.878431, 0.333333, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7dcy5"]
-gradient = SubResource("Gradient_i011t")
-width = 75
-height = 50
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
-size = Vector2(75, 50)
 
 [sub_resource type="Gradient" id="Gradient_syun6"]
 interpolation_mode = 1
@@ -91,14 +86,62 @@ offset_bottom = 1084.0
 
 [node name="OptionA" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
 
+[node name="BaybayinA" type="RichTextLabel" parent="OptionsButtons"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 301.0
+offset_bottom = 177.0
+bbcode_enabled = true
+text = "[center] [b] [i] A [i]"
+fit_content = true
+scroll_active = false
+
 [node name="OptionB" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
 position = Vector2(320, 0)
+
+[node name="BaybayinB" type="RichTextLabel" parent="OptionsButtons"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 322.0
+offset_top = -1.0
+offset_right = 620.0
+offset_bottom = 174.0
+bbcode_enabled = true
+text = "[center] [b] [i] B [i]"
+fit_content = true
+scroll_active = false
 
 [node name="OptionC" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
 position = Vector2(0, 170)
 
+[node name="BaybayinC" type="RichTextLabel" parent="OptionsButtons"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 170.0
+offset_right = 300.0
+offset_bottom = 345.0
+bbcode_enabled = true
+text = "[center] [b] [i] C [i]"
+fit_content = true
+scroll_active = false
+
 [node name="OptionD" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
 position = Vector2(320, 170)
+
+[node name="BaybayinD" type="RichTextLabel" parent="OptionsButtons"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 325.0
+offset_top = 171.0
+offset_right = 623.0
+offset_bottom = 346.0
+bbcode_enabled = true
+text = "[center] [b] [i] D [i]"
+fit_content = true
+scroll_active = false
 
 [node name="TextContainer" type="Control" parent="."]
 anchors_preset = 0
@@ -107,10 +150,11 @@ offset_bottom = 1280.0
 
 [node name="Main_Question" type="RichTextLabel" parent="TextContainer"]
 layout_mode = 0
-offset_left = 83.0
-offset_top = 281.0
-offset_right = 647.0
-offset_bottom = 519.0
+offset_left = 52.0
+offset_top = 273.0
+offset_right = 669.0
+offset_bottom = 523.0
+theme_override_font_sizes/normal_font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxFlat_k8sal")
 bbcode_enabled = true
 text = "[center] Geograph"
@@ -118,9 +162,9 @@ text = "[center] Geograph"
 [node name="Score" type="RichTextLabel" parent="TextContainer"]
 layout_mode = 0
 offset_left = 86.0
-offset_top = 491.0
+offset_top = 486.0
 offset_right = 640.0
-offset_bottom = 518.0
+offset_bottom = 513.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_4pvth")
 theme_override_font_sizes/normal_font_size = 32
@@ -169,13 +213,20 @@ offset_right = 720.0
 offset_bottom = 1280.0
 script = ExtResource("7_bnpht")
 
+[node name="PauseBtn" type="TouchScreenButton" parent="PauseScreen"]
+position = Vector2(587, 279)
+scale = Vector2(0.844156, 0.883117)
+texture_normal = ExtResource("6_5c1y3")
+shape = SubResource("RectangleShape2D_r4nso")
+
 [node name="PauseElements" type="PopupPanel" parent="PauseScreen"]
 disable_3d = true
 own_world_3d = true
 mode = 3
 title = "PauseElements"
-initial_position = 2
+initial_position = 1
 size = Vector2i(620, 900)
+always_on_top = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/PauseElements"]
 offset_left = 5.0
@@ -279,11 +330,6 @@ bbcode_enabled = true
 text = "[center] Restart"
 fit_content = true
 
-[node name="PauseBtn" type="TouchScreenButton" parent="PauseScreen"]
-position = Vector2(590, 217)
-texture_normal = SubResource("GradientTexture2D_7dcy5")
-shape = SubResource("RectangleShape2D_r4nso")
-
 [node name="GameOverScreen" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -303,7 +349,8 @@ offset_bottom = 428.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[center] Gameover"
+text = "[center] Gameover
+[i] Katapusan [/i]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen"]
 layout_mode = 0
@@ -382,9 +429,9 @@ texture = SubResource("GradientTexture2D_s8cn3")
 [connection signal="pressed" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
+[connection signal="pressed" from="PauseScreen/PauseBtn" to="PauseScreen" method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseBtn" to="PauseScreen" method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]

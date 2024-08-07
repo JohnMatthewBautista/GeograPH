@@ -43,13 +43,9 @@ func _process(delta):
 func selected_region(reg: String):
 	$Camera2D/HUD/Question.parse_bbcode("[center]" + reg)
 
-# TODO: Fix the body exiting
-func _on_ilocos_region_body_entered(body):
-	print(Time.get_ticks_usec())
-	print("Region 1")
-	selected_region("Region 1")
+func _on_character_body_2d_area_entered(area):
+	print(area)
+	selected_region(area.name)
 
-func _on_car_body_entered(body):
-	print(Time.get_ticks_usec())
-	print("CAR")
-	selected_region("CAR")
+func _on_character_body_2d_area_exited(area):
+	print("Changing: ", area)

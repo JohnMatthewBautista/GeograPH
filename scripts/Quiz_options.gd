@@ -132,7 +132,7 @@ func _on_OptionC_pressed():
 func _on_OptionD_pressed():
 	check_answer(4,qnum)
 
-# Functions for gameover
+# Functions for gameover and pause
 func _on_retry_pressed():
 	get_tree().reload_current_scene()
 
@@ -146,5 +146,4 @@ func _on_continue_button_pressed():
 		$PauseScreen/PauseElements.visible = false
 		$PauseScreen/PauseBtn.visible = true
 	$TimerContainer/Timer.set_paused(0)
-	#$TimerContainer/Timer.start($TimerContainer/Timer.time_left)
 
