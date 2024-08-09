@@ -1,51 +1,48 @@
 extends Node2D
 
-@export var speed = 1000 # How fast the player will move (pixels/sec).
-@onready var screen_size = get_viewport_rect().size
 var events = {}
+var prev_event
 var last_drag_distance = 0
+@onready var start: Vector2 = Vector2(position.x, position.y)
 
 func _input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
+			# This code moves the pin in the screen
+			$Camera2D/Pointer.position = event.position - start
+			start = Vector2(position.x, position.y)
+			print($Camera2D/Pointer.has_overlapping_areas())
 			events[event.index] = event
+			prev_event = event
 		else:
 			events.erase(event.index)
 	if event is InputEventScreenDrag:
+		# Leave and reset the pin's location
+		$Camera2D/Pointer.position = events[event.index].position - start
 		events[event.index] = event
 		if events.size() == 1:
+			# TODO: there is a bit of a weird behavior with the pin when reaching the borders	
+			# Borders to prevent the camera going off screen
 			var temp_pos = $Camera2D.position - event.relative.rotated(rotation)
-			if (temp_pos.x >= 1730 || temp_pos.x <= -1730):
+			if (temp_pos.x >= 1700 || temp_pos.x <= -1700):
 				return
-			elif (temp_pos.y >= 4000 || temp_pos.y <= -750):
+			elif (temp_pos.y >= 4400 || temp_pos.y <= -750):
 				return
 			else:
 				$Camera2D.position = temp_pos
 
-# This part is reserved for pc controls
-func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
+# This part is reserved for pc controls, or migrate it into _input too
+func _process(_delta):
+	var cam_pos = $Camera2D.position
 	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
+		cam_pos.x += 20
 	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
+		cam_pos.x -= 20
 	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
+		cam_pos.y += 20
 	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
+		cam_pos.y -= 20
+	$Camera2D.position = cam_pos
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
 
-func selected_region(reg: String):
-	$Camera2D/HUD/Question.parse_bbcode("[center]" + reg)
 
-func _on_character_body_2d_area_entered(area):
-	print(area)
-	selected_region(area.name)
-
-func _on_character_body_2d_area_exited(area):
-	print("Changing: ", area)

@@ -1,10 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://yjxlidqimdg"]
+[gd_scene load_steps=26 format=3 uid="uid://yjxlidqimdg"]
 
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_jeqhv"]
-[ext_resource type="Texture2D" uid="uid://dj4mxmpy0nvtc" path="res://resources/Ph_regions_and_provinces-svg (Random green tiles).svg" id="1_o5xyv"]
 [ext_resource type="Script" path="res://scripts/Locate.gd" id="2_jknx1"]
 [ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="3_6yh4s"]
 [ext_resource type="Texture2D" uid="uid://dkg5b8binwhei" path="res://resources/regions/IlocosRegion.svg" id="3_kqjf7"]
+[ext_resource type="Texture2D" uid="uid://c04kekqcyjn1a" path="res://resources/Regions_map_allinfo.svg" id="3_o1i8o"]
 [ext_resource type="Texture2D" uid="uid://d214sn7c7pglh" path="res://resources/regions/CAR.svg" id="4_gndwr"]
 [ext_resource type="Script" path="res://scripts/Movement.gd" id="4_idix7"]
 [ext_resource type="Texture2D" uid="uid://ciycb2oef5vt0" path="res://resources/regions/CagayanValley.svg" id="5_hiibg"]
@@ -21,7 +21,7 @@ width = 4000
 height = 7000
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vnit"]
-radius = 50.0
+radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ucrs"]
 size = Vector2(75, 75)
@@ -62,6 +62,23 @@ width = 600
 height = 30
 fill_to = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_x6s76"]
+resource_local_to_scene = true
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.216495, 0.891753)
+colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dwh21"]
+gradient = SubResource("Gradient_x6s76")
+width = 300
+height = 150
+fill = 2
+fill_from = Vector2(0.421488, 0.384298)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwwxd"]
+size = Vector2(300, 150)
+
 [node name="Locate" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -88,25 +105,25 @@ offset_top = -529.0
 offset_right = 2468.0
 offset_bottom = 5576.0
 pivot_offset = Vector2(2071, 3914)
-texture = ExtResource("1_o5xyv")
+texture = ExtResource("3_o1i8o")
 
 [node name="TouchAreas" type="Node2D" parent="."]
-visible = false
 
-[node name="IlocosRegion" type="Area2D" parent="TouchAreas"]
+[node name="Ilocos Region" type="Area2D" parent="TouchAreas"]
 position = Vector2(-30, 908)
+collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/IlocosRegion"]
+[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Ilocos Region"]
 texture = ExtResource("3_kqjf7")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/IlocosRegion"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Ilocos Region"]
 position = Vector2(-593, -598)
 scale = Vector2(6.0288, 4.76571)
-build_mode = 1
-polygon = PackedVector2Array(127.057, 7.76379, 90.7311, 10.4916, 52.2492, 207.734, 85.755, 230.606, 118.1, 216.967, 116.441, 195.564, 101.015, 195.564, 97.0342, 169.964, 114.451, 130.516, 98.3612, 94.6344, 104.498, 73.2315, 124.237, 62.53)
+polygon = PackedVector2Array(127.057, 7.76379, 90.7311, 10.4916, 50.5905, 211.511, 83.5987, 234.802, 117.768, 216.547, 118.1, 199.76, 113.953, 194.515, 101.015, 195.564, 97.0342, 169.964, 114.451, 130.516, 98.3612, 94.6344, 104.498, 73.2315, 124.237, 62.53)
 
 [node name="CAR" type="Area2D" parent="TouchAreas"]
 position = Vector2(244, 465)
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="TouchAreas/CAR"]
 position = Vector2(-53, 365)
@@ -115,31 +132,165 @@ texture = ExtResource("4_gndwr")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/CAR"]
 position = Vector2(-175, 661)
 scale = Vector2(6.0288, 4.76571)
-build_mode = 1
 polygon = PackedVector2Array(12.1085, -149.401, 41.1359, -133.034, 31.8471, -102.188, 51.4198, -70.5036, 43.4581, -47.6319, 39.4772, -24.5504, 6.30308, -6.50481, -2.32219, 22.4521, -13.4355, 22.8717, -17.7481, 1.04916, 0.663482, -41.337, -15.2601, -76.5888, -9.62049, -97.1524, 9.95223, -108.064)
 
-[node name="CagayanValley" type="Area2D" parent="TouchAreas"]
+[node name="Cagayan Valley" type="Area2D" parent="TouchAreas"]
 position = Vector2(244, 465)
+collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/CagayanValley"]
+[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Cagayan Valley"]
 position = Vector2(155, 230)
 texture = ExtResource("5_hiibg")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/CagayanValley"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Cagayan Valley"]
 position = Vector2(-121, 609)
 scale = Vector2(6.0288, 4.76571)
-build_mode = 1
-polygon = PackedVector2Array(5.14198, -152.758, 4.14676, -139.538, 33.6997, -122.728, 24.2171, -91.6967, 43.2922, -59.8022, 31.6813, -14.2686, -2.32219, 4.82614, -9.45462, 33.3633, 12.9379, 38.819, 18.5775, 63.5792, 63.6943, 9.44244, 75.1393, 9.44244, 90.2335, -33.5732, 72.8171, -65.4677, 82.9352, -144.155)
+polygon = PackedVector2Array(5.14198, -152.758, 4.14676, -139.538, 33.6997, -122.728, 24.2171, -91.6967, 43.2922, -59.8022, 31.6813, -14.2686, -2.32219, 4.82614, -10.1181, 32.3142, -5.14199, 38.6091, 12.772, 39.8681, 18.9092, 65.048, 64.3577, 9.65228, 75.1393, 9.44244, 90.2335, -33.5732, 72.8171, -65.4677, 82.9352, -144.155)
+
+[node name="Central Luzon" type="Area2D" parent="TouchAreas"]
+position = Vector2(244, 465)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Central Luzon"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(14.4307, -131.775, 35.828, -116.877, 70.9926, -135.762, 71.3243, -152.338, 88.0772, -151.919, 94.8779, -126.319, 140.824, -182.134, 160.065, -181.085, 104.83, -98.831, 97.2001, -59.8022, 72.8171, -47.0024, 53.0786, -53.7171, 56.8936, -32.1043, 47.7707, -26.0192, 25.3782, -52.4581)
+
+[node name="NCR" type="Area2D" parent="TouchAreas"]
+position = Vector2(147, 1810)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/NCR"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(88.5748, -328.807, 102.342, -336.361, 99.6882, -314.329, 96.8684, -303.208, 94.5462, -301.529, 91.8922, -310.342)
+
+[node name="Calabarzon" type="Area2D" parent="TouchAreas"]
+position = Vector2(365, 2004)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Calabarzon"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(33.0082, -330.696, 53.9079, -356.925, 58.2205, -341.817, 61.0403, -343.915, 64.026, -356.295, 66.3482, -376.649, 77.4615, -382.105, 82.7694, -409.173, 110.801, -401.829, 148.62, -369.305, 110.304, -362.38, 135.516, -329.017, 162.055, -316.217, 145.8, -308.034, 163.051, -255.366, 151.108, -249.7, 101.513, -307.404, 68.6704, -275.3, 35.3304, -293.136)
+
+[node name="Bicol Region" type="Area2D" parent="TouchAreas"]
+position = Vector2(1069, 2306)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Bicol Region"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(47.1072, -379.796, 19.9045, -392.596, 26.3734, -406.445, 146.795, -382.105, 156.084, -307.194, 117.436, -248.232, 126.891, -193.256, 68.6704, -205.216, 70.8267, -248.232, 30.8519, -371.403)
+
+[node name="Mimaropa" type="Area2D" parent="TouchAreas"]
+position = Vector2(-256, 2760)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Mimaropa"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(85.9209, -478.628, 177.316, -425.12, 205.845, -458.064, 273.852, -381.475, 252.123, -305.306, 165.87, -331.115, 86.9161, -176.469, -116.773, 43.8549)
+
+[node name="Western Visayas" type="Area2D" parent="TouchAreas"]
+position = Vector2(632, 3120)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Western Visayas"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(22.3925, -400.36, 158.24, -357.554, 141.488, -313.699, 122.247, -301.529, 111.797, -255.995, 57.5571, -259.772)
+
+[node name="Eastern Visayas" type="Area2D" parent="TouchAreas"]
+position = Vector2(1604, 2968)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Eastern Visayas"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(33.5058, -385.882, 54.4055, -416.097, 107.982, -407.914, 130.374, -371.403, 154.26, -247.602, 113.455, -247.602, 115.446, -189.688, 81.1107, -195.354, 74.8076, -267.746, 55.4007, -262.71)
+
+[node name="Central Visayas" type="Area2D" parent="TouchAreas"]
+position = Vector2(1223, 3522)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Central Visayas"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(60.211, -408.544, 102.84, -435.822, 114.948, -374.551, 133.36, -378.747, 135.019, -284.113, 50.7564, -263.13, 56.0642, -315.378, 84.7598, -386.301)
+
+[node name="NIR" type="Area2D" parent="TouchAreas"]
+position = Vector2(788, 3696)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/NIR"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(99.6882, -417.147, 120.256, -431.415, 141.985, -418.196, 112.792, -314.329, 126.227, -292.716, 147.625, -294.605, 152.103, -272.782, 99.3564, -269.215, 54.5714, -337.62, 84.5939, -352.518)
+
+[node name="CARAGA" type="Area2D" parent="TouchAreas"]
+position = Vector2(1923, 4011)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/CARAGA"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(67.5093, -455.126, 120.09, -452.398, 116.275, -366.157, 131.204, -261.031, 67.5093, -258.723, 56.0642, -338.879, 67.1776, -339.719)
+
+[node name="Davao Region" type="Area2D" parent="TouchAreas"]
+position = Vector2(1899, 4711)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Davao Region"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(71.4902, -403.508, 152.435, -405.606, 138.004, -296.913, 69.9973, -195.354, 67.6752, -219.275, 79.9496, -257.254, 72.2877, -294.543, 61.2062, -287.47, 55.7325, -313.489, 63.5284, -324.611, 63.5284, -375.81, 74.4758, -375.81)
+
+[node name="Northern Mindanao" type="Area2D" parent="TouchAreas"]
+position = Vector2(1452, 4145)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Northern Mindanao"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(35.1645, -338.04, 35.1645, -293.765, 41.6335, -287.26, 39.4772, -274.251, 49.4294, -263.759, 60.8745, -264.389, 71.1584, -290.618, 93.2192, -297.332, 116.773, -241.307, 128.218, -242.776, 135.184, -258.513, 147.293, -258.094, 132.365, -370.354, 101.679, -387.56)
+
+[node name="Zamboanga Peninsula" type="Area2D" parent="TouchAreas"]
+position = Vector2(709, 4357)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Zamboanga Peninsula"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(155.918, -395.114, 157.079, -338.04, 163.714, -331.325, 152.103, -282.644, 63.8601, -237.11, 64.1919, -221.373, 57.3912, -221.373, 53.4103, -253.477, 70.3291, -331.745)
+
+[node name="BARMM" type="Area2D" parent="TouchAreas"]
+position = Vector2(1321, 4602)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/BARMM"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(81.6083, -356.085, 93.3851, -384.203, 114.617, -391.127, 128.052, -355.876, 109.143, -356.925, 111.631, -341.397, 105.66, -325.66, 121.583, -315.168, 125.564, -326.289, 138.834, -330.696, 132.862, -307.404, 133.36, -290.198, 143.644, -285.792, 131.701, -280.336, 124.9, -297.962, 116.939, -296.703, 115.28, -287.051, 77.1298, -288.939, -34.5011, -257.464, -49.927, -194.095, -217.456, -106.595, -136.014, -259.982, -77.1298, -304.677, -48.1024, -283.693, -46.8694, -269.506, -34.9987, -269.635, -34.8328, -283.483, 35.3304, -303.208)
+
+[node name="Socksargen" type="Area2D" parent="TouchAreas"]
+position = Vector2(1534, 4915)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Socksargen"]
+position = Vector2(-580, 1525)
+scale = Vector2(6.0288, 4.76571)
+polygon = PackedVector2Array(48.4342, -352.938, 81.4424, -351.469, 83.1011, -361.121, 88.9066, -361.121, 95.7073, -344.335, 110.138, -351.469, 98.6929, -356.505, 98.1953, -372.452, 104.664, -397.213, 89.4042, -392.386, 86.0868, -382.314, 70.9926, -391.967, 77.4615, -407.494, 74.9734, -421.133, 94.8779, -420.084, 103.006, -401.619, 115.446, -402.878, 122.744, -418.825, 123.076, -368.256, 115.28, -356.505, 121.417, -329.227, 132.365, -334.892, 138.999, -300.48, 126.725, -262.29, 48.7659, -314.748)
 
 [node name="PlayerPerspective" type="Node2D" parent="."]
-position = Vector2(364, 609)
+position = Vector2(360, 600)
 script = ExtResource("4_idix7")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPerspective"]
 position = Vector2(-9, 42)
 
 [node name="Pointer" type="Area2D" parent="PlayerPerspective/Camera2D"]
-position = Vector2(11, -38)
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerPerspective/Camera2D/Pointer"]
 texture = ExtResource("3_6yh4s")
@@ -157,6 +308,7 @@ offset_bottom = -42.0
 theme = ExtResource("1_jeqhv")
 
 [node name="Question" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD"]
+layout_mode = 0
 offset_left = -172.0
 offset_top = 255.0
 offset_right = 183.0
@@ -174,7 +326,7 @@ offset_bottom = 683.0
 script = ExtResource("8_lbpew")
 
 [node name="PauseBtn" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/PauseScreen"]
-position = Vector2(587, 279)
+position = Vector2(612, 898)
 scale = Vector2(0.844156, 0.883117)
 texture_normal = ExtResource("9_vejhc")
 shape = SubResource("RectangleShape2D_1ucrs")
@@ -293,9 +445,9 @@ fit_content = true
 [node name="TimerContainer" type="Control" parent="PlayerPerspective/Camera2D/HUD"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -300.0
+offset_left = -318.0
 offset_top = 27.0
-offset_right = 320.0
+offset_right = 302.0
 offset_bottom = 469.0
 
 [node name="TimerBar" type="TextureProgressBar" parent="PlayerPerspective/Camera2D/HUD/TimerContainer"]
@@ -312,11 +464,102 @@ texture_progress_offset = Vector2(10, 10)
 [node name="Timer" type="Timer" parent="PlayerPerspective/Camera2D/HUD/TimerContainer"]
 wait_time = 10.0
 one_shot = true
-autostart = true
 
-[connection signal="area_entered" from="PlayerPerspective/Camera2D/Pointer" to="PlayerPerspective" method="_on_character_body_2d_area_entered"]
-[connection signal="area_exited" from="PlayerPerspective/Camera2D/Pointer" to="PlayerPerspective" method="_on_character_body_2d_area_exited"]
+[node name="GameOverScreen" type="Control" parent="PlayerPerspective/Camera2D/HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -369.0
+offset_top = -597.0
+offset_right = 351.0
+offset_bottom = 683.0
+
+[node name="Background" type="Panel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="GameOverTxt" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
+layout_mode = 0
+offset_top = 300.0
+offset_right = 710.0
+offset_bottom = 428.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center] Gameover
+[i] Katapusan [/i]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 566.0
+offset_right = 689.0
+offset_bottom = 1456.0
+
+[node name="MainMenu" type="Control" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_dwh21")
+shape = SubResource("RectangleShape2D_pwwxd")
+
+[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_5tunt")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Main Menu"
+fit_content = true
+
+[node name="Retry" type="Control" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryBtn" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry"]
+position = Vector2(128, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_dwh21")
+shape = SubResource("RectangleShape2D_pwwxd")
+
+[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_5tunt")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Retry"
+fit_content = true
+
+[connection signal="area_entered" from="PlayerPerspective/Camera2D/Pointer" to="." method="_on_character_body_2d_area_entered"]
+[connection signal="area_exited" from="PlayerPerspective/Camera2D/Pointer" to="." method="_on_character_body_2d_area_exited"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseBtn" to="PlayerPerspective/Camera2D/HUD/PauseScreen" method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
