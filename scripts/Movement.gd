@@ -9,9 +9,8 @@ func _input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			# This code moves the pin in the screen
-			$Camera2D/Pointer.position = event.position - start
+			$Camera2D/Pointer.position = (event.position - start)
 			start = Vector2(position.x, position.y)
-			print($Camera2D/Pointer.has_overlapping_areas())
 			events[event.index] = event
 			prev_event = event
 		else:

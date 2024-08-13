@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	print("App Running")
+
 func visible(a, b):
 	a.visible = not a.visible
 	b.visible = not b.visible
@@ -21,6 +24,9 @@ func _on_back_btn_pressed():
 
 func _on_flashcards_pressed():
 	get_tree().change_scene_to_file("res://scenes/FlashCards.tscn")
+
+func _on_locate_pressed():
+	get_tree().change_scene_to_file("res://scenes/Locate.tscn")
 
 func _on_enumeration_pressed():
 	pass # Replace with function body.
@@ -46,3 +52,6 @@ func _on_prev_2_pressed():
 
 func _on_next_2_pressed():
 	change_tabs($NewGameSection/DifficultySelection, 1)
+
+
+

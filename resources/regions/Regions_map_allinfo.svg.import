@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj4mxmpy0nvtc"
-path="res://.godot/imported/Ph_regions_and_provinces-svg (Random green tiles).svg-6513940ba0b26f2c8336b8e68c6e3797.ctex"
+uid="uid://c04kekqcyjn1a"
+path="res://.godot/imported/Regions_map_allinfo.svg-42654996361b796c3ebc4c1d45fd2b24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Ph_regions_and_provinces-svg (Random green tiles).svg"
-dest_files=["res://.godot/imported/Ph_regions_and_provinces-svg (Random green tiles).svg-6513940ba0b26f2c8336b8e68c6e3797.ctex"]
+source_file="res://resources/regions/Regions_map_allinfo.svg"
+dest_files=["res://.godot/imported/Regions_map_allinfo.svg-42654996361b796c3ebc4c1d45fd2b24.ctex"]
 
 [params]
 

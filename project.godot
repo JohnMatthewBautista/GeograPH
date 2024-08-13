@@ -24,9 +24,13 @@ Main="*res://scripts/Main.gd"
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/size/initial_position_type=2
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 window/handheld/orientation=1
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input_devices]
 

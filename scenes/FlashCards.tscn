@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://nv0nqtftxy5"]
+[gd_scene load_steps=10 format=3 uid="uid://nv0nqtftxy5"]
 
 [ext_resource type="Script" path="res://scripts/Quiz_options.gd" id="1_7kyy5"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_cnisw"]
 [ext_resource type="PackedScene" uid="uid://clsukwk5l3fpr" path="res://scenes/TouchScreenChoices.tscn" id="2_e47ir"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="4_4pvth"]
-[ext_resource type="Texture2D" uid="uid://bnx2q5cnbb3w2" path="res://resources/icons/pause-button.svg" id="6_5c1y3"]
-[ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="7_bnpht"]
+[ext_resource type="PackedScene" uid="uid://ctsuqf0j2huw3" path="res://scenes/TimerContainer.tscn" id="5_6mvds"]
+[ext_resource type="PackedScene" uid="uid://bwu50xyrwh6jr" path="res://scenes/PauseScreen.tscn" id="6_us6b1"]
+[ext_resource type="PackedScene" uid="uid://ioh2w7wtr615" path="res://scenes/GameOverScreen.tscn" id="7_17j6d"]
 [ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="7_ii0ws"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8sal"]
@@ -16,56 +17,6 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.113725, 0.905882, 0.231373, 1)
-
-[sub_resource type="Gradient" id="Gradient_r8nt4"]
-colors = PackedColorArray(0.47451, 0.87451, 0.329412, 1, 0.0784314, 0.654902, 0.270588, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xtf6v"]
-gradient = SubResource("Gradient_r8nt4")
-width = 620
-height = 50
-fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_b0w50"]
-offsets = PackedFloat32Array(0.0151515, 0.484848, 0.954545)
-colors = PackedColorArray(0.372549, 0.556863, 0.580392, 1, 0.141176, 0.513726, 0.529412, 1, 0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3joht"]
-gradient = SubResource("Gradient_b0w50")
-width = 600
-height = 30
-fill_to = Vector2(1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
-size = Vector2(75, 75)
-
-[sub_resource type="Gradient" id="Gradient_o1r6m"]
-resource_local_to_scene = true
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.216495, 0.891753)
-colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fs0hm"]
-gradient = SubResource("Gradient_o1r6m")
-width = 300
-height = 150
-fill = 2
-fill_from = Vector2(0.421488, 0.384298)
-fill_to = Vector2(1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
-size = Vector2(300, 150)
-
-[sub_resource type="Gradient" id="Gradient_syun6"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.586667, 0.786667, 1)
-colors = PackedColorArray(0.0352941, 0.631373, 0.266667, 1, 0.478431, 0.878431, 0.333333, 1, 0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s8cn3"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_syun6")
-fill_from = Vector2(0.0569106, 1)
-fill_to = Vector2(0.317073, 0.53252)
 
 [node name="QuizOptions" type="Control"]
 layout_mode = 3
@@ -184,254 +135,18 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Find what region the city or province belongs to "
 
-[node name="TimerContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 50.0
-offset_top = 198.0
-offset_right = 670.0
-offset_bottom = 640.0
+[node name="TimerContainer" parent="." instance=ExtResource("5_6mvds")]
 
-[node name="TimerBar" type="TextureProgressBar" parent="TimerContainer"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 347.0
-offset_right = 621.0
-offset_bottom = 397.0
-value = 100.0
-texture_under = SubResource("GradientTexture2D_xtf6v")
-texture_progress = SubResource("GradientTexture2D_3joht")
-texture_progress_offset = Vector2(10, 10)
+[node name="PauseScreen" parent="." instance=ExtResource("6_us6b1")]
 
-[node name="Timer" type="Timer" parent="TimerContainer"]
-wait_time = 10.0
-one_shot = true
-autostart = true
-
-[node name="PauseScreen" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 720.0
-offset_bottom = 1280.0
-script = ExtResource("7_bnpht")
-
-[node name="PauseBtn" type="TouchScreenButton" parent="PauseScreen"]
-position = Vector2(587, 279)
-scale = Vector2(0.844156, 0.883117)
-texture_normal = ExtResource("6_5c1y3")
-shape = SubResource("RectangleShape2D_r4nso")
-
-[node name="PauseElements" type="PopupPanel" parent="PauseScreen"]
-disable_3d = true
-own_world_3d = true
-mode = 3
-title = "PauseElements"
-initial_position = 1
-size = Vector2i(620, 900)
-always_on_top = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/PauseElements"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 615.0
-offset_bottom = 895.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="PausedTxt" type="Label" parent="PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-text = "
-
-Game Paused"
-horizontal_alignment = 1
-
-[node name="Continue" type="Control" parent="PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-
-[node name="ContinueButton" type="TouchScreenButton" parent="PauseScreen/PauseElements/VBoxContainer/Continue"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_fs0hm")
-shape = SubResource("RectangleShape2D_v8a4m")
-
-[node name="ButtonText" type="RichTextLabel" parent="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Continue"
-fit_content = true
-
-[node name="MainMenu" type="Control" parent="PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-
-[node name="MainMenuButton" type="TouchScreenButton" parent="PauseScreen/PauseElements/VBoxContainer/MainMenu"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_fs0hm")
-shape = SubResource("RectangleShape2D_v8a4m")
-
-[node name="ButtonText" type="RichTextLabel" parent="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Main Menu"
-fit_content = true
-
-[node name="Retry" type="Control" parent="PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-
-[node name="RetryBtn" type="TouchScreenButton" parent="PauseScreen/PauseElements/VBoxContainer/Retry"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_fs0hm")
-shape = SubResource("RectangleShape2D_v8a4m")
-
-[node name="ButtonText" type="RichTextLabel" parent="PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Restart"
-fit_content = true
-
-[node name="GameOverScreen" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 720.0
-offset_bottom = 1280.0
-
-[node name="Background" type="Panel" parent="GameOverScreen"]
-layout_mode = 0
-offset_right = 720.0
-offset_bottom = 1280.0
-
-[node name="GameOverTxt" type="RichTextLabel" parent="GameOverScreen"]
-layout_mode = 0
-offset_top = 300.0
-offset_right = 710.0
-offset_bottom = 428.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-bbcode_enabled = true
-text = "[center] Gameover
-[i] Katapusan [/i]"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen"]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 566.0
-offset_right = 689.0
-offset_bottom = 1456.0
-
-[node name="MainMenu" type="Control" parent="GameOverScreen/VBoxContainer"]
-layout_mode = 2
-
-[node name="MainMenuButton" type="TouchScreenButton" parent="GameOverScreen/VBoxContainer/MainMenu"]
-position = Vector2(128, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_fs0hm")
-shape = SubResource("RectangleShape2D_v8a4m")
-
-[node name="ButtonText" type="RichTextLabel" parent="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Main Menu"
-fit_content = true
-
-[node name="Retry" type="Control" parent="GameOverScreen/VBoxContainer"]
-layout_mode = 2
-
-[node name="RetryBtn" type="TouchScreenButton" parent="GameOverScreen/VBoxContainer/Retry"]
-position = Vector2(128, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_fs0hm")
-shape = SubResource("RectangleShape2D_v8a4m")
-
-[node name="ButtonText" type="RichTextLabel" parent="GameOverScreen/VBoxContainer/Retry/RetryBtn"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Retry"
-fit_content = true
+[node name="GameOverScreen" parent="." instance=ExtResource("7_17j6d")]
 
 [node name="Background" parent="." instance=ExtResource("7_ii0ws")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 723.0
 offset_bottom = 1283.0
-texture = SubResource("GradientTexture2D_s8cn3")
 
 [connection signal="pressed" from="OptionsButtons/OptionA" to="." method="_on_OptionA_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseBtn" to="PauseScreen" method="_on_pause_btn_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]

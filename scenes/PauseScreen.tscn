@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwu50xyrwh6jr"]
+
+[ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="1_3hlt5"]
+[ext_resource type="Texture2D" uid="uid://bnx2q5cnbb3w2" path="res://resources/icons/pause-button.svg" id="2_r6lsh"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="3_ejssv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
+size = Vector2(75, 75)
+
+[sub_resource type="Gradient" id="Gradient_o1r6m"]
+resource_local_to_scene = true
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.216495, 0.891753)
+colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fs0hm"]
+gradient = SubResource("Gradient_o1r6m")
+width = 300
+height = 150
+fill = 2
+fill_from = Vector2(0.421488, 0.384298)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
+size = Vector2(300, 150)
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+script = ExtResource("1_3hlt5")
+
+[node name="PauseBtn" type="TouchScreenButton" parent="."]
+position = Vector2(587, 279)
+scale = Vector2(0.844156, 0.883117)
+texture_normal = ExtResource("2_r6lsh")
+shape = SubResource("RectangleShape2D_r4nso")
+
+[node name="PauseElements" type="PopupPanel" parent="."]
+disable_3d = true
+own_world_3d = true
+mode = 3
+title = "PauseElements"
+initial_position = 1
+size = Vector2i(620, 900)
+always_on_top = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseElements"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 615.0
+offset_bottom = 895.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PausedTxt" type="Label" parent="PauseElements/VBoxContainer"]
+layout_mode = 2
+text = "
+
+Game Paused"
+horizontal_alignment = 1
+
+[node name="Continue" type="Control" parent="PauseElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="TouchScreenButton" parent="PauseElements/VBoxContainer/Continue"]
+position = Vector2(155, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="PauseElements/VBoxContainer/Continue/ContinueButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_ejssv")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Continue"
+fit_content = true
+
+[node name="MainMenu" type="Control" parent="PauseElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="TouchScreenButton" parent="PauseElements/VBoxContainer/MainMenu"]
+position = Vector2(155, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="PauseElements/VBoxContainer/MainMenu/MainMenuButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_ejssv")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Main Menu"
+fit_content = true
+
+[node name="Retry" type="Control" parent="PauseElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryBtn" type="TouchScreenButton" parent="PauseElements/VBoxContainer/Retry"]
+position = Vector2(155, 3)
+scale = Vector2(1.05333, 0.826667)
+texture_normal = SubResource("GradientTexture2D_fs0hm")
+shape = SubResource("RectangleShape2D_v8a4m")
+
+[node name="ButtonText" type="RichTextLabel" parent="PauseElements/VBoxContainer/Retry/RetryBtn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.823
+offset_top = -15.7258
+offset_right = 111.177
+offset_bottom = 24.2742
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_ejssv")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Restart"
+fit_content = true
+
+[connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]

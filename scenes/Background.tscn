@@ -1,22 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc0pmxipl3eto"]
+[gd_scene load_steps=6 format=3 uid="uid://cc0pmxipl3eto"]
 
 [ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="1_bt58d"]
-
-[sub_resource type="Gradient" id="Gradient_ug5dd"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7i0aj"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_ug5dd")
-fill_from = Vector2(0, 0.117886)
-fill_to = Vector2(0.837398, 0.760163)
+[ext_resource type="Texture2D" uid="uid://dj4mxmpy0nvtc" path="res://resources/regions/Ph_regions_and_provinces-svg (Random green tiles).svg" id="1_ruhsu"]
 
 [sub_resource type="Animation" id="Animation_w4o5y"]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("../Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +23,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("../Sprite2D:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,15 +39,24 @@ _data = {
 "new_animation": SubResource("Animation_af5k0")
 }
 
-[node name="Background" type="TextureRect"]
+[node name="Background" type="Control"]
 show_behind_parent = true
-offset_left = -1.0
-offset_top = 3.0
-offset_right = 722.0
-offset_bottom = 1286.0
-texture = SubResource("GradientTexture2D_7i0aj")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resource" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -4.0
+offset_right = 2145.0
+offset_bottom = 3136.0
+scale = Vector2(0.35, 0.41)
+texture = ExtResource("1_ruhsu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Resource")
 libraries = {
 "": SubResource("AnimationLibrary_wk6oq")
 }

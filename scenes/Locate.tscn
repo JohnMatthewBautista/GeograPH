@@ -1,16 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://yjxlidqimdg"]
+[gd_scene load_steps=17 format=3 uid="uid://yjxlidqimdg"]
 
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_jeqhv"]
 [ext_resource type="Script" path="res://scripts/Locate.gd" id="2_jknx1"]
-[ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="3_6yh4s"]
 [ext_resource type="Texture2D" uid="uid://dkg5b8binwhei" path="res://resources/regions/IlocosRegion.svg" id="3_kqjf7"]
-[ext_resource type="Texture2D" uid="uid://c04kekqcyjn1a" path="res://resources/Regions_map_allinfo.svg" id="3_o1i8o"]
+[ext_resource type="Texture2D" uid="uid://c04kekqcyjn1a" path="res://resources/regions/Regions_map_allinfo.svg" id="3_o1i8o"]
 [ext_resource type="Texture2D" uid="uid://d214sn7c7pglh" path="res://resources/regions/CAR.svg" id="4_gndwr"]
 [ext_resource type="Script" path="res://scripts/Movement.gd" id="4_idix7"]
 [ext_resource type="Texture2D" uid="uid://ciycb2oef5vt0" path="res://resources/regions/CagayanValley.svg" id="5_hiibg"]
-[ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="8_lbpew"]
-[ext_resource type="Texture2D" uid="uid://bnx2q5cnbb3w2" path="res://resources/icons/pause-button.svg" id="9_vejhc"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="10_5tunt"]
+[ext_resource type="Texture2D" uid="uid://csq5jtp1yanas" path="res://resources/icons/pin-icon.svg" id="8_pvncb"]
+[ext_resource type="PackedScene" uid="uid://ioh2w7wtr615" path="res://scenes/GameOverScreen.tscn" id="9_eklyx"]
+[ext_resource type="PackedScene" uid="uid://ctsuqf0j2huw3" path="res://scenes/TimerContainer.tscn" id="10_mr4in"]
+[ext_resource type="PackedScene" uid="uid://bwu50xyrwh6jr" path="res://scenes/PauseScreen.tscn" id="11_c8tdl"]
+[ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="12_ef0cc"]
 
 [sub_resource type="Gradient" id="Gradient_mjqry"]
 colors = PackedColorArray(0.792157, 0.858824, 0.94902, 1, 0.792157, 0.858824, 0.94902, 1)
@@ -23,60 +24,7 @@ height = 7000
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vnit"]
 radius = 20.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ucrs"]
-size = Vector2(75, 75)
-
-[sub_resource type="Gradient" id="Gradient_qbv1s"]
-resource_local_to_scene = true
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.216495, 0.891753)
-colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_20je4"]
-gradient = SubResource("Gradient_qbv1s")
-width = 300
-height = 150
-fill = 2
-fill_from = Vector2(0.421488, 0.384298)
-fill_to = Vector2(1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xvdx"]
-size = Vector2(300, 150)
-
-[sub_resource type="Gradient" id="Gradient_wudt5"]
-colors = PackedColorArray(0.47451, 0.87451, 0.329412, 1, 0.0784314, 0.654902, 0.270588, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4moyh"]
-gradient = SubResource("Gradient_wudt5")
-width = 620
-height = 50
-fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_tgjeh"]
-offsets = PackedFloat32Array(0.0151515, 0.484848, 0.954545)
-colors = PackedColorArray(0.372549, 0.556863, 0.580392, 1, 0.141176, 0.513726, 0.529412, 1, 0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5rhoh"]
-gradient = SubResource("Gradient_tgjeh")
-width = 600
-height = 30
-fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_x6s76"]
-resource_local_to_scene = true
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.216495, 0.891753)
-colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dwh21"]
-gradient = SubResource("Gradient_x6s76")
-width = 300
-height = 150
-fill = 2
-fill_from = Vector2(0.421488, 0.384298)
-fill_to = Vector2(1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwwxd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_852me"]
 size = Vector2(300, 150)
 
 [node name="Locate" type="Control"]
@@ -114,6 +62,7 @@ position = Vector2(-30, 908)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Ilocos Region"]
+visible = false
 texture = ExtResource("3_kqjf7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Ilocos Region"]
@@ -126,6 +75,7 @@ position = Vector2(244, 465)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="TouchAreas/CAR"]
+visible = false
 position = Vector2(-53, 365)
 texture = ExtResource("4_gndwr")
 
@@ -139,13 +89,14 @@ position = Vector2(244, 465)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Cagayan Valley"]
+visible = false
 position = Vector2(155, 230)
 texture = ExtResource("5_hiibg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Cagayan Valley"]
 position = Vector2(-121, 609)
 scale = Vector2(6.0288, 4.76571)
-polygon = PackedVector2Array(5.14198, -152.758, 4.14676, -139.538, 33.6997, -122.728, 24.2171, -91.6967, 43.2922, -59.8022, 31.6813, -14.2686, -2.32219, 4.82614, -10.1181, 32.3142, -5.14199, 38.6091, 12.772, 39.8681, 18.9092, 65.048, 64.3577, 9.65228, 75.1393, 9.44244, 90.2335, -33.5732, 72.8171, -65.4677, 82.9352, -144.155)
+polygon = PackedVector2Array(51.7516, -323.561, 4.14676, -139.538, 33.6997, -122.728, 24.2171, -91.6967, 43.2922, -59.8022, 31.6813, -14.2686, -2.32219, 4.82614, -10.1181, 32.3142, -5.14199, 38.6091, 12.772, 39.8681, 18.9092, 65.048, 64.3577, 9.65228, 75.1393, 9.44244, 90.2335, -33.5732, 72.8171, -65.4677, 93.0533, -200.18)
 
 [node name="Central Luzon" type="Area2D" parent="TouchAreas"]
 position = Vector2(244, 465)
@@ -283,19 +234,20 @@ scale = Vector2(6.0288, 4.76571)
 polygon = PackedVector2Array(48.4342, -352.938, 81.4424, -351.469, 83.1011, -361.121, 88.9066, -361.121, 95.7073, -344.335, 110.138, -351.469, 98.6929, -356.505, 98.1953, -372.452, 104.664, -397.213, 89.4042, -392.386, 86.0868, -382.314, 70.9926, -391.967, 77.4615, -407.494, 74.9734, -421.133, 94.8779, -420.084, 103.006, -401.619, 115.446, -402.878, 122.744, -418.825, 123.076, -368.256, 115.28, -356.505, 121.417, -329.227, 132.365, -334.892, 138.999, -300.48, 126.725, -262.29, 48.7659, -314.748)
 
 [node name="PlayerPerspective" type="Node2D" parent="."]
-position = Vector2(360, 600)
+position = Vector2(360, 640)
 script = ExtResource("4_idix7")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPerspective"]
-position = Vector2(-9, 42)
+position = Vector2(-3, 2)
 
 [node name="Pointer" type="Area2D" parent="PlayerPerspective/Camera2D"]
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerPerspective/Camera2D/Pointer"]
-texture = ExtResource("3_6yh4s")
+texture = ExtResource("8_pvncb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPerspective/Camera2D/Pointer"]
+position = Vector2(1, 45)
 shape = SubResource("CircleShape2D_4vnit")
 
 [node name="HUD" type="Control" parent="PlayerPerspective/Camera2D"]
@@ -309,257 +261,40 @@ theme = ExtResource("1_jeqhv")
 
 [node name="Question" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD"]
 layout_mode = 0
-offset_left = -172.0
+offset_left = -244.0
 offset_top = 255.0
-offset_right = 183.0
+offset_right = 250.0
 offset_bottom = 361.0
 bbcode_enabled = true
 text = "[center] [b]Find what region the area belongs:"
 
-[node name="PauseScreen" type="Control" parent="PlayerPerspective/Camera2D/HUD"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -364.0
+[node name="GameOverScreen" parent="PlayerPerspective/Camera2D/HUD" instance=ExtResource("9_eklyx")]
+
+[node name="TimerContainer" parent="PlayerPerspective/Camera2D/HUD" instance=ExtResource("10_mr4in")]
+offset_left = -312.0
+offset_top = 37.0
+offset_right = 308.0
+offset_bottom = 479.0
+
+[node name="PauseScreen" parent="PlayerPerspective/Camera2D/HUD" instance=ExtResource("11_c8tdl")]
+offset_left = -372.0
 offset_top = -597.0
-offset_right = 356.0
-offset_bottom = 683.0
-script = ExtResource("8_lbpew")
-
-[node name="PauseBtn" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/PauseScreen"]
-position = Vector2(612, 898)
-scale = Vector2(0.844156, 0.883117)
-texture_normal = ExtResource("9_vejhc")
-shape = SubResource("RectangleShape2D_1ucrs")
-
-[node name="PauseElements" type="PopupPanel" parent="PlayerPerspective/Camera2D/HUD/PauseScreen"]
-disable_3d = true
-own_world_3d = true
-mode = 3
-title = "PauseElements"
-initial_position = 1
-size = Vector2i(620, 900)
-always_on_top = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 615.0
-offset_bottom = 895.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="PausedTxt" type="Label" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-text = "
-
-Game Paused"
-horizontal_alignment = 1
-
-[node name="Continue" type="Control" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-
-[node name="ContinueButton" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_20je4")
-shape = SubResource("RectangleShape2D_6xvdx")
-
-[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("10_5tunt")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Continue"
-fit_content = true
-
-[node name="MainMenu" type="Control" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-
-[node name="MainMenuButton" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_20je4")
-shape = SubResource("RectangleShape2D_6xvdx")
-
-[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("10_5tunt")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Main Menu"
-fit_content = true
-
-[node name="Retry" type="Control" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer"]
-layout_mode = 2
-
-[node name="RetryBtn" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_20je4")
-shape = SubResource("RectangleShape2D_6xvdx")
-
-[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("10_5tunt")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Restart"
-fit_content = true
-
-[node name="TimerContainer" type="Control" parent="PlayerPerspective/Camera2D/HUD"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -318.0
-offset_top = 27.0
-offset_right = 302.0
-offset_bottom = 469.0
-
-[node name="TimerBar" type="TextureProgressBar" parent="PlayerPerspective/Camera2D/HUD/TimerContainer"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 347.0
-offset_right = 621.0
-offset_bottom = 397.0
-value = 100.0
-texture_under = SubResource("GradientTexture2D_4moyh")
-texture_progress = SubResource("GradientTexture2D_5rhoh")
-texture_progress_offset = Vector2(10, 10)
-
-[node name="Timer" type="Timer" parent="PlayerPerspective/Camera2D/HUD/TimerContainer"]
-wait_time = 10.0
-one_shot = true
-
-[node name="GameOverScreen" type="Control" parent="PlayerPerspective/Camera2D/HUD"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -369.0
-offset_top = -597.0
-offset_right = 351.0
+offset_right = 348.0
 offset_bottom = 683.0
 
-[node name="Background" type="Panel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
-layout_mode = 0
-offset_right = 720.0
-offset_bottom = 1280.0
-
-[node name="GameOverTxt" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
-layout_mode = 0
-offset_top = 300.0
-offset_right = 710.0
-offset_bottom = 428.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-bbcode_enabled = true
-text = "[center] Gameover
-[i] Katapusan [/i]"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 566.0
-offset_right = 689.0
-offset_bottom = 1456.0
-
-[node name="MainMenu" type="Control" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer"]
-layout_mode = 2
-
-[node name="MainMenuButton" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu"]
-position = Vector2(128, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_dwh21")
-shape = SubResource("RectangleShape2D_pwwxd")
-
-[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("10_5tunt")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Main Menu"
-fit_content = true
-
-[node name="Retry" type="Control" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer"]
-layout_mode = 2
-
-[node name="RetryBtn" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry"]
-position = Vector2(128, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_dwh21")
-shape = SubResource("RectangleShape2D_pwwxd")
-
-[node name="ButtonText" type="RichTextLabel" parent="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("10_5tunt")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Retry"
-fit_content = true
+[node name="PassAnswer" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD"]
+position = Vector2(-151, 443)
+texture_normal = ExtResource("12_ef0cc")
+shape = SubResource("RectangleShape2D_852me")
 
 [connection signal="area_entered" from="PlayerPerspective/Camera2D/Pointer" to="." method="_on_character_body_2d_area_entered"]
 [connection signal="area_exited" from="PlayerPerspective/Camera2D/Pointer" to="." method="_on_character_body_2d_area_exited"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseBtn" to="PlayerPerspective/Camera2D/HUD/PauseScreen" method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PassAnswer" to="." method="_on_pass_answer_pressed"]
+
+[editable path="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
+[editable path="PlayerPerspective/Camera2D/HUD/PauseScreen"]

@@ -10,9 +10,26 @@ var counters = {
 # Paths used to iterate over the options much easier
 var options_paths = ["OptionsButtons/OptionA/ButtonText","OptionsButtons/OptionB/ButtonText","OptionsButtons/OptionC/ButtonText","OptionsButtons/OptionD/ButtonText"]
 
+func _ready():
+# Setup the timer 
+	counters["score"] = 0
+	counters["timer_max"] = Main.settings.timer_max
+	$TimerContainer/Timer.wait_time = counters.timer_max
+	$TimerContainer/Timer.start()
+# Creates the question at startup 
+	for i in range(10):
+		create_question()
+	arr_size = questions_array.size() - 1
+#Random number generator
+	qnum = randi_range(0, arr_size)
+	set_question(qnum)
+
 func create_question():
+# The array is setup as  GameMode, "Question/Hint", (4) "Region Options", AnswerIndex
+# GameMode -> An int to setup the added phrase or instruction
+# AnswerIndex -> Index of the correct answer from 0 - 3
 	var results = []
-	# Choose the correct answer
+# Choose the correct answer
 	var main_region = Main.regions.pick_random()
 	for i in range(3):
 		var curr = Region.rand_region_name(Main.regions)
@@ -41,20 +58,6 @@ func create_question():
 	results.push_front(gamemode)
 	questions_array.append(results)
 
-func _ready():
-# Setup the timer 
-	counters["score"] = 0
-	counters["timer_max"] = Main.settings.timer_max
-	$TimerContainer/Timer.wait_time = counters.timer_max
-	$TimerContainer/Timer.start()
-# Creates the question at startup 
-	for i in range(10):
-		create_question()
-	arr_size = questions_array.size() - 1
-#Random number generator
-	qnum = randi_range(0, arr_size)
-	set_question(qnum)
-
 func _process(_delta):
 	if ($TimerContainer/Timer.is_stopped()):
 		$GameOverScreen/GameOverTxt.parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
@@ -63,7 +66,7 @@ func _process(_delta):
 		var percent = ($TimerContainer/Timer.time_left / counters["timer_max"])
 		$TimerContainer/TimerBar.set_value_no_signal(100 * percent)
 
-#Function that changes the label to start the question
+# Changes the text nodes to set the question and options
 func set_question(question_number):
 	# Check if the questions are too few
 	if questions_array.size() <= 3:
@@ -88,7 +91,8 @@ func set_question(question_number):
 		option.parse_bbcode("[center]" + chosen[iter1])
 		if iter1 < 6: iter1 += 1
 
-#Checks the last letter on the questions_array (which is the correct answer) and changes the question text to "Correct" or "Wrong"
+# Checks if the user's answer is correct
+# Compares the chosen option with the correct_answer index value
 func check_answer(answer_number, question_number):
 # Prevent wrong index
 	if question_number >= questions_array.size():
@@ -120,15 +124,13 @@ func check_answer(answer_number, question_number):
 	set_question(qnum)
 	options_buttons.visible = not options_buttons.visible
 
+# Button signals connected to each option
 func _on_OptionA_pressed():
 	check_answer(1,qnum)
-
 func _on_OptionB_pressed():
 	check_answer(2,qnum)
-
 func _on_OptionC_pressed():
 	check_answer(3,qnum)
-
 func _on_OptionD_pressed():
 	check_answer(4,qnum)
 
