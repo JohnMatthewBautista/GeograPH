@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cc0pmxipl3eto"]
 
-[ext_resource type="Texture2D" uid="uid://dnji4n8wivqx0" path="res://icon.svg" id="1_bt58d"]
-[ext_resource type="Texture2D" uid="uid://dj4mxmpy0nvtc" path="res://resources/regions/Ph_regions_and_provinces-svg (Random green tiles).svg" id="1_ruhsu"]
+[ext_resource type="Texture2D" uid="uid://dj4mxmpy0nvtc" path="res://resources/regions/regions_random_green.svg" id="1_ruhsu"]
+[ext_resource type="Texture2D" uid="uid://csq5jtp1yanas" path="res://resources/icons/pin-icon.svg" id="2_g0d57"]
 
 [sub_resource type="Animation" id="Animation_w4o5y"]
 tracks/0/type = "value"
@@ -64,4 +64,5 @@ autoplay = "new_animation"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(68, 64)
-texture = ExtResource("1_bt58d")
+scale = Vector2(0.62234, 0.537234)
+texture = ExtResource("2_g0d57")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://sph8eot8n64c"]
+
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="1_kpy3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8sal"]
+content_margin_left = 1.0
+content_margin_top = 90.0
+content_margin_right = 1.0
+bg_color = Color(0.113725, 0.721569, 0.321569, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.113725, 0.905882, 0.231373, 1)
+
+[node name="TextContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="MainQuestion" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 273.0
+offset_right = 669.0
+offset_bottom = 523.0
+theme_override_font_sizes/normal_font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxFlat_k8sal")
+bbcode_enabled = true
+text = "[center] Sample Region"
+
+[node name="Score" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 486.0
+offset_right = 640.0
+offset_bottom = 513.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_kpy3u")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+
+[node name="Instructions" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 304.0
+offset_right = 603.0
+offset_bottom = 389.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_kpy3u")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[center] Find what region the city or province belongs to "

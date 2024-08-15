@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://j26w3mseqct0"
-path="res://.godot/imported/Pixeboy-z8XGD.ttf-781a6996bb4b3c4677b58977584a8685.fontdata"
+path="res://.godot/imported/pixeboy-z8XGD.ttf-3c84764f09aaf97db687997aa2371ce3.fontdata"
 
 [deps]
 
-source_file="res://resources/Pixeboy-z8XGD.ttf"
-dest_files=["res://.godot/imported/Pixeboy-z8XGD.ttf-781a6996bb4b3c4677b58977584a8685.fontdata"]
+source_file="res://resources/pixeboy-z8XGD.ttf"
+dest_files=["res://.godot/imported/pixeboy-z8XGD.ttf-3c84764f09aaf97db687997aa2371ce3.fontdata"]
 
 [params]
 

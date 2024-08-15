@@ -1,22 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://nv0nqtftxy5"]
+[gd_scene load_steps=9 format=3 uid="uid://nv0nqtftxy5"]
 
 [ext_resource type="Script" path="res://scripts/Quiz_options.gd" id="1_7kyy5"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_cnisw"]
 [ext_resource type="PackedScene" uid="uid://clsukwk5l3fpr" path="res://scenes/TouchScreenChoices.tscn" id="2_e47ir"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="4_4pvth"]
+[ext_resource type="PackedScene" uid="uid://sph8eot8n64c" path="res://scenes/TextContainer.tscn" id="4_ix24w"]
 [ext_resource type="PackedScene" uid="uid://ctsuqf0j2huw3" path="res://scenes/TimerContainer.tscn" id="5_6mvds"]
 [ext_resource type="PackedScene" uid="uid://bwu50xyrwh6jr" path="res://scenes/PauseScreen.tscn" id="6_us6b1"]
 [ext_resource type="PackedScene" uid="uid://ioh2w7wtr615" path="res://scenes/GameOverScreen.tscn" id="7_17j6d"]
 [ext_resource type="PackedScene" uid="uid://cc0pmxipl3eto" path="res://scenes/Background.tscn" id="7_ii0ws"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8sal"]
-content_margin_top = 90.0
-bg_color = Color(0.113725, 0.721569, 0.321569, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.113725, 0.905882, 0.231373, 1)
 
 [node name="QuizOptions" type="Control"]
 layout_mode = 3
@@ -94,50 +85,14 @@ text = "[center] [b] [i] D [i]"
 fit_content = true
 scroll_active = false
 
-[node name="TextContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 720.0
-offset_bottom = 1280.0
-
-[node name="Main_Question" type="RichTextLabel" parent="TextContainer"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 273.0
-offset_right = 669.0
-offset_bottom = 523.0
-theme_override_font_sizes/normal_font_size = 52
-theme_override_styles/normal = SubResource("StyleBoxFlat_k8sal")
-bbcode_enabled = true
-text = "[center] Geograph"
-
-[node name="Score" type="RichTextLabel" parent="TextContainer"]
-layout_mode = 0
-offset_left = 86.0
-offset_top = 486.0
-offset_right = 640.0
-offset_bottom = 513.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-
-[node name="Instructions" type="RichTextLabel" parent="TextContainer"]
-layout_mode = 0
-offset_left = 127.0
-offset_top = 304.0
-offset_right = 603.0
-offset_bottom = 389.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4pvth")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Find what region the city or province belongs to "
+[node name="TextContainer" parent="." instance=ExtResource("4_ix24w")]
 
 [node name="TimerContainer" parent="." instance=ExtResource("5_6mvds")]
 
 [node name="PauseScreen" parent="." instance=ExtResource("6_us6b1")]
+
+[node name="PauseBtn" parent="PauseScreen" index="0"]
+position = Vector2(580, 273)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("7_17j6d")]
 
@@ -150,3 +105,11 @@ offset_bottom = 1283.0
 [connection signal="pressed" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
 [connection signal="pressed" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
+[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+
+[editable path="PauseScreen"]
+[editable path="GameOverScreen"]

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dy710kptmmmpt"
-path="res://.godot/imported/Bagwis_Baybayin_Font.ttf-f8befb5b8edc72890f9f17653c3638ad.fontdata"
+path="res://.godot/imported/bagwis_baybayin_font.ttf-7a07e4315dd53825e56327f22c73f4db.fontdata"
 
 [deps]
 
-source_file="res://resources/Bagwis_Baybayin_Font.ttf"
-dest_files=["res://.godot/imported/Bagwis_Baybayin_Font.ttf-f8befb5b8edc72890f9f17653c3638ad.fontdata"]
+source_file="res://resources/bagwis_baybayin_font.ttf"
+dest_files=["res://.godot/imported/bagwis_baybayin_font.ttf-7a07e4315dd53825e56327f22c73f4db.fontdata"]
 
 [params]
 

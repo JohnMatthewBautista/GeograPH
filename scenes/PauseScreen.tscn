@@ -1,11 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwu50xyrwh6jr"]
+[gd_scene load_steps=11 format=3 uid="uid://bwu50xyrwh6jr"]
 
+[ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_1vtx0"]
 [ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="1_3hlt5"]
 [ext_resource type="Texture2D" uid="uid://bnx2q5cnbb3w2" path="res://resources/icons/pause-button.svg" id="2_r6lsh"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="3_ejssv"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="3_ejssv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
 size = Vector2(75, 75)
+
+[sub_resource type="Gradient" id="Gradient_mgvyk"]
+colors = PackedColorArray(0.625597, 0.625597, 0.625597, 0.509804, 0.625597, 0.625597, 0.625597, 0.509804)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jpvdc"]
+gradient = SubResource("Gradient_mgvyk")
 
 [sub_resource type="Gradient" id="Gradient_o1r6m"]
 resource_local_to_scene = true
@@ -29,6 +36,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
+theme = ExtResource("1_1vtx0")
 script = ExtResource("1_3hlt5")
 
 [node name="PauseBtn" type="TouchScreenButton" parent="."]
@@ -37,22 +45,37 @@ scale = Vector2(0.844156, 0.883117)
 texture_normal = ExtResource("2_r6lsh")
 shape = SubResource("RectangleShape2D_r4nso")
 
-[node name="PauseElements" type="PopupPanel" parent="."]
-disable_3d = true
-own_world_3d = true
-mode = 3
-title = "PauseElements"
-initial_position = 1
-size = Vector2i(620, 900)
-always_on_top = true
+[node name="PauseElements" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 80.0
+offset_right = 674.0
+offset_bottom = 1240.0
+
+[node name="Blur" type="TextureRect" parent="PauseElements"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jpvdc")
+
+[node name="PauseElements" type="Panel" parent="PauseElements"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseElements"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 615.0
-offset_bottom = 895.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 0
+offset_left = 4.0
+offset_top = 136.0
+offset_right = 616.0
+offset_bottom = 1028.0
 
 [node name="PausedTxt" type="Label" parent="PauseElements/VBoxContainer"]
 layout_mode = 2

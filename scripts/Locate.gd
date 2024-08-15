@@ -5,7 +5,8 @@ extends Control
 
 var questions_array = []
 var chosen : Area2D
-var curr
+var arr_size
+var qnum
 var counters = {
 	"score" : 0,
 	"timer_max" : 60,
@@ -17,8 +18,12 @@ func _ready():
 	counters["timer_max"] = Main.settings.timer_max
 	timer_cntr.get_node("Timer").wait_time = counters.timer_max
 	timer_cntr.get_node("Timer").start()
-	create_question()
-	set_question()
+	for i in range(10):
+		create_question()
+	arr_size = questions_array.size() - 1
+#Random number generator
+	qnum = randi_range(0, arr_size)
+	set_question(qnum)
 
 func _process(_delta):
 	if (timer_cntr.get_node("Timer").is_stopped()):
@@ -28,6 +33,7 @@ func _process(_delta):
 		var percent = (timer_cntr.get_node("Timer").time_left / counters["timer_max"])
 		timer_cntr.get_node("TimerBar").set_value_no_signal(100 * percent)
 
+# Creates an array that contains the correct String answer, hint, question phrase
 func create_question():
 # The array is setup as "Answer", "Question/Hint", GameMode
 # GameMode -> An int to setup the added phrase or instruction
@@ -38,12 +44,11 @@ func create_question():
 # Set the question
 	var gamemode = 0
 	if (Main.settings.question_mode == "regions") : 
-		gamemode = 0
-		results.append(main_region.rand_lgu())
+		results.append(main_region.fullname)
 	elif (Main.settings.question_mode == "random"):
 		gamemode = randi_range(0,2)
 		if (gamemode == 0):
-			results.append(main_region.rand_lgu())
+			results.append(main_region.fullname)
 		elif (gamemode == 1):
 			results.append(main_region.center)
 		else:
@@ -51,9 +56,22 @@ func create_question():
 	results.append(gamemode)
 	questions_array.append(results)
 
-func set_question():
-	curr = questions_array.pick_random()
-	$PlayerPerspective/Camera2D/HUD/Question.parse_bbcode("[center]" + curr[0])
+# Sets the question in the text nodes or prepares the question
+func set_question(question_number):
+	# Check if the questions are too few
+	if questions_array.size() <= 3:
+		for i in range(10):
+			create_question()
+		arr_size = questions_array.size() - 1
+	var instructions = $PlayerPerspective/Camera2D/HUD/TextContainer/Instructions
+	var curr = questions_array[question_number]
+	if (curr[2] == 0):
+		instructions.parse_bbcode("[center] Where can you find this region : ")
+	elif (curr[2] == 1):
+		instructions.parse_bbcode("[center] Choose the region that has the regional center: ")
+	elif (curr[2] == 2):
+		instructions.parse_bbcode("[center] Which region is also known as : ")
+	$PlayerPerspective/Camera2D/HUD/TextContainer/MainQuestion.parse_bbcode("[center]" + curr[1])
 
 # Functions for gameover and pause
 func _on_retry_pressed():
@@ -72,19 +90,45 @@ func _on_continue_button_pressed():
 	$PlayerPerspective/Camera2D/Pointer.position = Vector2(0,0)
 	timer_cntr.get_node("Timer").set_paused(0)
 
+# Sets the global variable "chosen" when the player moves the pinned location
 func _on_character_body_2d_area_entered(area):
-	print("Enters: ", area)
 	$PlayerPerspective/Camera2D/HUD/PassAnswer.visible = not $PlayerPerspective/Camera2D/HUD/PassAnswer.visible
 	chosen = area
+	print("Entering: ", chosen)
 
-func _on_character_body_2d_area_exited(area):
-	print("\nChanging: ", area)
+func _on_character_body_2d_area_exited(_area):
 	$PlayerPerspective/Camera2D/HUD/PassAnswer.visible = false
 
+# Checks if the selected area is the correct answeer
 func _on_pass_answer_pressed():
 	print("Your Answer: ", chosen.name)
-	if (curr[0] == chosen.name):
-		print("Correct")
+#Variables used inside this function
+	var question = $PlayerPerspective/Camera2D/HUD/TextContainer/MainQuestion
+	var player_answer = chosen.name
+	var correct_answer = questions_array[qnum][0]
+#This is when the answer is correct
+	if correct_answer == player_answer:
+		question.parse_bbcode("[center] Correct")
+		counters["score"] += 100
+		$PlayerPerspective/Camera2D/HUD/TextContainer/Score.parse_bbcode("[center] Score: " + str(counters["score"]))
+#This section is when it is wrong
+	elif correct_answer != player_answer:
+		question.parse_bbcode("[center] Wrong")
+		question.add_text("\n You Chose: " + player_answer)
 	else:
-		print("Wrong")
+		print("Error input was not string")
+# Restrict the player from moving while the answer is being checked
+	var pointer = $PlayerPerspective/Camera2D/Pointer
+	pointer.process_mode = Node.PROCESS_MODE_DISABLED
+	$PlayerPerspective/Camera2D/HUD/PassAnswer.visible = false
+	await get_tree().create_timer(1.0).timeout
+	pointer.process_mode = Node.PROCESS_MODE_INHERIT
+# Removes the question from the array to avoid repetition
+	questions_array.pop_at(qnum)
+	arr_size -= 1
+#Randomises question
+	qnum = randi_range(0, arr_size)
+	set_question(qnum)
 	
+	
+

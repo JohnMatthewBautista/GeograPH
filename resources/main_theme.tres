@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://d1y3okhiwxw6o"]
 
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="1_72hj4"]
-[ext_resource type="FontFile" uid="uid://dy710kptmmmpt" path="res://resources/Bagwis_Baybayin_Font.ttf" id="2_ytmvo"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="1_72hj4"]
+[ext_resource type="FontFile" uid="uid://dy710kptmmmpt" path="res://resources/bagwis_baybayin_font.ttf" id="2_ytmvo"]
 [ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="3_82xtw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_145us"]

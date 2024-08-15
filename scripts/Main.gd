@@ -21,8 +21,8 @@ var regions : Array[Region] = [
 	Region.new("Bangsamoro Autonomous Region", "Mindanao", "Cotabato City", "BARMM", ["Basilan", "Lanao del Sur", "Maguindanao", "Sulu", "Tawi-Tawi"])
 ]
 
-var settings = {
-	"timer_max" : 60,
+@export var settings = {
+	"timer_max" : 10,
 	"question_mode" : "random"
 }
 

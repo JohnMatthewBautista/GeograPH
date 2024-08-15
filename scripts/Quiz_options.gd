@@ -24,6 +24,7 @@ func _ready():
 	qnum = randi_range(0, arr_size)
 	set_question(qnum)
 
+# Creates the array that contains the question details, options, and correct answer
 func create_question():
 # The array is setup as  GameMode, "Question/Hint", (4) "Region Options", AnswerIndex
 # GameMode -> An int to setup the added phrase or instruction
@@ -45,7 +46,6 @@ func create_question():
 # Set the question
 	var gamemode = 0
 	if (Main.settings.question_mode == "regions") : 
-		gamemode = 0
 		results.push_front(main_region.rand_lgu())
 	elif (Main.settings.question_mode == "random"):
 		gamemode = randi_range(0,2)
@@ -58,6 +58,7 @@ func create_question():
 	results.push_front(gamemode)
 	questions_array.append(results)
 
+# Contains code for the timer control and gameover condition
 func _process(_delta):
 	if ($TimerContainer/Timer.is_stopped()):
 		$GameOverScreen/GameOverTxt.parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
@@ -74,7 +75,7 @@ func set_question(question_number):
 			create_question()
 		arr_size = questions_array.size() - 1
 	var chosen = questions_array[question_number]
-	var question = $TextContainer/Main_Question
+	var question = $TextContainer/MainQuestion
 	var instructions = $TextContainer/Instructions
 #Sets the main question
 	if (chosen[0] == 0):
@@ -98,7 +99,7 @@ func check_answer(answer_number, question_number):
 	if question_number >= questions_array.size():
 		print("Error Exceed Array Index")
 #Variables used inside this function
-	var question = $TextContainer/Main_Question
+	var question = $TextContainer/MainQuestion
 	var correct_answer = questions_array[question_number][6]
 #This is when the answer is correct
 	if correct_answer == answer_number:
@@ -112,8 +113,7 @@ func check_answer(answer_number, question_number):
 	else:
 		print("Error input was not string")
 	# Hide the buttons
-	var options_buttons = get_node("OptionsButtons")
-	options_buttons.visible = not options_buttons.visible
+	$OptionsButtons.visible = false
 	# Pause for 1 second before executing the next line of code
 	await get_tree().create_timer(1.0).timeout
 	# Removes the question from the array to avoid repetition
@@ -122,7 +122,7 @@ func check_answer(answer_number, question_number):
 	#Randomises question
 	qnum = randi_range(0,arr_size) 
 	set_question(qnum)
-	options_buttons.visible = not options_buttons.visible
+	$OptionsButtons.visible = true
 
 # Button signals connected to each option
 func _on_OptionA_pressed():

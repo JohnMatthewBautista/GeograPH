@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj4mxmpy0nvtc"
-path="res://.godot/imported/Ph_regions_and_provinces-svg (Random green tiles).svg-5292a57800f8d1997a476d71eaa0fcfb.ctex"
+path="res://.godot/imported/regions_random_green.svg-5471ac167d4b666f2a70f17430c89c52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/regions/Ph_regions_and_provinces-svg (Random green tiles).svg"
-dest_files=["res://.godot/imported/Ph_regions_and_provinces-svg (Random green tiles).svg-5292a57800f8d1997a476d71eaa0fcfb.ctex"]
+source_file="res://resources/regions/regions_random_green.svg"
+dest_files=["res://.godot/imported/regions_random_green.svg-5471ac167d4b666f2a70f17430c89c52.ctex"]
 
 [params]
 

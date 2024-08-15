@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clsukwk5l3fpr"]
 
 [ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="1_16yjq"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_52x1r"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="2_52x1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
 size = Vector2(300, 150)

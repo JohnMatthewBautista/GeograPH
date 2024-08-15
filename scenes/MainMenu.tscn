@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnfxdwny35ci"]
+[gd_scene load_steps=17 format=3 uid="uid://dnfxdwny35ci"]
 
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_lnwq1"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/Pixeboy-z8XGD.ttf" id="2_cuqan"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="2_cuqan"]
 [ext_resource type="Texture2D" uid="uid://m0gm3irberdr" path="res://resources/icons/settings-icon.svg" id="3_biitb"]
 [ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="4_ufj13"]
 [ext_resource type="Texture2D" uid="uid://c4qcsgov06kj1" path="res://resources/icons/next-button.svg" id="5_3ji2o"]
@@ -12,11 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://cmfcqw425cnct" path="res://resources/icons/play-pressed.svg" id="6_6pb3f"]
 [ext_resource type="Texture2D" uid="uid://v6htvhif735d" path="res://resources/icons/info-icon.svg" id="6_c61ih"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwcv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4e4u"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1tnk"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe0f8"]
 size = Vector2(120, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lkdh"]
 size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwcv"]
+size = Vector2(300, 120)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -34,18 +43,26 @@ anchors_preset = 0
 offset_right = 722.0
 offset_bottom = 1275.0
 
+[node name="Panel2" type="Panel" parent="StartScreen"]
+self_modulate = Color(0.0666667, 0.392157, 0.705882, 1)
+layout_mode = 0
+offset_left = 45.0
+offset_top = 325.0
+offset_right = 685.0
+offset_bottom = 532.0
+
 [node name="Title" type="RichTextLabel" parent="StartScreen"]
 layout_mode = 0
-offset_left = -13.0
-offset_top = 69.0
-offset_right = 739.0
-offset_bottom = 221.0
+offset_left = -12.0
+offset_top = 373.0
+offset_right = 740.0
+offset_bottom = 525.0
 bbcode_enabled = true
 text = "[center] GeograPH  
  [i] Heograpinas [/i]"
 
 [node name="Panel" type="Panel" parent="StartScreen"]
-self_modulate = Color(1, 1, 1, 0.843137)
+self_modulate = Color(0.0666667, 0.392157, 0.705882, 1)
 layout_mode = 0
 offset_left = 51.0
 offset_top = 921.0
@@ -71,17 +88,17 @@ theme_override_constants/separation = 200
 layout_mode = 2
 
 [node name="Settings" type="TouchScreenButton" parent="StartScreen/HBoxContainer/Control2"]
-position = Vector2(-8, -23)
+position = Vector2(-54, -54)
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("3_biitb")
-shape = SubResource("RectangleShape2D_kjwcv")
+shape = SubResource("RectangleShape2D_f4e4u")
 
 [node name="Title" type="RichTextLabel" parent="StartScreen/HBoxContainer/Control2"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 146.0
-offset_right = 228.0
-offset_bottom = 183.0
+offset_left = 23.0
+offset_top = 160.0
+offset_right = 253.0
+offset_bottom = 197.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
@@ -93,17 +110,18 @@ text = "[center] Settings"
 layout_mode = 2
 
 [node name="NewGame" type="TouchScreenButton" parent="StartScreen/HBoxContainer/Control"]
+position = Vector2(-6, 4)
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("5_jcg4x")
 texture_pressed = ExtResource("6_6pb3f")
-shape = SubResource("RectangleShape2D_kjwcv")
+shape = SubResource("RectangleShape2D_j1tnk")
 
 [node name="Title" type="RichTextLabel" parent="StartScreen/HBoxContainer/Control"]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 144.0
-offset_right = 230.0
-offset_bottom = 181.0
+offset_left = 18.0
+offset_top = 160.0
+offset_right = 231.0
+offset_bottom = 197.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
@@ -115,17 +133,17 @@ text = "[center] New Game "
 layout_mode = 2
 
 [node name="About" type="TouchScreenButton" parent="StartScreen/HBoxContainer/Control3"]
-position = Vector2(19, 22)
+position = Vector2(-16, 4)
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("6_c61ih")
-shape = SubResource("RectangleShape2D_kjwcv")
+shape = SubResource("RectangleShape2D_oe0f8")
 
 [node name="Title" type="RichTextLabel" parent="StartScreen/HBoxContainer/Control3"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 146.0
-offset_right = 231.001
-offset_bottom = 183.0
+offset_left = 14.0
+offset_top = 160.0
+offset_right = 227.001
+offset_bottom = 197.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
@@ -162,14 +180,13 @@ offset_top = 204.0
 offset_right = 704.0
 offset_bottom = 692.0
 tab_alignment = 1
-current_tab = 1
 tab_focus_mode = 0
 
 [node name="Locate" type="Control" parent="NewGameSection/LevelSelection"]
-visible = false
 layout_mode = 2
 
 [node name="Locate" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Locate"]
+position = Vector2(164, 276)
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
@@ -184,18 +201,33 @@ theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center] tap 2 Locate"
+text = "[center] Play"
 
-[node name="Flashcards" type="Control" parent="NewGameSection/LevelSelection"]
+[node name="Instructions" type="RichTextLabel" parent="NewGameSection/LevelSelection/Locate"]
+offset_left = 84.0
+offset_top = 57.0
+offset_right = 598.0
+offset_bottom = 271.0
+bbcode_enabled = true
+text = "[center] [b] Locate
+
+- Given the region name
+- City or province
+- Region center
+
+Drag and click in the map the location of your answer"
+
+[node name="Multiple Choice" type="Control" parent="NewGameSection/LevelSelection"]
+visible = false
 layout_mode = 2
 
-[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Flashcards"]
+[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Multiple Choice"]
 position = Vector2(143, 271)
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Flashcards/Flashcards"]
+[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Multiple Choice/Flashcards"]
 offset_left = 33.1916
 offset_top = 48.4249
 offset_right = 246.192
@@ -205,28 +237,41 @@ theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center] Flashcards"
+text = "[center] Play"
 
-[node name="Enumeration" type="Control" parent="NewGameSection/LevelSelection"]
+[node name="Instructions" type="RichTextLabel" parent="NewGameSection/LevelSelection/Multiple Choice"]
+layout_mode = 0
+offset_top = 89.0
+offset_right = 679.0
+offset_bottom = 249.0
+bbcode_enabled = true
+text = "[center] [b] Multiple CHoice
+- Given the region number 
+- City or province
+- Region center
+
+choose the option of the correct answer"
+
+[node name="WIP" type="Control" parent="NewGameSection/LevelSelection"]
 visible = false
 layout_mode = 2
 
-[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Enumeration"]
+[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection/LevelSelection/WIP"]
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("4_ufj13")
 shape = SubResource("RectangleShape2D_kjwcv")
 
-[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Enumeration/Enumeration"]
-offset_left = 33.1916
-offset_top = 48.4249
-offset_right = 246.192
-offset_bottom = 85.4249
+[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/WIP/Enumeration"]
+offset_left = 33.0
+offset_top = 48.0
+offset_right = 259.0
+offset_bottom = 92.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center] Enumeration"
+text = "[center]Work in Progress"
 
 [node name="Prev" type="TouchScreenButton" parent="NewGameSection/LevelSelection"]
 position = Vector2(104, 54)
@@ -244,19 +289,67 @@ offset_top = 720.0
 offset_right = 698.0
 offset_bottom = 1208.0
 tab_alignment = 1
-current_tab = 1
 tab_focus_mode = 0
 
 [node name="Easy" type="Control" parent="NewGameSection/DifficultySelection"]
+layout_mode = 2
+
+[node name="DifficultyInfo" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Easy"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 94.0
+offset_right = 683.0
+offset_bottom = 321.0
+bbcode_enabled = true
+text = " [b] 
+[left] Locate 
+[center] Select in the map the given region name
+
+[left] Multiple CHoice
+[center] Determie where the city/province belongs
+
+Time Limit:
+60 seconds"
+
+[node name="Medium" type="Control" parent="NewGameSection/DifficultySelection"]
 visible = false
 layout_mode = 2
 
-[node name="Medium" type="Control" parent="NewGameSection/DifficultySelection"]
-layout_mode = 2
+[node name="DifficultyInfo" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Medium"]
+offset_left = 2.0
+offset_top = 82.0
+offset_right = 681.0
+offset_bottom = 388.0
+bbcode_enabled = true
+text = " [b] 
+[left] Locate 
+[center] Select in the map the given region name, that has the region center, or also known by its region number
+
+[left] Multiple CHoice
+[center] Determie where the city/province belongs, which region has the given region center, or also known by its region number
+
+Time Limit:
+60 seconds"
 
 [node name="Hard" type="Control" parent="NewGameSection/DifficultySelection"]
 visible = false
 layout_mode = 2
+
+[node name="DifficultyInfo" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Hard"]
+offset_left = 2.0
+offset_top = 82.0
+offset_right = 681.0
+offset_bottom = 388.0
+bbcode_enabled = true
+text = " [b] 
+[left] Locate 
+[center] Select in the map the given region name, that has the region center, or also known by its region number
+
+[left] Multiple CHoice
+[center] Determie where the city/province belongs, which region has the given region center, or also known by its region number
+
+Time Limit:
+30 seconds"
 
 [node name="Custom" type="Control" parent="NewGameSection/DifficultySelection"]
 visible = false
@@ -333,8 +426,8 @@ offset_bottom = 1283.0
 [connection signal="pressed" from="StartScreen/HBoxContainer/Control3/About" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="NewGameSection/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="NewGameSection/LevelSelection/Locate/Locate" to="." method="_on_locate_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/Flashcards/Flashcards" to="." method="_on_flashcards_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/Enumeration/Enumeration" to="." method="_on_enumeration_pressed"]
+[connection signal="pressed" from="NewGameSection/LevelSelection/Multiple Choice/Flashcards" to="." method="_on_flashcards_pressed"]
+[connection signal="pressed" from="NewGameSection/LevelSelection/WIP/Enumeration" to="." method="_on_enumeration_pressed"]
 [connection signal="pressed" from="NewGameSection/LevelSelection/Prev" to="." method="_on_prev_pressed"]
 [connection signal="pressed" from="NewGameSection/LevelSelection/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="NewGameSection/DifficultySelection/Prev2" to="." method="_on_prev_2_pressed"]

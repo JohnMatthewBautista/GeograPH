@@ -22,10 +22,28 @@ func _on_back_btn_pressed():
 	$StartScreen.visible = true
 	$Background.visible = true
 
+func apply_difficulty():
+	print($NewGameSection/DifficultySelection.current_tab)
+	match ($NewGameSection/DifficultySelection.current_tab):
+		0:
+			Main.settings.timer_max = 60
+			Main.settings.question_mode = "regions"
+		1:
+			Main.settings.timer_max = 60
+			Main.settings.question_mode = "random"
+		2:
+			Main.settings.timer_max = 30
+			Main.settings.question_mode = "random"
+		_:
+			Main.settings.timer_max = 60
+			Main.settings.question_mode = "regions"
+
 func _on_flashcards_pressed():
+	apply_difficulty()
 	get_tree().change_scene_to_file("res://scenes/FlashCards.tscn")
 
 func _on_locate_pressed():
+	apply_difficulty()
 	get_tree().change_scene_to_file("res://scenes/Locate.tscn")
 
 func _on_enumeration_pressed():

@@ -1,7 +1,6 @@
 extends Node2D
 
 var events = {}
-var prev_event
 var last_drag_distance = 0
 @onready var start: Vector2 = Vector2(position.x, position.y)
 
@@ -12,7 +11,6 @@ func _input(event):
 			$Camera2D/Pointer.position = (event.position - start)
 			start = Vector2(position.x, position.y)
 			events[event.index] = event
-			prev_event = event
 		else:
 			events.erase(event.index)
 	if event is InputEventScreenDrag:
