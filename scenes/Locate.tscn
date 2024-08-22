@@ -1,26 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://yjxlidqimdg"]
+[gd_scene load_steps=15 format=3 uid="uid://yjxlidqimdg"]
 
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_jeqhv"]
 [ext_resource type="Script" path="res://scripts/Locate.gd" id="2_jknx1"]
-[ext_resource type="Texture2D" uid="uid://dkg5b8binwhei" path="res://resources/regions/IlocosRegion.svg" id="3_kqjf7"]
 [ext_resource type="Texture2D" uid="uid://dj4mxmpy0nvtc" path="res://resources/regions/regions_random_green.svg" id="3_qxpbr"]
-[ext_resource type="Texture2D" uid="uid://d214sn7c7pglh" path="res://resources/regions/CAR.svg" id="4_gndwr"]
 [ext_resource type="Script" path="res://scripts/Movement.gd" id="4_idix7"]
-[ext_resource type="Texture2D" uid="uid://ciycb2oef5vt0" path="res://resources/regions/CagayanValley.svg" id="5_hiibg"]
 [ext_resource type="Texture2D" uid="uid://csq5jtp1yanas" path="res://resources/icons/pin-icon.svg" id="8_pvncb"]
 [ext_resource type="PackedScene" uid="uid://ioh2w7wtr615" path="res://scenes/GameOverScreen.tscn" id="9_eklyx"]
 [ext_resource type="PackedScene" uid="uid://sph8eot8n64c" path="res://scenes/TextContainer.tscn" id="9_en2tp"]
+[ext_resource type="Texture2D" uid="uid://cfw3ihq3hyfo6" path="res://resources/icons/confirm-icon.svg" id="9_po3rv"]
 [ext_resource type="PackedScene" uid="uid://ctsuqf0j2huw3" path="res://scenes/TimerContainer.tscn" id="10_mr4in"]
 [ext_resource type="PackedScene" uid="uid://bwu50xyrwh6jr" path="res://scenes/PauseScreen.tscn" id="11_c8tdl"]
-[ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="12_ef0cc"]
 
-[sub_resource type="Gradient" id="Gradient_mjqry"]
-colors = PackedColorArray(0.792157, 0.858824, 0.94902, 1, 0.792157, 0.858824, 0.94902, 1)
+[sub_resource type="Gradient" id="Gradient_72gst"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.792157, 0.858824, 0.94902, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0smm1"]
-gradient = SubResource("Gradient_mjqry")
-width = 4000
-height = 7000
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tu3gw"]
+gradient = SubResource("Gradient_72gst")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vnit"]
 radius = 30.0
@@ -41,12 +37,12 @@ metadata/_edit_vertical_guides_ = [360.0]
 
 [node name="Map" type="Node2D" parent="."]
 
-[node name="Bg (Temporary)" type="TextureRect" parent="Map"]
+[node name="Bg" type="TextureRect" parent="Map"]
 offset_left = -2053.0
 offset_top = -704.0
 offset_right = 2947.0
 offset_bottom = 6296.0
-texture = SubResource("GradientTexture2D_0smm1")
+texture = SubResource("GradientTexture1D_tu3gw")
 
 [node name="Image" type="TextureRect" parent="Map"]
 offset_left = -1732.0
@@ -62,10 +58,6 @@ texture = ExtResource("3_qxpbr")
 position = Vector2(-30, 908)
 collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Ilocos Region"]
-visible = false
-texture = ExtResource("3_kqjf7")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Ilocos Region"]
 position = Vector2(-593, -598)
 scale = Vector2(6.0288, 4.76571)
@@ -74,11 +66,6 @@ polygon = PackedVector2Array(127.057, 7.76379, 90.7311, 10.4916, 50.5905, 211.51
 [node name="Cagayan Valley" type="Area2D" parent="TouchAreas"]
 position = Vector2(244, 465)
 collision_mask = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Cagayan Valley"]
-visible = false
-position = Vector2(155, 230)
-texture = ExtResource("5_hiibg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Cagayan Valley"]
 position = Vector2(-121, 609)
@@ -97,11 +84,6 @@ polygon = PackedVector2Array(14.4307, -131.775, 35.828, -116.877, 70.9926, -135.
 [node name="Cordillera Administrative Region" type="Area2D" parent="TouchAreas"]
 position = Vector2(244, 465)
 collision_mask = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="TouchAreas/Cordillera Administrative Region"]
-visible = false
-position = Vector2(-53, 365)
-texture = ExtResource("4_gndwr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Cordillera Administrative Region"]
 position = Vector2(-175, 661)
@@ -261,21 +243,21 @@ offset_bottom = -42.0
 theme = ExtResource("1_jeqhv")
 
 [node name="PassAnswer" type="TouchScreenButton" parent="PlayerPerspective/Camera2D/HUD"]
-position = Vector2(-151, 343)
-texture_normal = ExtResource("12_ef0cc")
+position = Vector2(-157, 380)
+texture_normal = ExtResource("9_po3rv")
 shape = SubResource("RectangleShape2D_852me")
 
 [node name="TextContainer" parent="PlayerPerspective/Camera2D/HUD" instance=ExtResource("9_en2tp")]
 offset_left = -366.0
-offset_top = -832.0
+offset_top = -707.0
 offset_right = 354.0
-offset_bottom = 448.0
+offset_bottom = 573.0
 
 [node name="TimerContainer" parent="PlayerPerspective/Camera2D/HUD" instance=ExtResource("10_mr4in")]
-offset_left = -317.0
-offset_top = 156.0
-offset_right = 303.0
-offset_bottom = 598.0
+offset_left = -319.0
+offset_top = 191.0
+offset_right = 301.0
+offset_bottom = 633.0
 
 [node name="PauseScreen" parent="PlayerPerspective/Camera2D/HUD" instance=ExtResource("11_c8tdl")]
 offset_left = -367.0

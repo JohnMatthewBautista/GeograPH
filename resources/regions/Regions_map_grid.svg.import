@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqx74iucjd2uy"
-path="res://.godot/imported/NCR.svg-b151a737509f9670e262c1b8b7048c68.ctex"
+uid="uid://dqpufqbpou8oy"
+path="res://.godot/imported/Regions_map_grid.svg-a26d99656ccd295aa9034c3b0fb0f4ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/regions/NCR.svg"
-dest_files=["res://.godot/imported/NCR.svg-b151a737509f9670e262c1b8b7048c68.ctex"]
+source_file="res://resources/regions/Regions_map_grid.svg"
+dest_files=["res://.godot/imported/Regions_map_grid.svg-a26d99656ccd295aa9034c3b0fb0f4ce.ctex"]
 
 [params]
 

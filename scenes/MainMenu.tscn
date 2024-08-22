@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnfxdwny35ci"]
+[gd_scene load_steps=36 format=3 uid="uid://dnfxdwny35ci"]
 
 [ext_resource type="Script" path="res://scripts/Main_menu.gd" id="1_ednag"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_lnwq1"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="2_cuqan"]
+[ext_resource type="Theme" uid="uid://6qfwp8jjhv7b" path="res://resources/secondary_theme.tres" id="3_71ofi"]
 [ext_resource type="Texture2D" uid="uid://m0gm3irberdr" path="res://resources/icons/settings-icon.svg" id="3_biitb"]
 [ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="4_ufj13"]
 [ext_resource type="Texture2D" uid="uid://c4qcsgov06kj1" path="res://resources/icons/next-button.svg" id="5_3ji2o"]
@@ -11,6 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://dy4j3xugbw0xo" path="res://resources/icons/back-button.svg" id="5_ygaln"]
 [ext_resource type="Texture2D" uid="uid://cmfcqw425cnct" path="res://resources/icons/play-pressed.svg" id="6_6pb3f"]
 [ext_resource type="Texture2D" uid="uid://v6htvhif735d" path="res://resources/icons/info-icon.svg" id="6_c61ih"]
+[ext_resource type="Texture2D" uid="uid://cfw3ihq3hyfo6" path="res://resources/icons/confirm-icon.svg" id="10_kiq2v"]
+[ext_resource type="Texture2D" uid="uid://by27y1hr0u3rr" path="res://resources/regions/Regions_map_colored_map.svg" id="14_45k8f"]
+[ext_resource type="Script" path="res://scripts/Movement.gd" id="14_hvyki"]
+[ext_resource type="Texture2D" uid="uid://cdifxdkju7gpb" path="res://resources/regions/Regions_map_regions_only.svg" id="15_18f8c"]
+[ext_resource type="Texture2D" uid="uid://clrmn7ae5ran" path="res://resources/regions/Regions_map_city_provinces.svg" id="16_17noe"]
+[ext_resource type="Texture2D" uid="uid://csq5jtp1yanas" path="res://resources/icons/pin-icon.svg" id="16_md5xi"]
+[ext_resource type="Texture2D" uid="uid://dqpufqbpou8oy" path="res://resources/regions/Regions_map_grid.svg" id="17_ee86s"]
+[ext_resource type="Texture2D" uid="uid://clmns52wagibg" path="res://resources/icons/credits-icon.svg" id="20_81qb7"]
+[ext_resource type="Texture2D" uid="uid://c8tavq80sampb" path="res://resources/icons/check-icon.svg" id="20_krtat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4e4u"]
 size = Vector2(120, 120)
@@ -24,8 +34,37 @@ size = Vector2(120, 120)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lkdh"]
 size = Vector2(60, 60)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwcv"]
-size = Vector2(300, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqcha"]
+size = Vector2(300, 150)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjaxc"]
+bg_color = Color(0.0128751, 0.179335, 0.345612, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8r7p"]
+texture = ExtResource("4_ufj13")
+
+[sub_resource type="Gradient" id="Gradient_866d8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.792157, 0.858824, 0.94902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_41863"]
+gradient = SubResource("Gradient_866d8")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se2w4"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goxw8"]
+size = Vector2(75, 75)
+
+[sub_resource type="Gradient" id="Gradient_766k7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.27451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jgwog"]
+gradient = SubResource("Gradient_766k7")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i24j8"]
+size = Vector2(80, 80)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -42,14 +81,7 @@ metadata/_edit_horizontal_guides_ = [758.0]
 anchors_preset = 0
 offset_right = 722.0
 offset_bottom = 1275.0
-
-[node name="Panel2" type="Panel" parent="StartScreen"]
-self_modulate = Color(0.0666667, 0.392157, 0.705882, 1)
-layout_mode = 0
-offset_left = 45.0
-offset_top = 325.0
-offset_right = 685.0
-offset_bottom = 532.0
+theme = ExtResource("3_71ofi")
 
 [node name="Title" type="RichTextLabel" parent="StartScreen"]
 layout_mode = 0
@@ -58,11 +90,11 @@ offset_top = 373.0
 offset_right = 740.0
 offset_bottom = 525.0
 bbcode_enabled = true
-text = "[center] GeograPH  
+text = "[center] [b] GeograPH  [/b]
  [i] Heograpinas [/i]"
 
 [node name="Panel" type="Panel" parent="StartScreen"]
-self_modulate = Color(0.0666667, 0.392157, 0.705882, 1)
+self_modulate = Color(1, 1, 1, 0.835294)
 layout_mode = 0
 offset_left = 51.0
 offset_top = 921.0
@@ -78,7 +110,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -312.0
 offset_top = 266.5
-offset_right = 322.0
+offset_right = 329.0
 offset_bottom = 516.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -96,9 +128,9 @@ shape = SubResource("RectangleShape2D_f4e4u")
 [node name="Title" type="RichTextLabel" parent="StartScreen/HBoxContainer/Control2"]
 layout_mode = 0
 offset_left = 23.0
-offset_top = 160.0
+offset_top = 177.0
 offset_right = 253.0
-offset_bottom = 197.0
+offset_bottom = 214.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
@@ -119,9 +151,9 @@ shape = SubResource("RectangleShape2D_j1tnk")
 [node name="Title" type="RichTextLabel" parent="StartScreen/HBoxContainer/Control"]
 layout_mode = 0
 offset_left = 18.0
-offset_top = 160.0
+offset_top = 178.0
 offset_right = 231.0
-offset_bottom = 197.0
+offset_bottom = 215.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
@@ -133,7 +165,7 @@ text = "[center] New Game "
 layout_mode = 2
 
 [node name="About" type="TouchScreenButton" parent="StartScreen/HBoxContainer/Control3"]
-position = Vector2(-16, 4)
+position = Vector2(23, 37)
 scale = Vector2(1.26538, 1.17708)
 texture_normal = ExtResource("6_c61ih")
 shape = SubResource("RectangleShape2D_oe0f8")
@@ -141,9 +173,9 @@ shape = SubResource("RectangleShape2D_oe0f8")
 [node name="Title" type="RichTextLabel" parent="StartScreen/HBoxContainer/Control3"]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 160.0
+offset_top = 179.0
 offset_right = 227.001
-offset_bottom = 197.0
+offset_bottom = 216.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
@@ -157,6 +189,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 725.0
 offset_bottom = 1290.0
+theme = ExtResource("3_71ofi")
 
 [node name="Title" type="RichTextLabel" parent="NewGameSection"]
 layout_mode = 0
@@ -165,7 +198,7 @@ offset_top = 118.0
 offset_right = 724.0
 offset_bottom = 203.0
 bbcode_enabled = true
-text = "[center]Game Modes"
+text = "[center] [b] Game Modes"
 
 [node name="BackBtn" type="TouchScreenButton" parent="NewGameSection"]
 position = Vector2(115, 132)
@@ -173,105 +206,53 @@ rotation = 3.13254
 texture_normal = ExtResource("5_ygaln")
 shape = SubResource("RectangleShape2D_7lkdh")
 
+[node name="Start" type="TouchScreenButton" parent="NewGameSection"]
+position = Vector2(212, 1027)
+texture_normal = ExtResource("10_kiq2v")
+shape = SubResource("RectangleShape2D_gqcha")
+
 [node name="LevelSelection" type="TabContainer" parent="NewGameSection"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 204.0
 offset_right = 704.0
-offset_bottom = 692.0
+offset_bottom = 606.0
 tab_alignment = 1
-tab_focus_mode = 0
 
-[node name="Locate" type="Control" parent="NewGameSection/LevelSelection"]
+[node name="Multiple Choice" type="Control" parent="NewGameSection/LevelSelection"]
 layout_mode = 2
 
-[node name="Locate" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Locate"]
-position = Vector2(164, 276)
-scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("4_ufj13")
-shape = SubResource("RectangleShape2D_kjwcv")
-
-[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Locate/Locate"]
-offset_left = 33.1916
-offset_top = 48.4249
-offset_right = 246.192
-offset_bottom = 85.4249
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_cuqan")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
+[node name="Instructions" type="RichTextLabel" parent="NewGameSection/LevelSelection/Multiple Choice"]
+layout_mode = 0
+offset_top = 53.0
+offset_right = 679.0
+offset_bottom = 285.0
 bbcode_enabled = true
-text = "[center] Play"
+text = "[center] [b] Multiple choice [/b]
+
+- Given the region number 
+- City or province
+- Region center
+
+Choose the option of the correct answer"
+
+[node name="Locate" type="Control" parent="NewGameSection/LevelSelection"]
+visible = false
+layout_mode = 2
 
 [node name="Instructions" type="RichTextLabel" parent="NewGameSection/LevelSelection/Locate"]
-offset_left = 84.0
-offset_top = 57.0
-offset_right = 598.0
-offset_bottom = 271.0
+layout_mode = 0
+offset_top = 53.0
+offset_right = 684.0
+offset_bottom = 316.0
 bbcode_enabled = true
-text = "[center] [b] Locate
+text = "[center] [b] Locate [/b]
 
 - Given the region name
 - City or province
 - Region center
 
-Drag and click in the map the location of your answer"
-
-[node name="Multiple Choice" type="Control" parent="NewGameSection/LevelSelection"]
-visible = false
-layout_mode = 2
-
-[node name="Flashcards" type="TouchScreenButton" parent="NewGameSection/LevelSelection/Multiple Choice"]
-position = Vector2(143, 271)
-scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("4_ufj13")
-shape = SubResource("RectangleShape2D_kjwcv")
-
-[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/Multiple Choice/Flashcards"]
-offset_left = 33.1916
-offset_top = 48.4249
-offset_right = 246.192
-offset_bottom = 85.4249
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_cuqan")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Play"
-
-[node name="Instructions" type="RichTextLabel" parent="NewGameSection/LevelSelection/Multiple Choice"]
-layout_mode = 0
-offset_top = 89.0
-offset_right = 679.0
-offset_bottom = 249.0
-bbcode_enabled = true
-text = "[center] [b] Multiple CHoice
-- Given the region number 
-- City or province
-- Region center
-
-choose the option of the correct answer"
-
-[node name="WIP" type="Control" parent="NewGameSection/LevelSelection"]
-visible = false
-layout_mode = 2
-
-[node name="Enumeration" type="TouchScreenButton" parent="NewGameSection/LevelSelection/WIP"]
-scale = Vector2(1.26538, 1.17708)
-texture_normal = ExtResource("4_ufj13")
-shape = SubResource("RectangleShape2D_kjwcv")
-
-[node name="Title" type="RichTextLabel" parent="NewGameSection/LevelSelection/WIP/Enumeration"]
-offset_left = 33.0
-offset_top = 48.0
-offset_right = 259.0
-offset_bottom = 92.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_cuqan")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center]Work in Progress"
+Drag and click in the map the location of your angswer"
 
 [node name="Prev" type="TouchScreenButton" parent="NewGameSection/LevelSelection"]
 position = Vector2(104, 54)
@@ -284,85 +265,76 @@ texture_normal = ExtResource("5_3ji2o")
 
 [node name="DifficultySelection" type="TabContainer" parent="NewGameSection"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 720.0
-offset_right = 698.0
-offset_bottom = 1208.0
+offset_left = 28.0
+offset_top = 645.0
+offset_right = 711.0
+offset_bottom = 983.0
 tab_alignment = 1
-tab_focus_mode = 0
+tabs_visible = false
 
 [node name="Easy" type="Control" parent="NewGameSection/DifficultySelection"]
 layout_mode = 2
 
-[node name="DifficultyInfo" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Easy"]
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Easy"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 94.0
-offset_right = 683.0
-offset_bottom = 321.0
+offset_left = 113.0
+offset_top = 40.0
+offset_right = 579.0
+offset_bottom = 309.0
 bbcode_enabled = true
-text = " [b] 
-[left] Locate 
-[center] Select in the map the given region name
+text = "[center] [b]Regions[/b]
 
-[left] Multiple CHoice
-[center] Determie where the city/province belongs
+Multiple Choice
+Guess the city or province belonging to the region
 
-Time Limit:
-60 seconds"
+Locate
+Guess the location of the given region name"
 
 [node name="Medium" type="Control" parent="NewGameSection/DifficultySelection"]
 visible = false
 layout_mode = 2
 
-[node name="DifficultyInfo" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Medium"]
-offset_left = 2.0
-offset_top = 82.0
-offset_right = 681.0
-offset_bottom = 388.0
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Medium"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 34.0
+offset_right = 579.0
+offset_bottom = 309.0
 bbcode_enabled = true
-text = " [b] 
-[left] Locate 
-[center] Select in the map the given region name, that has the region center, or also known by its region number
+text = "[center] [b]Random[/b]
 
-[left] Multiple CHoice
-[center] Determie where the city/province belongs, which region has the given region center, or also known by its region number
+Randomly selects the question type including:
 
-Time Limit:
-60 seconds"
++ Guessing based on the region number 
++ Guessing based on the region center
+"
 
-[node name="Hard" type="Control" parent="NewGameSection/DifficultySelection"]
-visible = false
-layout_mode = 2
-
-[node name="DifficultyInfo" type="RichTextLabel" parent="NewGameSection/DifficultySelection/Hard"]
-offset_left = 2.0
-offset_top = 82.0
-offset_right = 681.0
-offset_bottom = 388.0
-bbcode_enabled = true
-text = " [b] 
-[left] Locate 
-[center] Select in the map the given region name, that has the region center, or also known by its region number
-
-[left] Multiple CHoice
-[center] Determie where the city/province belongs, which region has the given region center, or also known by its region number
-
-Time Limit:
-30 seconds"
-
-[node name="Custom" type="Control" parent="NewGameSection/DifficultySelection"]
-visible = false
-layout_mode = 2
-
-[node name="Prev2" type="TouchScreenButton" parent="NewGameSection/DifficultySelection"]
-position = Vector2(103, 55)
+[node name="Prev" type="TouchScreenButton" parent="NewGameSection/DifficultySelection"]
+position = Vector2(107, 192)
 rotation = 3.13748
 texture_normal = ExtResource("5_3ji2o")
 
-[node name="Next2" type="TouchScreenButton" parent="NewGameSection/DifficultySelection"]
-position = Vector2(587, -24)
+[node name="Next" type="TouchScreenButton" parent="NewGameSection/DifficultySelection"]
+position = Vector2(586, 115)
 texture_normal = ExtResource("5_3ji2o")
+
+[node name="Panel2 (experimenting)" type="Panel" parent="NewGameSection"]
+visible = false
+layout_mode = 0
+offset_left = 33.0
+offset_top = 627.0
+offset_right = 700.0
+offset_bottom = 909.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mjaxc")
+
+[node name="Panel" type="Panel" parent="NewGameSection/Panel2 (experimenting)"]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 13.0
+offset_right = 656.0
+offset_bottom = 269.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_n8r7p")
 
 [node name="SettingsSection" type="Control" parent="."]
 visible = false
@@ -392,29 +364,163 @@ text = "[center] [b] SETTINGS  [b]"
 
 [node name="AboutSection" type="Control" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Node2D" parent="AboutSection"]
+
+[node name="Bg" type="TextureRect" parent="AboutSection/Map"]
+offset_left = -2053.0
+offset_top = -791.0
+offset_right = 2947.0
+offset_bottom = 6296.0
+texture = SubResource("GradientTexture1D_41863")
+
+[node name="Main" type="TextureRect" parent="AboutSection/Map"]
+offset_left = -1732.0
+offset_top = -529.0
+offset_right = 2468.0
+offset_bottom = 5576.0
+pivot_offset = Vector2(2071, 3914)
+texture = ExtResource("14_45k8f")
+
+[node name="Grid" type="TextureRect" parent="AboutSection/Map"]
+offset_left = -1732.0
+offset_top = -529.0
+offset_right = 2468.0
+offset_bottom = 5576.0
+pivot_offset = Vector2(2071, 3914)
+texture = ExtResource("17_ee86s")
+
+[node name="Cities" type="TextureRect" parent="AboutSection/Map"]
+offset_left = -1732.0
+offset_top = -529.0
+offset_right = 2468.0
+offset_bottom = 5576.0
+pivot_offset = Vector2(2071, 3914)
+texture = ExtResource("16_17noe")
+
+[node name="RegionNames" type="TextureRect" parent="AboutSection/Map"]
+offset_left = -1732.0
+offset_top = -529.0
+offset_right = 2468.0
+offset_bottom = 5576.0
+pivot_offset = Vector2(2071, 3914)
+texture = ExtResource("15_18f8c")
+
+[node name="Movement" type="Node2D" parent="AboutSection"]
+position = Vector2(360, 640)
+script = ExtResource("14_hvyki")
+
+[node name="Camera2D" type="Camera2D" parent="AboutSection/Movement"]
+
+[node name="Pointer" type="Area2D" parent="AboutSection/Movement/Camera2D"]
+visible = false
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="AboutSection/Movement/Camera2D/Pointer"]
+texture = ExtResource("16_md5xi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AboutSection/Movement/Camera2D/Pointer"]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_se2w4")
+
+[node name="HUD" type="Control" parent="AboutSection/Movement/Camera2D"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 725.0
-offset_bottom = 1290.0
+theme = ExtResource("1_lnwq1")
 
-[node name="BackBtn3" type="TouchScreenButton" parent="AboutSection"]
-position = Vector2(131, 125)
+[node name="AboutBack" type="TouchScreenButton" parent="AboutSection/Movement/Camera2D/HUD"]
+position = Vector2(-228, -515)
 rotation = -3.14083
 texture_normal = ExtResource("5_ygaln")
 shape = SubResource("RectangleShape2D_7lkdh")
 
-[node name="Title" type="RichTextLabel" parent="AboutSection"]
+[node name="Info" type="TouchScreenButton" parent="AboutSection/Movement/Camera2D/HUD"]
+position = Vector2(205, -630)
+texture_normal = ExtResource("20_81qb7")
+shape = SubResource("RectangleShape2D_goxw8")
+
+[node name="Panel" type="Panel" parent="AboutSection/Movement/Camera2D/HUD"]
+visible = false
 layout_mode = 0
-offset_left = 176.0
-offset_top = 175.0
-offset_right = 550.0
-offset_bottom = 260.0
+offset_left = -272.0
+offset_top = -428.0
+offset_right = 273.0
+offset_bottom = 278.0
+
+[node name="Title" type="RichTextLabel" parent="AboutSection/Movement/Camera2D/HUD/Panel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 24.0
+offset_right = 468.0
+offset_bottom = 109.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_cuqan")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center] [b] ABOUT  [b]"
+text = "[center] [b] CREDITS  [b]"
+
+[node name="Blur" type="TextureRect" parent="AboutSection/Movement/Camera2D/HUD/Panel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -89.0
+offset_top = -216.0
+offset_right = 631.0
+offset_bottom = 1224.0
+texture = SubResource("GradientTexture1D_jgwog")
+
+[node name="CheckBoxes" type="Control" parent="AboutSection/Movement/Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RegionNames" type="TouchScreenButton" parent="AboutSection/Movement/Camera2D/CheckBoxes"]
+position = Vector2(-322, 445)
+texture_normal = ExtResource("20_krtat")
+shape = SubResource("RectangleShape2D_i24j8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutSection/Movement/Camera2D/CheckBoxes/RegionNames"]
+offset_left = 117.0
+offset_top = 59.0
+offset_right = 264.0
+offset_bottom = 99.0
+bbcode_enabled = true
+text = "[left] Region Names"
+
+[node name="Grid" type="TouchScreenButton" parent="AboutSection/Movement/Camera2D/CheckBoxes"]
+position = Vector2(-98, 445)
+texture_normal = ExtResource("20_krtat")
+shape = SubResource("RectangleShape2D_i24j8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutSection/Movement/Camera2D/CheckBoxes/Grid"]
+offset_left = 117.0
+offset_top = 59.0
+offset_right = 264.0
+offset_bottom = 99.0
+bbcode_enabled = true
+text = "[left] Region Names"
+
+[node name="Cities" type="TouchScreenButton" parent="AboutSection/Movement/Camera2D/CheckBoxes"]
+position = Vector2(109, 445)
+texture_normal = ExtResource("20_krtat")
+shape = SubResource("RectangleShape2D_i24j8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutSection/Movement/Camera2D/CheckBoxes/Cities"]
+offset_left = 117.0
+offset_top = 59.0
+offset_right = 264.0
+offset_bottom = 99.0
+bbcode_enabled = true
+text = "[left] Region Names"
 
 [node name="Background" parent="." instance=ExtResource("5_fft66")]
 layout_mode = 0
@@ -425,12 +531,14 @@ offset_bottom = 1283.0
 [connection signal="released" from="StartScreen/HBoxContainer/Control/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="StartScreen/HBoxContainer/Control3/About" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="NewGameSection/BackBtn" to="." method="_on_back_btn_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/Locate/Locate" to="." method="_on_locate_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/Multiple Choice/Flashcards" to="." method="_on_flashcards_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/WIP/Enumeration" to="." method="_on_enumeration_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/Prev" to="." method="_on_prev_pressed"]
-[connection signal="pressed" from="NewGameSection/LevelSelection/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="NewGameSection/DifficultySelection/Prev2" to="." method="_on_prev_2_pressed"]
-[connection signal="pressed" from="NewGameSection/DifficultySelection/Next2" to="." method="_on_next_2_pressed"]
+[connection signal="pressed" from="NewGameSection/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="NewGameSection/LevelSelection/Prev" to="." method="change_tabs" binds= ["LevelSelection", 1]]
+[connection signal="pressed" from="NewGameSection/LevelSelection/Next" to="." method="change_tabs" binds= ["LevelSelection", 0]]
+[connection signal="pressed" from="NewGameSection/DifficultySelection/Prev" to="." method="change_tabs" binds= ["DifficultySelection", 1]]
+[connection signal="pressed" from="NewGameSection/DifficultySelection/Next" to="." method="change_tabs" binds= ["DifficultySelection", 0]]
 [connection signal="pressed" from="SettingsSection/BackBtn2" to="." method="_on_back_btn_pressed"]
-[connection signal="pressed" from="AboutSection/BackBtn3" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="AboutSection/Movement/Camera2D/HUD/AboutBack" to="." method="_on_about_back_pressed"]
+[connection signal="pressed" from="AboutSection/Movement/Camera2D/HUD/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="AboutSection/Movement/Camera2D/CheckBoxes/RegionNames" to="." method="click_check" binds= [&"RegionNames"]]
+[connection signal="pressed" from="AboutSection/Movement/Camera2D/CheckBoxes/Grid" to="." method="click_check" binds= [&"Grid"]]
+[connection signal="pressed" from="AboutSection/Movement/Camera2D/CheckBoxes/Cities" to="." method="click_check" binds= [&"Cities"]]

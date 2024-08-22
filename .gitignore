@@ -2,6 +2,6 @@
 .godot/
 TODO.txt
 export_presets.cfg
-unused/
 android/
 release/
+resources/logos

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkg5b8binwhei"
-path="res://.godot/imported/IlocosRegion.svg-c19ff96a26e9a2e6aa2ad223723c94fa.ctex"
+uid="uid://by27y1hr0u3rr"
+path="res://.godot/imported/Regions_map_colored_map.svg-f86fa742356a243ce30e92677334197a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/regions/IlocosRegion.svg"
-dest_files=["res://.godot/imported/IlocosRegion.svg-c19ff96a26e9a2e6aa2ad223723c94fa.ctex"]
+source_file="res://resources/regions/Regions_map_colored_map.svg"
+dest_files=["res://.godot/imported/Regions_map_colored_map.svg-f86fa742356a243ce30e92677334197a.ctex"]
 
 [params]
 

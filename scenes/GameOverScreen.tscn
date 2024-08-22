@@ -3,11 +3,12 @@
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="1_wjfb4"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_x4pfj"]
 
-[sub_resource type="Gradient" id="Gradient_bguke"]
-colors = PackedColorArray(0.625597, 0.625597, 0.625597, 0.509804, 0.625597, 0.625597, 0.625597, 0.509804)
+[sub_resource type="Gradient" id="Gradient_766k7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.27451)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d3l8o"]
-gradient = SubResource("Gradient_bguke")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wo7bh"]
+gradient = SubResource("Gradient_766k7")
 
 [sub_resource type="Gradient" id="Gradient_o1r6m"]
 resource_local_to_scene = true
@@ -39,9 +40,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -162.0
+offset_right = 262.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_d3l8o")
+texture = SubResource("GradientTexture1D_wo7bh")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 0

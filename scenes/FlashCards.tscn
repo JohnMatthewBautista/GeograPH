@@ -21,69 +21,33 @@ script = ExtResource("1_7kyy5")
 
 [node name="OptionsButtons" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 54.0
+offset_left = 48.0
 offset_top = 764.0
-offset_right = 674.0
+offset_right = 668.0
 offset_bottom = 1084.0
 
 [node name="OptionA" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-
-[node name="BaybayinA" type="RichTextLabel" parent="OptionsButtons"]
-self_modulate = Color(1, 1, 1, 0.392157)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 301.0
-offset_bottom = 177.0
-bbcode_enabled = true
-text = "[center] [b] [i] A [i]"
-fit_content = true
-scroll_active = false
+position = Vector2(-3, 0)
+action = "a"
 
 [node name="OptionB" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(320, 0)
+position = Vector2(323, 0)
+action = "b"
 
-[node name="BaybayinB" type="RichTextLabel" parent="OptionsButtons"]
-self_modulate = Color(1, 1, 1, 0.392157)
-layout_mode = 0
-offset_left = 322.0
-offset_top = -1.0
-offset_right = 620.0
-offset_bottom = 174.0
-bbcode_enabled = true
+[node name="Baybayin" parent="OptionsButtons/OptionB" index="1"]
 text = "[center] [b] [i] B [i]"
-fit_content = true
-scroll_active = false
 
 [node name="OptionC" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(0, 170)
+position = Vector2(-3, 190)
 
-[node name="BaybayinC" type="RichTextLabel" parent="OptionsButtons"]
-self_modulate = Color(1, 1, 1, 0.392157)
-layout_mode = 0
-offset_left = 2.0
-offset_top = 170.0
-offset_right = 300.0
-offset_bottom = 345.0
-bbcode_enabled = true
-text = "[center] [b] [i] C [i]"
-fit_content = true
-scroll_active = false
+[node name="Baybayin" parent="OptionsButtons/OptionC" index="1"]
+text = "[center][b][i]C[i]"
 
 [node name="OptionD" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
-position = Vector2(320, 170)
+position = Vector2(323, 190)
 
-[node name="BaybayinD" type="RichTextLabel" parent="OptionsButtons"]
-self_modulate = Color(1, 1, 1, 0.392157)
-layout_mode = 0
-offset_left = 325.0
-offset_top = 171.0
-offset_right = 623.0
-offset_bottom = 346.0
-bbcode_enabled = true
+[node name="Baybayin" parent="OptionsButtons/OptionD" index="1"]
 text = "[center] [b] [i] D [i]"
-fit_content = true
-scroll_active = false
 
 [node name="TextContainer" parent="." instance=ExtResource("4_ix24w")]
 
@@ -92,7 +56,7 @@ scroll_active = false
 [node name="PauseScreen" parent="." instance=ExtResource("6_us6b1")]
 
 [node name="PauseBtn" parent="PauseScreen" index="0"]
-position = Vector2(580, 273)
+position = Vector2(583, 157)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("7_17j6d")]
 
@@ -101,15 +65,19 @@ layout_mode = 0
 offset_right = 723.0
 offset_bottom = 1283.0
 
-[connection signal="pressed" from="OptionsButtons/OptionA" to="." method="_on_OptionA_pressed"]
-[connection signal="pressed" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
-[connection signal="pressed" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
-[connection signal="pressed" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
+[connection signal="released" from="OptionsButtons/OptionA" to="." method="_on_OptionA_pressed"]
+[connection signal="released" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
+[connection signal="released" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
+[connection signal="released" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
 
+[editable path="OptionsButtons/OptionA"]
+[editable path="OptionsButtons/OptionB"]
+[editable path="OptionsButtons/OptionC"]
+[editable path="OptionsButtons/OptionD"]
 [editable path="PauseScreen"]
 [editable path="GameOverScreen"]

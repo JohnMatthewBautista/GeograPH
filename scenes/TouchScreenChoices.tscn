@@ -1,31 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://clsukwk5l3fpr"]
+[gd_scene load_steps=7 format=3 uid="uid://clsukwk5l3fpr"]
 
 [ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="1_16yjq"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="2_52x1r"]
+[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="3_owl4k"]
+[ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="3_xh6fl"]
+
+[sub_resource type="Gradient" id="Gradient_ofsua"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.565789, 0.834483, 0.92069)
+colors = PackedColorArray(0.0352941, 0.631373, 0.266667, 1, 0.478431, 0.878431, 0.333333, 1, 0.0106742, 0.329823, 0.125917, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0oup4"]
+gradient = SubResource("Gradient_ofsua")
+width = 310
+height = 180
+fill = 2
+fill_from = Vector2(0.5, 0.503623)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
-size = Vector2(300, 150)
+size = Vector2(320, 180)
 
 [node name="TouchScreenChoices" type="TouchScreenButton"]
-texture_normal = ExtResource("1_16yjq")
+texture_normal = SubResource("GradientTexture2D_0oup4")
+texture_pressed = ExtResource("1_16yjq")
 shape = SubResource("RectangleShape2D_v8a4m")
 
 [node name="ButtonText" type="RichTextLabel" parent="."]
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -111.0
-offset_top = -36.0
-offset_right = 116.0
-offset_bottom = 41.0
+offset_left = -144.0
+offset_top = 50.0
+offset_right = 146.0
+offset_bottom = 158.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_52x1r")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_colors/font_outline_color = Color(0.0352941, 0.631373, 0.266667, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_owl4k")
+theme_override_font_sizes/normal_font_size = 42
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[center] Sample Text"
+text = "[center] sample text"
 fit_content = true
+
+[node name="Baybayin" type="RichTextLabel" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 301.0
+offset_bottom = 177.0
+theme = ExtResource("3_xh6fl")
+bbcode_enabled = true
+text = "[center] [b] [i] A [i]"
+fit_content = true
+scroll_active = false

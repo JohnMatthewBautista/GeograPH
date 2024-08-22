@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvcj7rgg5ato2"
-path="res://.godot/imported/CentralLuzon.svg-54722547f0982aa9395f8a2ebad653e5.ctex"
+uid="uid://clrmn7ae5ran"
+path="res://.godot/imported/Regions_map_city_provinces.svg-e5d9fd9af017373be64a41ebaff674c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/regions/CentralLuzon.svg"
-dest_files=["res://.godot/imported/CentralLuzon.svg-54722547f0982aa9395f8a2ebad653e5.ctex"]
+source_file="res://resources/regions/Regions_map_city_provinces.svg"
+dest_files=["res://.godot/imported/Regions_map_city_provinces.svg-e5d9fd9af017373be64a41ebaff674c8.ctex"]
 
 [params]
 

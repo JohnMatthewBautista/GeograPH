@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://j26w3mseqct0"
-path="res://.godot/imported/pixeboy-z8XGD.ttf-3c84764f09aaf97db687997aa2371ce3.fontdata"
+uid="uid://c74ijun0i1vj1"
+path="res://.godot/imported/Moderniz.otf-05f2a4af5300c2635bb8cb069ed97a12.fontdata"
 
 [deps]
 
-source_file="res://resources/pixeboy-z8XGD.ttf"
-dest_files=["res://.godot/imported/pixeboy-z8XGD.ttf-3c84764f09aaf97db687997aa2371ce3.fontdata"]
+source_file="res://resources/Moderniz.otf"
+dest_files=["res://.godot/imported/Moderniz.otf-05f2a4af5300c2635bb8cb069ed97a12.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
@@ -26,12 +26,13 @@ oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=false
+compress=true
 preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0)
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
 }]
 language_support={}
 script_support={}

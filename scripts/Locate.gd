@@ -29,6 +29,9 @@ func _process(_delta):
 	if (timer_cntr.get_node("Timer").is_stopped()):
 		game_over_scrn.get_node("GameOverTxt").parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
 		game_over_scrn.visible = true
+		game_over_scrn.visible = true
+		process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		game_over_scrn.process_mode = Node.PROCESS_MODE_ALWAYS
 	else:
 		var percent = (timer_cntr.get_node("Timer").time_left / counters["timer_max"])
 		timer_cntr.get_node("TimerBar").set_value_no_signal(100 * percent)
@@ -87,6 +90,7 @@ func _on_continue_button_pressed():
 	if (pause_scrn.get_node("PauseElements").visible == true): 
 		pause_scrn.get_node("PauseElements").visible = false
 		pause_scrn.get_node("PauseBtn").visible = true
+		process_mode = Node.PROCESS_MODE_ALWAYS
 	$PlayerPerspective/Camera2D/Pointer.position = Vector2(0,0)
 	timer_cntr.get_node("Timer").set_paused(0)
 

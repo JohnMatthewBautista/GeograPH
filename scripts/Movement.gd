@@ -32,12 +32,16 @@ func _input(event):
 func _process(_delta):
 	var cam_pos = $Camera2D.position
 	if Input.is_action_pressed("ui_right"):
+		$Camera2D/Pointer.position = Vector2(0,0)
 		cam_pos.x += 20
 	if Input.is_action_pressed("ui_left"):
+		$Camera2D/Pointer.position = Vector2(0,0)
 		cam_pos.x -= 20
 	if Input.is_action_pressed("ui_down"):
+		$Camera2D/Pointer.position = Vector2(0,0)
 		cam_pos.y += 20
 	if Input.is_action_pressed("ui_up"):
+		$Camera2D/Pointer.position = Vector2(0,0)
 		cam_pos.y -= 20
 	$Camera2D.position = cam_pos
 

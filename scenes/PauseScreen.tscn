@@ -1,31 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwu50xyrwh6jr"]
+[gd_scene load_steps=12 format=3 uid="uid://bwu50xyrwh6jr"]
 
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_1vtx0"]
 [ext_resource type="Script" path="res://scripts/PauseScreen.gd" id="1_3hlt5"]
 [ext_resource type="Texture2D" uid="uid://bnx2q5cnbb3w2" path="res://resources/icons/pause-button.svg" id="2_r6lsh"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="3_ejssv"]
+[ext_resource type="PackedScene" uid="uid://b4t7rk4hgchwy" path="res://scenes/TouchScreenChoicesSecond.tscn" id="4_3p3dj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4nso"]
 size = Vector2(75, 75)
 
-[sub_resource type="Gradient" id="Gradient_mgvyk"]
-colors = PackedColorArray(0.625597, 0.625597, 0.625597, 0.509804, 0.625597, 0.625597, 0.625597, 0.509804)
+[sub_resource type="Gradient" id="Gradient_766k7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.27451)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jpvdc"]
-gradient = SubResource("Gradient_mgvyk")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aq5qs"]
+gradient = SubResource("Gradient_766k7")
 
 [sub_resource type="Gradient" id="Gradient_o1r6m"]
 resource_local_to_scene = true
 interpolation_mode = 1
-offsets = PackedFloat32Array(0.216495, 0.891753)
-colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0666667, 0.392157, 0.705882, 1)
+offsets = PackedFloat32Array(0.508772, 0.864035, 0.942982)
+colors = PackedColorArray(0.180679, 0.550288, 0.935691, 1, 0.0128751, 0.179335, 0.345612, 1, 0.0666667, 0.392157, 0.705882, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fs0hm"]
 gradient = SubResource("Gradient_o1r6m")
 width = 300
 height = 150
 fill = 2
-fill_from = Vector2(0.421488, 0.384298)
+fill_from = Vector2(0.503623, 0.496377)
 fill_to = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8a4m"]
@@ -58,9 +60,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -162.0
+offset_right = 262.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_jpvdc")
+texture = SubResource("GradientTexture1D_aq5qs")
 
 [node name="PauseElements" type="Panel" parent="PauseElements"]
 layout_mode = 1
@@ -87,31 +93,7 @@ horizontal_alignment = 1
 [node name="Continue" type="Control" parent="PauseElements/VBoxContainer"]
 layout_mode = 2
 
-[node name="ContinueButton" type="TouchScreenButton" parent="PauseElements/VBoxContainer/Continue"]
-position = Vector2(155, 3)
-scale = Vector2(1.05333, 0.826667)
-texture_normal = SubResource("GradientTexture2D_fs0hm")
-shape = SubResource("RectangleShape2D_v8a4m")
-
-[node name="ButtonText" type="RichTextLabel" parent="PauseElements/VBoxContainer/Continue/ContinueButton"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -115.823
-offset_top = -15.7258
-offset_right = 111.177
-offset_bottom = 24.2742
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_ejssv")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 48
-bbcode_enabled = true
-text = "[center] Continue"
-fit_content = true
+[node name="ContinueButton" parent="PauseElements/VBoxContainer/Continue" instance=ExtResource("4_3p3dj")]
 
 [node name="MainMenu" type="Control" parent="PauseElements/VBoxContainer"]
 layout_mode = 2

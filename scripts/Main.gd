@@ -22,7 +22,7 @@ var regions : Array[Region] = [
 ]
 
 @export var settings = {
-	"timer_max" : 10,
+	"timer_max" : 60,
 	"question_mode" : "random"
 }
 

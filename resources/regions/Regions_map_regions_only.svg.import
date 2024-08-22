@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cts8o70x5k080"
-path="res://.godot/imported/Calabarzon.svg-e8647103774c2080422f4fe81798daff.ctex"
+uid="uid://cdifxdkju7gpb"
+path="res://.godot/imported/Regions_map_regions_only.svg-e0680bb55c39fe35e004c824b926daac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/regions/Calabarzon.svg"
-dest_files=["res://.godot/imported/Calabarzon.svg-e8647103774c2080422f4fe81798daff.ctex"]
+source_file="res://resources/regions/Regions_map_regions_only.svg"
+dest_files=["res://.godot/imported/Regions_map_regions_only.svg-e0680bb55c39fe35e004c824b926daac.ctex"]
 
 [params]
 

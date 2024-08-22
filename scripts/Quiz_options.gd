@@ -58,11 +58,24 @@ func create_question():
 	results.push_front(gamemode)
 	questions_array.append(results)
 
+func _input(event):
+	if ($OptionsButtons.visible):
+		if InputMap.event_is_action(event, "a"):
+			_on_OptionA_pressed()
+		elif InputMap.event_is_action(event, "b"):
+			_on_OptionB_pressed()
+		elif InputMap.event_is_action(event, "c"):
+			_on_OptionC_pressed()
+		elif InputMap.event_is_action(event, "d"):
+			_on_OptionD_pressed()
+
 # Contains code for the timer control and gameover condition
 func _process(_delta):
 	if ($TimerContainer/Timer.is_stopped()):
 		$GameOverScreen/GameOverTxt.parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
 		$GameOverScreen.visible = true
+		process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		$GameOverScreen.process_mode = Node.PROCESS_MODE_ALWAYS
 	else:
 		var percent = ($TimerContainer/Timer.time_left / counters["timer_max"])
 		$TimerContainer/TimerBar.set_value_no_signal(100 * percent)
@@ -147,5 +160,6 @@ func _on_continue_button_pressed():
 	elif ($PauseScreen/PauseElements.visible == true): 
 		$PauseScreen/PauseElements.visible = false
 		$PauseScreen/PauseBtn.visible = true
+		process_mode = Node.PROCESS_MODE_ALWAYS
 	$TimerContainer/Timer.set_paused(0)
 

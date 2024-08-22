@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://sph8eot8n64c"]
+[gd_scene load_steps=5 format=3 uid="uid://sph8eot8n64c"]
 
+[ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="1_e5wap"]
 [ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="1_kpy3u"]
+[ext_resource type="FontFile" uid="uid://c8hnbt31f2oh0" path="res://resources/EdgecuttingLiteMedium.ttf" id="3_3q8tc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8sal"]
 content_margin_left = 1.0
-content_margin_top = 90.0
+content_margin_top = 100.0
 content_margin_right = 1.0
 bg_color = Color(0.113725, 0.721569, 0.321569, 1)
 border_width_left = 10
@@ -18,39 +20,51 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
+theme = ExtResource("1_e5wap")
 
 [node name="MainQuestion" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 273.0
-offset_right = 669.0
-offset_bottom = 523.0
-theme_override_font_sizes/normal_font_size = 52
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.5
+offset_top = -483.0
+offset_right = 308.5
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 56
 theme_override_styles/normal = SubResource("StyleBoxFlat_k8sal")
 bbcode_enabled = true
 text = "[center] Sample Region"
 
 [node name="Score" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 486.0
-offset_right = 640.0
-offset_bottom = 513.0
+offset_left = 90.0
+offset_top = 367.0
+offset_right = 644.0
+offset_bottom = 394.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_kpy3u")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 42
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 
 [node name="Instructions" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 127.0
-offset_top = 304.0
-offset_right = 603.0
-offset_bottom = 389.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_top = 183.0
+offset_right = 225.0
+offset_bottom = 268.0
+grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("1_kpy3u")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_fonts/normal_font = ExtResource("3_3q8tc")
+theme_override_font_sizes/normal_font_size = 28
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] Find what region the city or province belongs to "
