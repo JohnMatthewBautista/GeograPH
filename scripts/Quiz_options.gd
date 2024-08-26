@@ -24,6 +24,35 @@ func _ready():
 	qnum = randi_range(0, arr_size)
 	set_question(qnum)
 
+# Pc controls connected to keyboard keys: 1,2,3,4 / a,b,c,d
+func _input(event):
+	# Connect to the options
+	if ($OptionsButtons.visible):
+		if InputMap.event_is_action(event, "a"):
+			_on_OptionA_pressed()
+		elif InputMap.event_is_action(event, "b"):
+			_on_OptionB_pressed()
+		elif InputMap.event_is_action(event, "c"):
+			_on_OptionC_pressed()
+		elif InputMap.event_is_action(event, "d"):
+			_on_OptionD_pressed()
+	# Connect to the pause button
+	if InputMap.event_is_action(event, "ui_cancel"):
+		$PauseScreen._on_pause_btn_pressed()
+
+# Contains code for the timer control and gameover condition
+func _process(_delta):
+	if ($TimerContainer/Timer.is_stopped()):
+		$GameOverScreen/VBoxContainer/CenterContainer/Label/FinalScore.parse_bbcode("[center]Final Score: " + str(counters.score))
+		$GameOverScreen.visible = true
+		# Prevent other user input while the gameover screen is open
+		process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		$GameOverScreen.process_mode = Node.PROCESS_MODE_ALWAYS
+	else:
+		# Update the timerbar
+		var percent = ($TimerContainer/Timer.time_left / counters["timer_max"])
+		$TimerContainer/TimerBar.set_value_no_signal(100 * percent)
+
 # Creates the array that contains the question details, options, and correct answer
 func create_question():
 # The array is setup as  GameMode, "Question/Hint", (4) "Region Options", AnswerIndex
@@ -58,27 +87,6 @@ func create_question():
 	results.push_front(gamemode)
 	questions_array.append(results)
 
-func _input(event):
-	if ($OptionsButtons.visible):
-		if InputMap.event_is_action(event, "a"):
-			_on_OptionA_pressed()
-		elif InputMap.event_is_action(event, "b"):
-			_on_OptionB_pressed()
-		elif InputMap.event_is_action(event, "c"):
-			_on_OptionC_pressed()
-		elif InputMap.event_is_action(event, "d"):
-			_on_OptionD_pressed()
-
-# Contains code for the timer control and gameover condition
-func _process(_delta):
-	if ($TimerContainer/Timer.is_stopped()):
-		$GameOverScreen/GameOverTxt.parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
-		$GameOverScreen.visible = true
-		process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-		$GameOverScreen.process_mode = Node.PROCESS_MODE_ALWAYS
-	else:
-		var percent = ($TimerContainer/Timer.time_left / counters["timer_max"])
-		$TimerContainer/TimerBar.set_value_no_signal(100 * percent)
 
 # Changes the text nodes to set the question and options
 func set_question(question_number):
@@ -130,7 +138,7 @@ func check_answer(answer_number, question_number):
 	# Pause for 1 second before executing the next line of code
 	await get_tree().create_timer(1.0).timeout
 	# Removes the question from the array to avoid repetition
-	questions_array.pop_at(question_number)
+	questions_array.pop_at(question_number-1)
 	arr_size -= 1
 	#Randomises question
 	qnum = randi_range(0,arr_size) 
@@ -148,18 +156,18 @@ func _on_OptionD_pressed():
 	check_answer(4,qnum)
 
 # Functions for gameover and pause
-func _on_retry_pressed():
-	get_tree().reload_current_scene()
+func _on_retry_button_pressed():
+	get_tree().call_deferred("reload_current_scene")
 
 func _on_main_menu_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/MainMenu.tscn")
 
+# Returns to the game and hides the pause screen
 func _on_continue_button_pressed():
-	if ($GameOverScreen.visible == true): 
-		$GameOverScreen.visible = false
-	elif ($PauseScreen/PauseElements.visible == true): 
+	if ($PauseScreen/PauseElements.visible == true): 
 		$PauseScreen/PauseElements.visible = false
 		$PauseScreen/PauseBtn.visible = true
 		process_mode = Node.PROCESS_MODE_ALWAYS
-	$TimerContainer/Timer.set_paused(0)
-
+		# Stop the audio in the pause screen
+		$PauseScreen/PauseElements/AudioStreamPlayer2D.stop()
+	$TimerContainer.process_mode = Node.PROCESS_MODE_INHERIT

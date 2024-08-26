@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://clsukwk5l3fpr"]
 
 [ext_resource type="Texture2D" uid="uid://b4wbd2x87hrcw" path="res://resources/main_texture.tres" id="1_16yjq"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="3_owl4k"]
+[ext_resource type="FontFile" uid="uid://c74ijun0i1vj1" path="res://resources/Moderniz.otf" id="2_we55f"]
 [ext_resource type="Theme" uid="uid://d1y3okhiwxw6o" path="res://resources/main_theme.tres" id="3_xh6fl"]
 
 [sub_resource type="Gradient" id="Gradient_ofsua"]
@@ -24,6 +24,8 @@ size = Vector2(320, 180)
 texture_normal = SubResource("GradientTexture2D_0oup4")
 texture_pressed = ExtResource("1_16yjq")
 shape = SubResource("RectangleShape2D_v8a4m")
+metadata/_edit_vertical_guides_ = [60.0, 257.0]
+metadata/_edit_horizontal_guides_ = [74.0]
 
 [node name="ButtonText" type="RichTextLabel" parent="."]
 anchors_preset = 5
@@ -37,8 +39,8 @@ grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0352941, 0.631373, 0.266667, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("3_owl4k")
-theme_override_font_sizes/normal_font_size = 42
+theme_override_fonts/normal_font = ExtResource("2_we55f")
+theme_override_font_sizes/normal_font_size = 19
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "[center] sample text"

@@ -1,8 +1,24 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://d1y3okhiwxw6o"]
 
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="1_72hj4"]
 [ext_resource type="FontFile" uid="uid://dy710kptmmmpt" path="res://resources/bagwis_baybayin_font.ttf" id="2_ytmvo"]
+[ext_resource type="FontFile" uid="uid://c74ijun0i1vj1" path="res://resources/Moderniz.otf" id="3_4p0bj"]
 [ext_resource type="Texture2D" uid="uid://bcu0lde65d12p" path="res://resources/island_texture.tres" id="3_82xtw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwpew"]
+content_margin_left = 20.0
+content_margin_top = 40.0
+content_margin_right = 30.0
+content_margin_bottom = 40.0
+bg_color = Color(0.180679, 0.550288, 0.935691, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0128751, 0.179335, 0.345612, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_145us"]
 bg_color = Color(0.0313726, 0.631373, 0.266667, 1)
@@ -12,39 +28,24 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.47451, 0.87451, 0.329412, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tl82"]
-bg_color = Color(0.0313726, 0.631373, 0.266667, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.384314, 0.823529, 0.317647, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 5
-shadow_offset = Vector2(10, 10)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nigx"]
 texture = ExtResource("3_82xtw")
 
 [resource]
-default_font = ExtResource("1_72hj4")
-default_font_size = 32
+default_font = ExtResource("3_4p0bj")
+default_font_size = 16
 HBoxContainer/constants/separation = 100
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 64
-Label/fonts/font = ExtResource("1_72hj4")
+Label/font_sizes/font_size = 42
+Label/fonts/font = ExtResource("3_4p0bj")
+Label/styles/normal = SubResource("StyleBoxFlat_bwpew")
 Panel/styles/panel = SubResource("StyleBoxFlat_145us")
-PopupPanel/styles/panel = SubResource("StyleBoxFlat_7tl82")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/font_sizes/bold_italics_font_size = 150
-RichTextLabel/font_sizes/italics_font_size = 48
-RichTextLabel/font_sizes/normal_font_size = 84
+RichTextLabel/font_sizes/italics_font_size = 52
+RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_ytmvo")
 RichTextLabel/fonts/italics_font = ExtResource("2_ytmvo")
-RichTextLabel/fonts/normal_font = ExtResource("1_72hj4")
+RichTextLabel/fonts/normal_font = ExtResource("3_4p0bj")
 TabContainer/styles/panel = SubResource("StyleBoxTexture_6nigx")
-VBoxContainer/constants/separation = 150
+VBoxContainer/constants/separation = 200

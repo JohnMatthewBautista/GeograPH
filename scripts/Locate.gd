@@ -5,8 +5,8 @@ extends Control
 
 var questions_array = []
 var chosen : Area2D
-var arr_size
-var qnum
+var arr_size : int
+var qnum : int
 var counters = {
 	"score" : 0,
 	"timer_max" : 60,
@@ -18,6 +18,7 @@ func _ready():
 	counters["timer_max"] = Main.settings.timer_max
 	timer_cntr.get_node("Timer").wait_time = counters.timer_max
 	timer_cntr.get_node("Timer").start()
+# Prepare the question
 	for i in range(10):
 		create_question()
 	arr_size = questions_array.size() - 1
@@ -25,14 +26,25 @@ func _ready():
 	qnum = randi_range(0, arr_size)
 	set_question(qnum)
 
+func _input(event):
+# Desktop controls for confirm and pause buttons
+	if ($PlayerPerspective/Camera2D/HUD/PassAnswer.visible):
+		if InputMap.event_is_action(event, "ui_accept"):
+			_on_pass_answer_pressed()
+	if InputMap.event_is_action(event, "ui_cancel"):
+		$PlayerPerspective/Camera2D/HUD/PauseScreen._on_pause_btn_pressed()
+
 func _process(_delta):
+# Gameover condition if the timer stops
 	if (timer_cntr.get_node("Timer").is_stopped()):
-		game_over_scrn.get_node("GameOverTxt").parse_bbcode("[center] GAME OVER \n Final Score: " + str(counters.score))
+		game_over_scrn.get_node("VBoxContainer/CenterContainer/Label/FinalScore").parse_bbcode("[center]Final Score: " + str(counters.score))
 		game_over_scrn.visible = true
 		game_over_scrn.visible = true
+	# Prevent other user input
 		process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 		game_over_scrn.process_mode = Node.PROCESS_MODE_ALWAYS
 	else:
+	# Updates the timer bar
 		var percent = (timer_cntr.get_node("Timer").time_left / counters["timer_max"])
 		timer_cntr.get_node("TimerBar").set_value_no_signal(100 * percent)
 
@@ -61,7 +73,7 @@ func create_question():
 
 # Sets the question in the text nodes or prepares the question
 func set_question(question_number):
-	# Check if the questions are too few
+	# Check if the questions are too few and load new ones
 	if questions_array.size() <= 3:
 		for i in range(10):
 			create_question()
@@ -77,35 +89,35 @@ func set_question(question_number):
 	$PlayerPerspective/Camera2D/HUD/TextContainer/MainQuestion.parse_bbcode("[center]" + curr[1])
 
 # Functions for gameover and pause
-func _on_retry_pressed():
-	get_tree().reload_current_scene()
+func _on_retry_button_pressed():
+# Call deferred is necessary due to connection to "released" signal
+	get_tree().call_deferred("reload_current_scene")
 
 func _on_main_menu_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/MainMenu.tscn")
 
+# Hides the pause menu and enables the root node process (allow inputs)
 func _on_continue_button_pressed():
 	var pause_scrn = $PlayerPerspective/Camera2D/HUD/PauseScreen
-	if (game_over_scrn.visible == true): 
-		game_over_scrn.visible = false
 	if (pause_scrn.get_node("PauseElements").visible == true): 
 		pause_scrn.get_node("PauseElements").visible = false
 		pause_scrn.get_node("PauseBtn").visible = true
 		process_mode = Node.PROCESS_MODE_ALWAYS
+		pause_scrn.get_node("PauseElements/AudioStreamPlayer2D").stop()
 	$PlayerPerspective/Camera2D/Pointer.position = Vector2(0,0)
-	timer_cntr.get_node("Timer").set_paused(0)
+	timer_cntr.process_mode = Node.PROCESS_MODE_INHERIT
 
 # Sets the global variable "chosen" when the player moves the pinned location
 func _on_character_body_2d_area_entered(area):
 	$PlayerPerspective/Camera2D/HUD/PassAnswer.visible = not $PlayerPerspective/Camera2D/HUD/PassAnswer.visible
 	chosen = area
-	print("Entering: ", chosen)
 
+# Remove the confirmation button when no area chosen
 func _on_character_body_2d_area_exited(_area):
 	$PlayerPerspective/Camera2D/HUD/PassAnswer.visible = false
 
 # Checks if the selected area is the correct answeer
 func _on_pass_answer_pressed():
-	print("Your Answer: ", chosen.name)
 #Variables used inside this function
 	var question = $PlayerPerspective/Camera2D/HUD/TextContainer/MainQuestion
 	var player_answer = chosen.name

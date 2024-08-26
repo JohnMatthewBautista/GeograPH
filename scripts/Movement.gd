@@ -1,5 +1,6 @@
 extends Node2D
 
+# Script based from https://kidscancode.org/godot_recipes/3.x/2d/touchscreen_camera/index.html
 var events = {}
 var last_drag_distance = 0
 @onready var start: Vector2 = Vector2(position.x, position.y)
@@ -18,7 +19,6 @@ func _input(event):
 		$Camera2D/Pointer.position = events[event.index].position - start
 		events[event.index] = event
 		if events.size() == 1:
-			# TODO: there is a bit of a weird behavior with the pin when reaching the borders	
 			# Borders to prevent the camera going off screen
 			var temp_pos = $Camera2D.position - event.relative.rotated(rotation)
 			if (temp_pos.x >= 1700 || temp_pos.x <= -1700):
@@ -28,7 +28,7 @@ func _input(event):
 			else:
 				$Camera2D.position = temp_pos
 
-# This part is reserved for pc controls, or migrate it into _input too
+# This part is reserved for pc controls
 func _process(_delta):
 	var cam_pos = $Camera2D.position
 	if Input.is_action_pressed("ui_right"):
@@ -43,7 +43,13 @@ func _process(_delta):
 	if Input.is_action_pressed("ui_up"):
 		$Camera2D/Pointer.position = Vector2(0,0)
 		cam_pos.y -= 20
-	$Camera2D.position = cam_pos
+	# Same borders to prevent off bounds
+	if (cam_pos.x >= 1700 || cam_pos.x <= -1700):
+		return
+	elif (cam_pos.y >= 4400 || cam_pos.y <= -750):
+		return
+	else:
+		$Camera2D.position = cam_pos
 
 
 

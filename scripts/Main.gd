@@ -1,5 +1,12 @@
 extends Node
 
+# Used to make randomness unique
+func _ready():
+	var date = Time.get_time_dict_from_system()
+	seed(date.hour + date.minute)
+
+# Main database inherited by all classes by being autoloaded
+# Uses the user defined Region class
 var regions : Array[Region] = [
 	Region.new("Ilocos Region", "Luzon", "San Fernando, La Union", "Region 1", ["Ilocos Norte", "Ilocos Sur", "La Union", "Pangasinan"]),
 	Region.new("Cagayan Valley", "Luzon", "Tuguegarao", "Region 2", ["Batanes", "Cagayan", "Isabela", "Nueva Vizcaya", "Quirino"]),
@@ -21,6 +28,7 @@ var regions : Array[Region] = [
 	Region.new("Bangsamoro Autonomous Region", "Mindanao", "Cotabato City", "BARMM", ["Basilan", "Lanao del Sur", "Maguindanao", "Sulu", "Tawi-Tawi"])
 ]
 
+# Global variables for game setup
 @export var settings = {
 	"timer_max" : 60,
 	"question_mode" : "random"

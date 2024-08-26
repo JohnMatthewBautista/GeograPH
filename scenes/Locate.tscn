@@ -18,7 +18,7 @@ colors = PackedColorArray(0.792157, 0.858824, 0.94902, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tu3gw"]
 gradient = SubResource("Gradient_72gst")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4vnit"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tefnt"]
 radius = 30.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_852me"]
@@ -39,7 +39,7 @@ metadata/_edit_vertical_guides_ = [360.0]
 
 [node name="Bg" type="TextureRect" parent="Map"]
 offset_left = -2053.0
-offset_top = -704.0
+offset_top = -824.0
 offset_right = 2947.0
 offset_bottom = 6296.0
 texture = SubResource("GradientTexture1D_tu3gw")
@@ -142,7 +142,7 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TouchAreas/Negros Island Region"]
 position = Vector2(-580, 1525)
 scale = Vector2(6.0288, 4.76571)
-polygon = PackedVector2Array(99.6882, -417.147, 120.256, -431.415, 141.985, -418.196, 112.792, -314.329, 126.227, -292.716, 147.625, -294.605, 152.103, -272.782, 99.3564, -269.215, 54.5714, -337.62, 84.5939, -352.518)
+polygon = PackedVector2Array(99.6882, -417.147, 120.256, -431.415, 141.322, -420.924, 116.939, -312.44, 122.081, -296.283, 145.966, -300.69, 152.103, -272.782, 95.8731, -254.107, 41.9652, -334.053, 86.9161, -364.059)
 
 [node name="Central Visayas" type="Area2D" parent="TouchAreas"]
 position = Vector2(1223, 3522)
@@ -231,7 +231,7 @@ texture = ExtResource("8_pvncb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPerspective/Camera2D/Pointer"]
 position = Vector2(2, 2)
-shape = SubResource("CircleShape2D_4vnit")
+shape = SubResource("CircleShape2D_tefnt")
 
 [node name="HUD" type="Control" parent="PlayerPerspective/Camera2D"]
 layout_mode = 3
@@ -266,7 +266,7 @@ offset_right = 353.0
 offset_bottom = 684.0
 
 [node name="PauseBtn" parent="PlayerPerspective/Camera2D/HUD/PauseScreen" index="0"]
-position = Vector2(584, 40)
+position = Vector2(584, 46)
 
 [node name="PauseElements" parent="PlayerPerspective/Camera2D/HUD/PauseScreen" index="1"]
 offset_left = 49.0
@@ -287,12 +287,17 @@ offset_bottom = 1200.0
 [connection signal="area_entered" from="PlayerPerspective/Camera2D/Pointer" to="." method="_on_character_body_2d_area_entered"]
 [connection signal="area_exited" from="PlayerPerspective/Camera2D/Pointer" to="." method="_on_character_body_2d_area_exited"]
 [connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PassAnswer" to="." method="_on_pass_answer_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="released" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="released" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="released" from="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="released" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="released" from="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_button_pressed"]
 
 [editable path="PlayerPerspective/Camera2D/HUD/TextContainer"]
 [editable path="PlayerPerspective/Camera2D/HUD/PauseScreen"]
+[editable path="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton"]
+[editable path="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton"]
+[editable path="PlayerPerspective/Camera2D/HUD/PauseScreen/PauseElements/VBoxContainer/Retry/RetryButton"]
 [editable path="PlayerPerspective/Camera2D/HUD/GameOverScreen"]
+[editable path="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/MainMenu/MainMenuButton"]
+[editable path="PlayerPerspective/Camera2D/HUD/GameOverScreen/VBoxContainer/Retry/RetryBtn"]

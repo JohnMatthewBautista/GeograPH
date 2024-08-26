@@ -28,11 +28,9 @@ offset_bottom = 1084.0
 
 [node name="OptionA" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
 position = Vector2(-3, 0)
-action = "a"
 
 [node name="OptionB" parent="OptionsButtons" instance=ExtResource("2_e47ir")]
 position = Vector2(323, 0)
-action = "b"
 
 [node name="Baybayin" parent="OptionsButtons/OptionB" index="1"]
 text = "[center] [b] [i] B [i]"
@@ -69,15 +67,20 @@ offset_bottom = 1283.0
 [connection signal="released" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
 [connection signal="released" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
 [connection signal="released" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="released" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="released" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="released" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="released" from="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="released" from="GameOverScreen/VBoxContainer/Retry/RetryBtn" to="." method="_on_retry_button_pressed"]
 
 [editable path="OptionsButtons/OptionA"]
 [editable path="OptionsButtons/OptionB"]
 [editable path="OptionsButtons/OptionC"]
 [editable path="OptionsButtons/OptionD"]
 [editable path="PauseScreen"]
+[editable path="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton"]
+[editable path="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton"]
+[editable path="PauseScreen/PauseElements/VBoxContainer/Retry/RetryButton"]
 [editable path="GameOverScreen"]
+[editable path="GameOverScreen/VBoxContainer/MainMenu/MainMenuButton"]
+[editable path="GameOverScreen/VBoxContainer/Retry/RetryBtn"]

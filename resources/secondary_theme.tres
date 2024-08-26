@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://6qfwp8jjhv7b"]
 
 [ext_resource type="FontFile" uid="uid://dy710kptmmmpt" path="res://resources/bagwis_baybayin_font.ttf" id="1_4oy6q"]
-[ext_resource type="FontFile" uid="uid://j26w3mseqct0" path="res://resources/pixeboy-z8XGD.ttf" id="1_lvryg"]
-[ext_resource type="FontFile" uid="uid://dp4to7hlty5ck" path="res://resources/EdgecuttingLiteSharp.ttf" id="3_hd0m6"]
+[ext_resource type="FontFile" uid="uid://c74ijun0i1vj1" path="res://resources/Moderniz.otf" id="1_lwdqw"]
+[ext_resource type="FontFile" uid="uid://c8hnbt31f2oh0" path="res://resources/EdgecuttingLiteMedium.ttf" id="3_vfu6a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s5ql"]
 bg_color = Color(0.0666667, 0.392157, 0.705882, 1)
@@ -17,11 +17,12 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [resource]
-default_font = ExtResource("3_hd0m6")
+default_font = ExtResource("3_vfu6a")
 Panel/styles/panel = SubResource("StyleBoxFlat_5s5ql")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/bold_font_size = 72
+RichTextLabel/font_sizes/bold_font_size = 42
+RichTextLabel/font_sizes/italics_font_size = 48
 RichTextLabel/font_sizes/normal_font_size = 24
-RichTextLabel/fonts/bold_font = ExtResource("1_lvryg")
+RichTextLabel/fonts/bold_font = ExtResource("1_lwdqw")
 RichTextLabel/fonts/italics_font = ExtResource("1_4oy6q")
 RichTextLabel/styles/normal = null
