@@ -11,10 +11,10 @@ It is a quiz game made using Godot v4.2.2 about Philippine geography with the ma
 The questions mainly revolve around the different regions of the Philippines. Including the regional numbers, region center, and an enumeration of the cities or provinces belonging to it. It features two main game modes:
 
 1. Flashcard Quizzes
-    - Choose the correct answer between four options before the time runs out\!
+	- Choose the correct answer between four options before the time runs out\!
 
 2. Interactive Map Quiz
-    - Navigate through the Philippine map to locate and identify the correct region
+	- Navigate through the Philippine map to locate and identify the correct region
 
 ### Free Roam Mode
 Getting stuck? View the Philippine map derived from [this map](https://commons.wikimedia.org/wiki/File:Ph_regions_and_provinces.svg) within the game and learn from your mistakes.

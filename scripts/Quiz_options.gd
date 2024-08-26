@@ -129,8 +129,8 @@ func check_answer(answer_number, question_number):
 		$TextContainer/Score.parse_bbcode("[center] Score: " + str(counters["score"]))
 #This section is when it is wrong
 	elif correct_answer != answer_number:
-		question.parse_bbcode("[center] Wrong")
-		question.append_text("\n[center] Answer: " + questions_array[question_number][correct_answer + 1])
+		question.parse_bbcode("[center] Wrong ")
+		question.append_text("\n[b] Answer: " + questions_array[question_number][correct_answer + 1])
 	else:
 		print("Error input was not string")
 	# Hide the buttons

@@ -58,9 +58,13 @@ size = Vector2(80, 80)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 725.0
-offset_bottom = 1290.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_right = 360.0
+offset_bottom = 1440.0
+grow_horizontal = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_lnwq1")
 script = ExtResource("1_ednag")

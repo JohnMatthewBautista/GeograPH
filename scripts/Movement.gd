@@ -10,6 +10,8 @@ func _input(event):
 		if event.pressed:
 			# This code moves the pin in the screen
 			$Camera2D/Pointer.position = (event.position - start)
+			# Make it adjust with screen size
+			$Camera2D/Pointer.position -= get_tree().current_scene.position
 			start = Vector2(position.x, position.y)
 			events[event.index] = event
 		else:
@@ -17,6 +19,7 @@ func _input(event):
 	if event is InputEventScreenDrag:
 		# Leave and reset the pin's location
 		$Camera2D/Pointer.position = events[event.index].position - start
+		$Camera2D/Pointer.position -= get_tree().current_scene.position
 		events[event.index] = event
 		if events.size() == 1:
 			# Borders to prevent the camera going off screen

@@ -129,8 +129,8 @@ func _on_pass_answer_pressed():
 		$PlayerPerspective/Camera2D/HUD/TextContainer/Score.parse_bbcode("[center] Score: " + str(counters["score"]))
 #This section is when it is wrong
 	elif correct_answer != player_answer:
-		question.parse_bbcode("[center] Wrong")
-		question.add_text("\n You Chose: " + player_answer)
+		question.parse_bbcode("[center] Wrong ")
+		question.append_text("\n[b] You Chose: " + player_answer)
 	else:
 		print("Error input was not string")
 # Restrict the player from moving while the answer is being checked
