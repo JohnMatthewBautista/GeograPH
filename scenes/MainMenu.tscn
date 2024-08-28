@@ -61,17 +61,18 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -360.0
-offset_right = 360.0
-offset_bottom = 1440.0
+offset_left = -432.0
+offset_right = -209.0
 grow_horizontal = 2
+scale = Vector2(1.15, 1.15)
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_lnwq1")
 script = ExtResource("1_ednag")
-metadata/_edit_vertical_guides_ = [360.0]
+metadata/_edit_vertical_guides_ = [960.0]
 metadata/_edit_horizontal_guides_ = [758.0]
 
 [node name="StartScreen" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 0
 offset_right = 722.0
 offset_bottom = 1275.0

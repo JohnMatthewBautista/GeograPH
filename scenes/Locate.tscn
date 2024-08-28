@@ -29,13 +29,13 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -360.0
-offset_right = 360.0
-offset_bottom = 1440.0
+offset_left = -390.0
+offset_right = -3.0
 grow_horizontal = 2
+scale = Vector2(1.1, 1.1)
 theme = ExtResource("1_jeqhv")
 script = ExtResource("2_jknx1")
-metadata/_edit_vertical_guides_ = [360.0]
+metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Map" type="Node2D" parent="."]
 
