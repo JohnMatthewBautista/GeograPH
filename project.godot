@@ -15,7 +15,8 @@ run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://resources/logos/my_logo.png"
 config/icon="res://geograph_logo.svg"
-boot_splash/icon="res://resources/regions/logo_temp-192.svg"
+boot_splash/minimum_display_time=1000
+boot_splash/icon="res://geograph_logo.svg"
 
 [autoload]
 
@@ -23,10 +24,11 @@ Main="*res://scripts/Main.gd"
 
 [display]
 
-window/size/viewport_width=1920
+window/size/viewport_width=720
 window/size/viewport_height=1440
 window/size/initial_position_type=2
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [filesystem]

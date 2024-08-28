@@ -1,10 +1,5 @@
 extends Node
 
-# Used to make randomness unique
-func _ready():
-	var date = Time.get_time_dict_from_system()
-	seed(date.hour + date.minute)
-
 # Main database inherited by all classes by being autoloaded
 # Uses the user defined Region class
 var regions : Array[Region] = [
@@ -23,7 +18,7 @@ var regions : Array[Region] = [
 	Region.new("Davao Region", "Mindanao", "Davao City", "Region 11", ["Davao de Oro", "Davao del Norte", "Davao del Sur", "Davao Occidental", "Davao Oriental"]),
 	Region.new("Soccsksargen", "Mindanao", "Koronadal", "Region 12", ["Sarangani", "South Cotabato", "Sultan Kudarat"]),
 	Region.new("Caraga", "Mindanao", "Butuan", "Region 13", ["Agusan del Norte", "Agusan del Sur", "Dinagat Islands", "Surigao del Norte", "Surigao del Sur"]),
-	Region.new("National Capital Region", "Luzon", "Manila", "NCR", ["Caloocan", "Las Piñas", "Makati", "Malabon", "Mandaluyong", "Marikina", "Muntinlupa", "Navotas", "Parañaque", "Pasay", "Pasig", "Pateros", "Quezon City", "San Juan", "Taguig", "Valenzuela"]),
+	Region.new("National Capital Region", "Luzon", "Manila", "NCR", ["Caloocan", "Las Piñas", "Makati", "Malabon", "Mandaluyong", "Marikina", "Muntinlupa", "Navotas", "Paranaque", "Pasay", "Pasig", "Pateros", "Quezon City", "San Juan", "Taguig", "Valenzuela"]),
 	Region.new("Cordillera Administrative Region", "Luzon", "Baguio", "CAR", ["Abra", "Apayao", "Benguet", "Ifugao", "Kalinga", "Mountain Province"]),
 	Region.new("Bangsamoro Autonomous Region", "Mindanao", "Cotabato City", "BARMM", ["Basilan", "Lanao del Sur", "Maguindanao", "Sulu", "Tawi-Tawi"])
 ]

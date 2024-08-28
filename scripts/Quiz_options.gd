@@ -24,22 +24,6 @@ func _ready():
 	qnum = randi_range(0, arr_size)
 	set_question(qnum)
 
-# Pc controls connected to keyboard keys: 1,2,3,4 / a,b,c,d
-func _input(event):
-	# Connect to the options
-	if ($OptionsButtons.visible):
-		if InputMap.event_is_action(event, "a"):
-			_on_OptionA_pressed()
-		elif InputMap.event_is_action(event, "b"):
-			_on_OptionB_pressed()
-		elif InputMap.event_is_action(event, "c"):
-			_on_OptionC_pressed()
-		elif InputMap.event_is_action(event, "d"):
-			_on_OptionD_pressed()
-	# Connect to the pause button
-	if InputMap.event_is_action(event, "ui_cancel"):
-		$PauseScreen._on_pause_btn_pressed()
-
 # Contains code for the timer control and gameover condition
 func _process(_delta):
 	if ($TimerContainer/Timer.is_stopped()):

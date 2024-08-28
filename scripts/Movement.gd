@@ -30,29 +30,3 @@ func _input(event):
 				return
 			else:
 				$Camera2D.position = temp_pos
-
-# This part is reserved for pc controls
-func _process(_delta):
-	var cam_pos = $Camera2D.position
-	if Input.is_action_pressed("ui_right"):
-		$Camera2D/Pointer.position = Vector2(0,0)
-		cam_pos.x += 20
-	if Input.is_action_pressed("ui_left"):
-		$Camera2D/Pointer.position = Vector2(0,0)
-		cam_pos.x -= 20
-	if Input.is_action_pressed("ui_down"):
-		$Camera2D/Pointer.position = Vector2(0,0)
-		cam_pos.y += 20
-	if Input.is_action_pressed("ui_up"):
-		$Camera2D/Pointer.position = Vector2(0,0)
-		cam_pos.y -= 20
-	# Same borders to prevent off bounds
-	if (cam_pos.x >= 1700 || cam_pos.x <= -1700):
-		return
-	elif (cam_pos.y >= 4400 || cam_pos.y <= -750):
-		return
-	else:
-		$Camera2D.position = cam_pos
-
-
-

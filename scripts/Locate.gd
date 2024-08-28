@@ -26,14 +26,6 @@ func _ready():
 	qnum = randi_range(0, arr_size)
 	set_question(qnum)
 
-func _input(event):
-# Desktop controls for confirm and pause buttons
-	if ($PlayerPerspective/Camera2D/HUD/PassAnswer.visible):
-		if InputMap.event_is_action(event, "ui_accept"):
-			_on_pass_answer_pressed()
-	if InputMap.event_is_action(event, "ui_cancel"):
-		$PlayerPerspective/Camera2D/HUD/PauseScreen._on_pause_btn_pressed()
-
 func _process(_delta):
 # Gameover condition if the timer stops
 	if (timer_cntr.get_node("Timer").is_stopped()):

@@ -58,17 +58,10 @@ size = Vector2(80, 80)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -432.0
-offset_right = -209.0
-grow_horizontal = 2
-scale = Vector2(1.15, 1.15)
+anchors_preset = 0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_lnwq1")
 script = ExtResource("1_ednag")
-metadata/_edit_vertical_guides_ = [960.0]
 metadata/_edit_horizontal_guides_ = [758.0]
 
 [node name="StartScreen" type="Control" parent="."]
@@ -96,9 +89,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -312.0
-offset_top = 266.5
+offset_top = 417.5
 offset_right = 329.0
-offset_bottom = 516.5
+offset_bottom = 667.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 200
@@ -192,16 +185,16 @@ texture_normal = ExtResource("5_ygaln")
 shape = SubResource("RectangleShape2D_7lkdh")
 
 [node name="Start" type="TouchScreenButton" parent="NewGameSection"]
-position = Vector2(212, 1027)
+position = Vector2(212, 1102)
 texture_normal = ExtResource("10_kiq2v")
 shape = SubResource("RectangleShape2D_gqcha")
 
 [node name="LevelSelection" type="TabContainer" parent="NewGameSection"]
 layout_mode = 0
 offset_left = 21.0
-offset_top = 204.0
+offset_top = 253.0
 offset_right = 704.0
-offset_bottom = 606.0
+offset_bottom = 655.0
 tab_alignment = 1
 
 [node name="Multiple Choice" type="Control" parent="NewGameSection/LevelSelection"]
@@ -251,9 +244,9 @@ texture_normal = ExtResource("5_3ji2o")
 [node name="DifficultySelection" type="TabContainer" parent="NewGameSection"]
 layout_mode = 0
 offset_left = 28.0
-offset_top = 645.0
+offset_top = 707.0
 offset_right = 711.0
-offset_bottom = 983.0
+offset_bottom = 1045.0
 tab_alignment = 1
 tabs_visible = false
 
@@ -310,11 +303,6 @@ anchors_preset = 0
 offset_right = 725.0
 offset_bottom = 1290.0
 
-[node name="BackBtn2" type="TouchScreenButton" parent="CreditsSection"]
-position = Vector2(25, 29)
-texture_normal = ExtResource("5_ygaln")
-shape = SubResource("RectangleShape2D_7lkdh")
-
 [node name="Panel" type="Panel" parent="CreditsSection"]
 layout_mode = 0
 offset_left = 88.0
@@ -347,17 +335,11 @@ theme = ExtResource("3_71ofi")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 0
 bbcode_enabled = true
-text = "[center][b] keybinds [/b]
+text = "[center]
 
-+ Multiple Choice 
-Number keys 1-4 -> Options A - D
-[A] [B]
-[C] [D]
 
-+ Locate 
-Space -> Confirm
-Arrow keys / WASD -> Movement
-Esc -> Pause
+
+
 
 [b] Sources[/b]
 
@@ -367,6 +349,8 @@ Esc -> Pause
 
 + Fonts from [url=https://www.dafont.com/] Dafont.com [/url]
 
+
+
 [b] Links [/b]
 
 View more games here:
@@ -375,6 +359,11 @@ View more games here:
 View other projects:
 [url=https://johnmatthewbautista.github.io/] Github Page [/url]"
 selection_enabled = true
+
+[node name="BackBtn2" type="TouchScreenButton" parent="CreditsSection/Panel"]
+position = Vector2(-63, -159)
+texture_normal = ExtResource("5_ygaln")
+shape = SubResource("RectangleShape2D_7lkdh")
 
 [node name="MapSection" type="Control" parent="."]
 visible = false
@@ -545,7 +534,7 @@ max_distance = 4000.0
 [connection signal="pressed" from="NewGameSection/LevelSelection/Next" to="." method="change_tabs" binds= ["LevelSelection", 0]]
 [connection signal="pressed" from="NewGameSection/DifficultySelection/Prev" to="." method="change_tabs" binds= ["DifficultySelection", 1]]
 [connection signal="pressed" from="NewGameSection/DifficultySelection/Next" to="." method="change_tabs" binds= ["DifficultySelection", 0]]
-[connection signal="pressed" from="CreditsSection/BackBtn2" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="CreditsSection/Panel/BackBtn2" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="MapSection/Movement/Camera2D/MapBack" to="." method="_on_map_back_pressed"]
 [connection signal="pressed" from="MapSection/Movement/Camera2D/CheckBoxes/RegionNames" to="." method="click_check" binds= [&"RegionNames"]]
 [connection signal="pressed" from="MapSection/Movement/Camera2D/CheckBoxes/Grid" to="." method="click_check" binds= [&"Grid"]]
