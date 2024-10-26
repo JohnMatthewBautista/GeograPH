@@ -29,13 +29,13 @@ func _input(event):
 	# Connect to the options
 	if ($OptionsButtons.visible):
 		if InputMap.event_is_action(event, "a"):
-			_on_OptionA_pressed()
+			check_answer(1)
 		elif InputMap.event_is_action(event, "b"):
-			_on_OptionB_pressed()
+			check_answer(2)
 		elif InputMap.event_is_action(event, "c"):
-			_on_OptionC_pressed()
+			check_answer(3)
 		elif InputMap.event_is_action(event, "d"):
-			_on_OptionD_pressed()
+			check_answer(4)
 	# Connect to the pause button
 	if InputMap.event_is_action(event, "ui_cancel"):
 		$PauseScreen._on_pause_btn_pressed()
@@ -115,7 +115,8 @@ func set_question(question_number):
 
 # Checks if the user's answer is correct
 # Compares the chosen option with the correct_answer index value
-func check_answer(answer_number, question_number):
+func check_answer(answer_number):
+	var question_number = qnum
 # Prevent wrong index
 	if question_number >= questions_array.size():
 		print("Error Exceed Array Index")
@@ -144,16 +145,6 @@ func check_answer(answer_number, question_number):
 	qnum = randi_range(0,arr_size) 
 	set_question(qnum)
 	$OptionsButtons.visible = true
-
-# Button signals connected to each option
-func _on_OptionA_pressed():
-	check_answer(1,qnum)
-func _on_OptionB_pressed():
-	check_answer(2,qnum)
-func _on_OptionC_pressed():
-	check_answer(3,qnum)
-func _on_OptionD_pressed():
-	check_answer(4,qnum)
 
 # Functions for gameover and pause
 func _on_retry_button_pressed():
