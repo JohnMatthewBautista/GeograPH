@@ -62,10 +62,10 @@ layout_mode = 0
 offset_right = 723.0
 offset_bottom = 1283.0
 
-[connection signal="released" from="OptionsButtons/OptionA" to="." method="_on_OptionA_pressed"]
-[connection signal="released" from="OptionsButtons/OptionB" to="." method="_on_OptionB_pressed"]
-[connection signal="released" from="OptionsButtons/OptionC" to="." method="_on_OptionC_pressed"]
-[connection signal="released" from="OptionsButtons/OptionD" to="." method="_on_OptionD_pressed"]
+[connection signal="released" from="OptionsButtons/OptionA" to="." method="check_answer" binds= [1]]
+[connection signal="released" from="OptionsButtons/OptionB" to="." method="check_answer" binds= [2]]
+[connection signal="released" from="OptionsButtons/OptionC" to="." method="check_answer" binds= [3]]
+[connection signal="released" from="OptionsButtons/OptionD" to="." method="check_answer" binds= [4]]
 [connection signal="released" from="PauseScreen/PauseElements/VBoxContainer/Continue/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="released" from="PauseScreen/PauseElements/VBoxContainer/MainMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="released" from="PauseScreen/PauseElements/VBoxContainer/Retry/RetryButton" to="." method="_on_retry_button_pressed"]
